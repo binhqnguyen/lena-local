@@ -118,6 +118,8 @@ public:
 
   uint32_t GetSent();
 
+  uint32_t GetSentBytes();
+
 protected:
   virtual void DoDispose (void);
 private:

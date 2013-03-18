@@ -301,4 +301,9 @@ OnOffApplication::GetSent(){
   return m_totBytes/m_pktSize;
 }
 
+uint32_t
+OnOffApplication::GetSentBytes(){
+  return m_totBytes;
+}
+
 } // Namespace ns3
