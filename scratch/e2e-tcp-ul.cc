@@ -41,6 +41,7 @@
 #include <string>
 #include "ns3/flow-monitor-module.h"
 #include "ns3/flow-monitor-helper.h"
+#include "ns3/lte-global-pathloss-database.h"
 
 //#include "ns3/gtk-config-store.h"
 
@@ -78,6 +79,7 @@ getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t, uint8_t);
 double
 getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t, uint8_t);
 
+
 int
 main (int argc, char *argv[])
 {
@@ -90,9 +92,11 @@ main (int argc, char *argv[])
     	// LogComponentEnable("UdpEchoServerApplication", LOG_LEVEL_INFO);
     	// LogComponentEnable("UdpClient",LOG_LEVEL_INFO);
     	 // LogComponentEnable("UdpServer", LOG_LEVEL_INFO);
-		LogComponentEnable("OnOffApplication",LOG_LEVEL_INFO);
-		LogComponentEnable("PacketSink",LOG_LEVEL_INFO);
+//		LogComponentEnable("OnOffApplication",LOG_LEVEL_INFO);
+//		LogComponentEnable("PacketSink",LOG_LEVEL_INFO);
 //         LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+//     		LogComponentEnable("OnOffApplication",level);
+//     		LogComponentEnable("PacketSink",level);
 //       LogComponentEnable ("LteRlcUm", level);
     //   LogComponentEnable ("LteHelper",level);
 //       LogComponentEnable ("LteUeMac", level);
@@ -393,6 +397,8 @@ main (int argc, char *argv[])
     << std::left << std::setw(SPC) << "ULRLCTxs"
     << std::left << std::setw(SPC) << "UlPathloss"
     << std::left << std::setw(SPC) << "DlPathloss"
+    << std::left << std::setw(SPC) << "OnOffSent"
+    << std::left << std::setw(SPC) << "packetSinkReceived"
     << std::endl;
     const uint32_t ONEBIL = 1000000000;
     Ptr<LteEnbNetDevice> lteEnbDev;
@@ -409,7 +415,9 @@ main (int argc, char *argv[])
             std::cout << std::left << std::setw(SPC) << lteHelper->GetPdcpStats()->GetUlTxPackets(j+1,3);
             std::cout << std::left << std::setw(SPC) << lteHelper->GetRlcStats()->GetUlTxPackets(j+1,3);
             std::cout << std::left << std::setw(SPC) << ulPathlossDb.GetPathloss(i+1,j+1);
-            std::cout << std::left << std::setw(SPC) << dlPathlossDb.GetPathloss(i+1,j+1) << std::endl;
+            std::cout << std::left << std::setw(SPC) << dlPathlossDb.GetPathloss(i+1,j+1);
+            std::cout << std::left << std::setw(SPC) << clientApps.Get(j)->GetObject<ns3::OnOffApplication>()->GetSent();
+            std::cout << std::left << std::setw(SPC) << serverApps.Get(j)->GetObject<ns3::PacketSink>()->GetPacketReceived() << std::endl;
         }
     }
 
@@ -467,9 +475,6 @@ main (int argc, char *argv[])
         NS_LOG_UNCOND("Mean transmitted bitrate " << 8*iter->second.txBytes/(iter->second.timeLastTxPacket-iter->second.timeFirstTxPacket)*ONEBIL/(1024));
     }
   }
-
-  NS_LOG_UNCOND("On-off application Tx pck " << numOfTxPacket_1);
-  NS_LOG_UNCOND("Tcp ack pck" << numOfTxPacket_2);
 
   /****Radio link error and HARQ*******/
   uint64_t errorUlRx = lteHelper->GetPhyRxStatsCalculator()->GetTotalErrorUl();	//Error detected on the Ul Received side (eNB).
