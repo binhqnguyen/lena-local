@@ -1,0 +1,3 @@
+% time	cellId	IMSI	RNTI	txMode	layer	mcs	size	rv	ndi
+554	1	1	1	0	28	4395	0	1
+609	1	1	1	0	28	4395	0	1

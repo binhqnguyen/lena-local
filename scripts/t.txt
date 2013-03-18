@@ -1,0 +1,4 @@
+set terminal png
+set output "gnu_out.png"
+plot "/Users/binh/Desktop/ns3_play/sketch_data/interval-S1R100-P2PR100-Ue1-interval0-pacS50-pacN1000.txt" using 1:2 title "PdcpUL" with lines pointtype 3
+pause 10

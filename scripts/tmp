@@ -1,0 +1,5 @@
+set xlabel "sending time-interval (ms)"
+set ylabel "latency (ms)"
+set terminal svg
+set output "/Users/binh/Desktop/ns3_play/graph/S1R1000-P2PR1000-Ue1-interval0-pacS900-pacN1000/interval-S1R1000-P2PR1000-Ue1-interval0-pacS900-pacN1000.svg"
+plot "/Users/binh/Desktop/ns3_play/data/interval-S1R1000-P2PR1000-Ue1-interval0-pacS900-pacN1000.txt" using 1:6 title "latency - time interval"
