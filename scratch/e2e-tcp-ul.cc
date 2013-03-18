@@ -79,6 +79,21 @@ getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t, uint8_t);
 double
 getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t, uint8_t);
 
+uint32_t
+getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
+
+uint32_t
+getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
+
+uint32_t
+getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
+
+uint32_t
+getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
+
+uint32_t
+getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
+
 
 int
 main (int argc, char *argv[])
@@ -120,7 +135,7 @@ main (int argc, char *argv[])
     uint16_t p2pLinkMtu = 5000;
     
     //Simulation
-    uint32_t numberOfPackets = 5;
+    uint32_t numberOfPackets = 0;
     uint32_t packetSize = 900;
     double simTime = 20;	//simulation time for EACH application
     double distance = 100.0;
@@ -354,6 +369,7 @@ main (int argc, char *argv[])
     monitor = flowHelper.Install(remoteHost);
     monitor = flowHelper.GetMonitor();
 
+
     /****ConfigStore setting****/
     Config::SetDefault("ns3::ConfigStore::Filename", StringValue("config-tcp-out.txt"));
     Config::SetDefault("ns3::ConfigStore::FileFormat", StringValue("RawText"));
@@ -398,7 +414,9 @@ main (int argc, char *argv[])
     << std::left << std::setw(SPC) << "UlPathloss"
     << std::left << std::setw(SPC) << "DlPathloss"
     << std::left << std::setw(SPC) << "OnOffSent"
-    << std::left << std::setw(SPC) << "packetSinkReceived"
+    << std::left << std::setw(SPC+5) << "packetSinkReceived"
+    << std::left << std::setw(SPC) << "OnOffSentTotal"
+    << std::left << std::setw(SPC) << "packetSinkReceivedTotal"
     << std::endl;
     const uint32_t ONEBIL = 1000000000;
     Ptr<LteEnbNetDevice> lteEnbDev;
@@ -412,12 +430,14 @@ main (int argc, char *argv[])
             std::cout << std::left << std::setw(SPC) << getDlPdcpDelay(lteHelper,j+1,3);
             std::cout << std::left << std::setw(SPC) << getUlRlcDelay(lteHelper,j+1,3);
             std::cout << std::left << std::setw(SPC) << getDlRlcDelay(lteHelper,j+1,3);
-            std::cout << std::left << std::setw(SPC) << lteHelper->GetPdcpStats()->GetUlTxPackets(j+1,3);
-            std::cout << std::left << std::setw(SPC) << lteHelper->GetRlcStats()->GetUlTxPackets(j+1,3);
+            std::cout << std::left << std::setw(SPC) << getUlPdcpTxs( lteHelper, j+1, 3);
+            std::cout << std::left << std::setw(SPC) << getUlRlcTxs(lteHelper, j+1, 3);
             std::cout << std::left << std::setw(SPC) << ulPathlossDb.GetPathloss(i+1,j+1);
             std::cout << std::left << std::setw(SPC) << dlPathlossDb.GetPathloss(i+1,j+1);
             std::cout << std::left << std::setw(SPC) << clientApps.Get(j)->GetObject<ns3::OnOffApplication>()->GetSent();
-            std::cout << std::left << std::setw(SPC) << serverApps.Get(j)->GetObject<ns3::PacketSink>()->GetPacketReceived() << std::endl;
+            std::cout << std::left << std::setw(SPC) << serverApps.Get(j)->GetObject<ns3::PacketSink>()->GetPacketReceived();
+            std::cout << std::left << std::setw(SPC) << clientApps.Get(j)->GetObject<ns3::OnOffApplication>()->GetSentBytes();
+            std::cout << std::left << std::setw(SPC) << serverApps.Get(j)->GetObject<ns3::PacketSink>()->GetTotalRx() << std::endl;
         }
     }
 
@@ -598,5 +618,37 @@ double
 getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
 	ImsiLcidPair_t p (imsi, lcid);
 	return (lteHelper->GetPdcpStats()->dlDelayStatsMap[p]);
+}
+
+uint32_t
+getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
+	ImsiLcidPair_t p (imsi, lcid);
+	return (lteHelper->GetRlcStats()->ulTxPacketsMap[p]);
+}
+
+uint32_t
+getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
+	ImsiLcidPair_t p (imsi, lcid);
+	return (lteHelper->GetRlcStats()->ulRxPacketsMap[p]);
+}
+
+uint32_t
+getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
+	ImsiLcidPair_t p (imsi, lcid);
+	return (lteHelper->GetRlcStats()->dlTxPacketsMap[p]);
+}
+
+uint32_t
+getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
+	ImsiLcidPair_t p (imsi, lcid);
+	return (lteHelper->GetRlcStats()->dlRxPacketsMap[p]);
+}
+
+
+
+uint32_t
+getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
+	ImsiLcidPair_t p (imsi, lcid);
+	return (lteHelper->GetPdcpStats()->ulTxPacketsMap[p]);
 }
 

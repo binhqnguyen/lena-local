@@ -301,6 +301,9 @@ RadioBearerStatsCalculator::WriteUlResults (std::ofstream& outFile)
 
       /**Hacked, array of devices's ul delay**/
       ulDelayStatsMap[p] = stats.at(0)*1e-6;
+      ulTxPacketsMap[p] = GetUlTxPackets (p.m_imsi, p.m_lcId);
+      ulRxPacketsMap[p] = GetUlRxPackets (p.m_imsi, p.m_lcId);
+
 
       for (std::vector<double>::iterator it = stats.begin (); it != stats.end (); ++it)
         {
@@ -350,6 +353,8 @@ RadioBearerStatsCalculator::WriteDlResults (std::ofstream& outFile)
 
       /**Hacked, array of devices's ul delay**/
       dlDelayStatsMap[p] = stats.at(0)*1e-6;
+      dlTxPacketsMap[p] = GetDlTxPackets (p.m_imsi, p.m_lcId);
+      dlRxPacketsMap[p] = GetDlRxPackets (p.m_imsi, p.m_lcId);
 
       for (std::vector<double>::iterator it = stats.begin (); it != stats.end (); ++it)
         {
