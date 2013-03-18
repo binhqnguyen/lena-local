@@ -116,6 +116,8 @@ public:
   */
   int64_t AssignStreams (int64_t stream);
 
+  uint32_t GetSent();
+
 protected:
   virtual void DoDispose (void);
 private:

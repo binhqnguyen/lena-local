@@ -64,6 +64,7 @@ PacketSink::PacketSink ()
   NS_LOG_FUNCTION (this);
   m_socket = 0;
   m_totalRx = 0;
+  m_packetReceived = 0;
 }
 
 PacketSink::~PacketSink()
@@ -172,6 +173,7 @@ void PacketSink::HandleRead (Ptr<Socket> socket)
                        << InetSocketAddress::ConvertFrom(from).GetIpv4 ()
                        << " port " << InetSocketAddress::ConvertFrom (from).GetPort ()
                        << " total Rx " << m_totalRx << " bytes");
+          m_packetReceived++;
         }
       else if (Inet6SocketAddress::IsMatchingType (from))
         {
@@ -203,6 +205,11 @@ void PacketSink::HandleAccept (Ptr<Socket> s, const Address& from)
   NS_LOG_FUNCTION (this << s << from);
   s->SetRecvCallback (MakeCallback (&PacketSink::HandleRead, this));
   m_socketList.push_back (s);
+}
+
+uint32_t
+PacketSink::GetPacketReceived(){
+  return m_packetReceived;
 }
 
 } // Namespace ns3

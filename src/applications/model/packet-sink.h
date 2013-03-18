@@ -87,6 +87,8 @@ public:
    * \return list of pointers to accepted sockets
    */
   std::list<Ptr<Socket> > GetAcceptedSockets (void) const;
+
+  uint32_t GetPacketReceived();
  
 protected:
   virtual void DoDispose (void);
@@ -110,6 +112,7 @@ private:
   TypeId          m_tid;          // Protocol TypeId
   TracedCallback<Ptr<const Packet>, const Address &> m_rxTrace;
 
+  uint32_t  m_packetReceived;
 };
 
 } // namespace ns3

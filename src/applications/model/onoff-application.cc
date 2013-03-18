@@ -296,4 +296,9 @@ void OnOffApplication::ConnectionFailed (Ptr<Socket>)
   cout << "OnOffApplication, Connection Failed" << endl;
 }
 
+uint32_t
+OnOffApplication::GetSent(){
+  return m_totBytes/m_pktSize;
+}
+
 } // Namespace ns3
