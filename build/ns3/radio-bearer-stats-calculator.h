@@ -338,6 +338,12 @@ public:
   std::map<ImsiLcidPair_t, double> ulDelayStatsMap;
   std::map<ImsiLcidPair_t, double> dlDelayStatsMap;
 
+  std::map<ImsiLcidPair_t, uint32_t>  ulTxPacketsMap;
+  std::map<ImsiLcidPair_t, uint32_t> dlTxPacketsMap;
+
+  std::map<ImsiLcidPair_t, uint32_t>  ulRxPacketsMap;
+  std::map<ImsiLcidPair_t, uint32_t> dlRxPacketsMap;
+
 
 private:
   void
