@@ -137,11 +137,11 @@ PhyRxStatsCalculator::DlPhyReception (PhyReceptionStatParameters params)
 
     /**Hacked****/
   if ( params.m_correctness != 1 ){
-    NS_LOG_UNCOND("Rx: Error DlRx frame at " << params.m_timestamp);
+    // NS_LOG_UNCOND("Rx: Error DlRx frame at " << params.m_timestamp);
     totalErrorDlRx += params.m_size;
   }
   if ( params.m_ndi != 1 ){
-    NS_LOG_UNCOND("Rx: DlRx received retransmitted HARQ frame at " << params.m_timestamp);
+    // NS_LOG_UNCOND("Rx: DlRx received retransmitted HARQ frame at " << params.m_timestamp);
   }
   else
     totalDlRx += params.m_size;
@@ -192,11 +192,11 @@ PhyRxStatsCalculator::UlPhyReception (PhyReceptionStatParameters params)
   outFile << (uint32_t) params.m_correctness << std::endl;
     /**Hacked****/
   if ( params.m_correctness != 1 ){
-    NS_LOG_UNCOND("Rx: Error UlRx frame at " << params.m_timestamp);
+    // NS_LOG_UNCOND("Rx: Error UlRx frame at " << params.m_timestamp);
     totalErrorUlRx += params.m_size;
   }
   if ( params.m_ndi != 1 ){
-    NS_LOG_UNCOND("Rx: UlRx received retransmitted HARQ frame at " << params.m_timestamp);
+    // NS_LOG_UNCOND("Rx: UlRx received retransmitted HARQ frame at " << params.m_timestamp);
   }
   else
     totalUlRx += params.m_size;
