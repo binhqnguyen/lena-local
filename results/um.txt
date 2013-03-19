@@ -1,7 +1,5 @@
-Waf: Entering directory `/Users/binh/Documents/workspace/lena/build'
-Waf: Leaving directory `/Users/binh/Documents/workspace/lena/build'
-'build' finished successfully (1.642s)
-*************UL experiment**************
+
+*************UM UL experiment**************
 NumberofUeNodes = 1
 NumberOfEnodeBs = 1
 Distance = 100
