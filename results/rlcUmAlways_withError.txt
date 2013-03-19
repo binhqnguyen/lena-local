@@ -1,0 +1,1280 @@
+Waf: Entering directory `/Users/binh/Documents/workspace/lena/build'
+Waf: Leaving directory `/Users/binh/Documents/workspace/lena/build'
+'build' finished successfully (1.600s)
+Rx: Error UlRx frame at 541
+*Tx: UlTx resend frame at 548
+Rx: Error UlRx frame at 555
+*Tx: UlTx resend frame at 562
+Rx: Error UlRx frame at 599
+*Tx: UlTx resend frame at 606
+Rx: Error UlRx frame at 656
+*Tx: UlTx resend frame at 663
+Rx: Error UlRx frame at 684
+Rx: Error UlRx frame at 685
+*Tx: UlTx resend frame at 691
+*Tx: UlTx resend frame at 692
+Rx: UlRx received retransmitted HARQ frame at 691
+Rx: Error UlRx frame at 742
+*Tx: UlTx resend frame at 749
+Rx: Error UlRx frame at 772
+*Tx: UlTx resend frame at 779
+Rx: Error UlRx frame at 815
+*Tx: UlTx resend frame at 822
+Rx: Error UlRx frame at 857
+*Tx: UlTx resend frame at 864
+Rx: Error UlRx frame at 901
+*Tx: UlTx resend frame at 908
+Rx: Error UlRx frame at 929
+*Tx: UlTx resend frame at 936
+Rx: Error UlRx frame at 943
+Rx: Error UlRx frame at 944
+*Tx: UlTx resend frame at 950
+*Tx: UlTx resend frame at 951
+Rx: UlRx received retransmitted HARQ frame at 950
+Rx: Error UlRx frame at 959
+*Tx: UlTx resend frame at 966
+Rx: Error UlRx frame at 987
+*Tx: UlTx resend frame at 994
+Rx: Error UlRx frame at 1001
+*Tx: UlTx resend frame at 1008
+Rx: Error UlRx frame at 1059
+*Tx: UlTx resend frame at 1066
+Rx: Error UlRx frame at 1218
+*Tx: UlTx resend frame at 1225
+Rx: Error UlRx frame at 1247
+*Tx: UlTx resend frame at 1254
+Rx: Error UlRx frame at 1261
+*Tx: UlTx resend frame at 1268
+Rx: Error UlRx frame at 1289
+*Tx: UlTx resend frame at 1296
+Rx: Error UlRx frame at 1303
+*Tx: UlTx resend frame at 1310
+Rx: UlRx received retransmitted HARQ frame at 1310
+Rx: Error UlRx frame at 1318
+*Tx: UlTx resend frame at 1325
+Rx: Error UlRx frame at 1362
+*Tx: UlTx resend frame at 1369
+Rx: Error UlRx frame at 1391
+*Tx: UlTx resend frame at 1398
+Rx: Error UlRx frame at 1491
+*Tx: UlTx resend frame at 1498
+Rx: Error UlRx frame at 1506
+*Tx: UlTx resend frame at 1513
+Rx: Error UlRx frame at 1548
+Rx: Error UlRx frame at 1549
+*Tx: UlTx resend frame at 1555
+*Tx: UlTx resend frame at 1556
+Rx: UlRx received retransmitted HARQ frame at 1555
+Rx: Error UlRx frame at 1564
+Rx: Error UlRx frame at 1606
+*Tx: UlTx resend frame at 1613
+Rx: Error UlRx frame at 1636
+Rx: Error UlRx frame at 1692
+Rx: Error UlRx frame at 1693
+*Tx: UlTx resend frame at 1700
+Rx: Error UlRx frame at 1707
+*Tx: UlTx resend frame at 1714
+Rx: Error UlRx frame at 1764
+Rx: Error UlRx frame at 1765
+*Tx: UlTx resend frame at 1772
+Rx: Error UlRx frame at 1808
+Rx: Error UlRx frame at 1852
+*Tx: UlTx resend frame at 1859
+Rx: Error UlRx frame at 1908
+*Tx: UlTx resend frame at 1915
+Rx: UlRx received retransmitted HARQ frame at 1915
+Rx: Error UlRx frame at 1937
+*Tx: UlTx resend frame at 1944
+Rx: Error UlRx frame at 1952
+Rx: Error UlRx frame at 2010
+Rx: Error UlRx frame at 2053
+*Tx: UlTx resend frame at 2060
+Rx: Error UlRx frame at 2096
+Rx: Error UlRx frame at 2140
+*Tx: UlTx resend frame at 2147
+Rx: Error UlRx frame at 2167
+*Tx: UlTx resend frame at 2174
+Rx: UlRx received retransmitted HARQ frame at 2174
+Rx: Error UlRx frame at 2254
+*Tx: UlTx resend frame at 2261
+Rx: Error UlRx frame at 2283
+*Tx: UlTx resend frame at 2290
+Rx: Error UlRx frame at 2312
+Rx: Error UlRx frame at 2341
+*Tx: UlTx resend frame at 2348
+Rx: Error UlRx frame at 2355
+*Tx: UlTx resend frame at 2362
+Rx: Error UlRx frame at 2383
+*Tx: UlTx resend frame at 2390
+Rx: UlRx received retransmitted HARQ frame at 2390
+Rx: Error UlRx frame at 2413
+*Tx: UlTx resend frame at 2420
+Rx: Error UlRx frame at 2427
+*Tx: UlTx resend frame at 2434
+Rx: Error UlRx frame at 2514
+*Tx: UlTx resend frame at 2521
+Rx: Error UlRx frame at 2527
+*Tx: UlTx resend frame at 2534
+Rx: UlRx received retransmitted HARQ frame at 2534
+Rx: Error UlRx frame at 2585
+Rx: Error UlRx frame at 2586
+*Tx: UlTx resend frame at 2592
+*Tx: UlTx resend frame at 2593
+Rx: Error UlRx frame at 2657
+*Tx: UlTx resend frame at 2664
+Rx: Error UlRx frame at 2672
+*Tx: UlTx resend frame at 2679
+Rx: Error UlRx frame at 2686
+*Tx: UlTx resend frame at 2693
+Rx: Error UlRx frame at 2700
+*Tx: UlTx resend frame at 2707
+Rx: UlRx received retransmitted HARQ frame at 2707
+Rx: Error UlRx frame at 2715
+*Tx: UlTx resend frame at 2722
+Rx: Error UlRx frame at 2758
+*Tx: UlTx resend frame at 2765
+Rx: Error UlRx frame at 2873
+*Tx: UlTx resend frame at 2880
+Rx: Error UlRx frame at 2903
+Rx: Error UlRx frame at 2931
+Rx: Error UlRx frame at 2932
+*Tx: UlTx resend frame at 2938
+*Tx: UlTx resend frame at 2939
+Rx: Error UlRx frame at 2945
+*Tx: UlTx resend frame at 2952
+Rx: Error UlRx frame at 2959
+Rx: Error UlRx frame at 3003
+*Tx: UlTx resend frame at 3010
+Rx: Error UlRx frame at 3090
+*Tx: UlTx resend frame at 3097
+Rx: Error UlRx frame at 3148
+*Tx: UlTx resend frame at 3155
+Rx: Error UlRx frame at 3191
+Rx: Error UlRx frame at 3306
+*Tx: UlTx resend frame at 3313
+Rx: Error UlRx frame at 3364
+*Tx: UlTx resend frame at 3371
+Rx: Error UlRx frame at 3406
+*Tx: UlTx resend frame at 3413
+Rx: Error UlRx frame at 3421
+*Tx: UlTx resend frame at 3428
+Rx: Error UlRx frame at 3435
+Rx: Error UlRx frame at 3436
+*Tx: UlTx resend frame at 3442
+*Tx: UlTx resend frame at 3443
+Rx: Error UlRx frame at 3492
+Rx: Error UlRx frame at 3493
+*Tx: UlTx resend frame at 3499
+*Tx: UlTx resend frame at 3500
+Rx: UlRx received retransmitted HARQ frame at 3499
+Rx: Error UlRx frame at 3507
+Rx: Error UlRx frame at 3508
+*Tx: UlTx resend frame at 3514
+*Tx: UlTx resend frame at 3515
+Rx: Error UlRx frame at 3535
+Rx: Error UlRx frame at 3564
+*Tx: UlTx resend frame at 3571
+Rx: UlRx received retransmitted HARQ frame at 3571
+Rx: Error UlRx frame at 3637
+*Tx: UlTx resend frame at 3644
+Rx: Error UlRx frame at 3679
+Rx: Error UlRx frame at 3680
+*Tx: UlTx resend frame at 3687
+Rx: Error UlRx frame at 3724
+*Tx: UlTx resend frame at 3731
+Rx: Error UlRx frame at 3738
+*Tx: UlTx resend frame at 3745
+Rx: Error UlRx frame at 3809
+Rx: Error UlRx frame at 3824
+*Tx: UlTx resend frame at 3831
+Rx: Error UlRx frame at 3838
+*Tx: UlTx resend frame at 3845
+Rx: Error UlRx frame at 3882
+*Tx: UlTx resend frame at 3889
+Rx: Error UlRx frame at 3924
+*Tx: UlTx resend frame at 3931
+Rx: UlRx received retransmitted HARQ frame at 3931
+Rx: Error UlRx frame at 3982
+*Tx: UlTx resend frame at 3989
+Rx: Error UlRx frame at 4055
+*Tx: UlTx resend frame at 4062
+Rx: Error UlRx frame at 4084
+*Tx: UlTx resend frame at 4091
+Rx: Error UlRx frame at 4098
+*Tx: UlTx resend frame at 4105
+Rx: Error UlRx frame at 4112
+*Tx: UlTx resend frame at 4119
+Rx: Error UlRx frame at 4228
+*Tx: UlTx resend frame at 4235
+Rx: Error UlRx frame at 4256
+*Tx: UlTx resend frame at 4263
+Rx: Error UlRx frame at 4314
+*Tx: UlTx resend frame at 4321
+Rx: Error UlRx frame at 4327
+*Tx: UlTx resend frame at 4334
+Rx: UlRx received retransmitted HARQ frame at 4334
+Rx: Error UlRx frame at 4342
+*Tx: UlTx resend frame at 4349
+Rx: Error UlRx frame at 4356
+*Tx: UlTx resend frame at 4363
+Rx: UlRx received retransmitted HARQ frame at 4363
+Rx: Error UlRx frame at 4371
+*Tx: UlTx resend frame at 4378
+Rx: Error UlRx frame at 4414
+Rx: Error UlRx frame at 4415
+*Tx: UlTx resend frame at 4421
+*Tx: UlTx resend frame at 4422
+Rx: Error UlRx frame at 4472
+*Tx: UlTx resend frame at 4479
+Rx: Error UlRx frame at 4487
+*Tx: UlTx resend frame at 4494
+Rx: Error UlRx frame at 4573
+*Tx: UlTx resend frame at 4580
+Rx: Error UlRx frame at 4588
+*Tx: UlTx resend frame at 4595
+Rx: Error UlRx frame at 4602
+*Tx: UlTx resend frame at 4609
+Rx: Error UlRx frame at 4615
+*Tx: UlTx resend frame at 4622
+Rx: UlRx received retransmitted HARQ frame at 4622
+Rx: Error UlRx frame at 4645
+*Tx: UlTx resend frame at 4652
+Rx: Error UlRx frame at 4688
+*Tx: UlTx resend frame at 4695
+Rx: Error UlRx frame at 4716
+Rx: Error UlRx frame at 4717
+*Tx: UlTx resend frame at 4723
+*Tx: UlTx resend frame at 4724
+Rx: UlRx received retransmitted HARQ frame at 4723
+Rx: Error UlRx frame at 4745
+Rx: Error UlRx frame at 4746
+*Tx: UlTx resend frame at 4753
+Rx: Error UlRx frame at 4760
+*Tx: UlTx resend frame at 4767
+Rx: Error UlRx frame at 4774
+*Tx: UlTx resend frame at 4781
+Rx: Error UlRx frame at 4803
+*Tx: UlTx resend frame at 4810
+Rx: Error UlRx frame at 4846
+Rx: Error UlRx frame at 4847
+*Tx: UlTx resend frame at 4853
+*Tx: UlTx resend frame at 4854
+Rx: Error UlRx frame at 4875
+*Tx: UlTx resend frame at 4882
+Rx: Error UlRx frame at 4889
+Rx: Error UlRx frame at 4890
+*Tx: UlTx resend frame at 4896
+*Tx: UlTx resend frame at 4897
+Rx: Error UlRx frame at 4903
+*Tx: UlTx resend frame at 4910
+Rx: UlRx received retransmitted HARQ frame at 4910
+Rx: Error UlRx frame at 4918
+Rx: Error UlRx frame at 4919
+*Tx: UlTx resend frame at 4925
+*Tx: UlTx resend frame at 4926
+Rx: Error UlRx frame at 5019
+*Tx: UlTx resend frame at 5026
+Rx: Error UlRx frame at 5047
+*Tx: UlTx resend frame at 5054
+Rx: UlRx received retransmitted HARQ frame at 5054
+Rx: Error UlRx frame at 5077
+*Tx: UlTx resend frame at 5084
+Rx: Error UlRx frame at 5091
+*Tx: UlTx resend frame at 5098
+Rx: Error UlRx frame at 5178
+*Tx: UlTx resend frame at 5185
+Rx: Error UlRx frame at 5191
+*Tx: UlTx resend frame at 5198
+Rx: UlRx received retransmitted HARQ frame at 5198
+Rx: Error UlRx frame at 5207
+*Tx: UlTx resend frame at 5214
+Rx: Error UlRx frame at 5220
+Rx: Error UlRx frame at 5235
+*Tx: UlTx resend frame at 5242
+Rx: Error UlRx frame at 5279
+*Tx: UlTx resend frame at 5286
+Rx: Error UlRx frame at 5322
+*Tx: UlTx resend frame at 5329
+Rx: Error UlRx frame at 5351
+*Tx: UlTx resend frame at 5358
+Rx: Error UlRx frame at 5364
+Rx: Error UlRx frame at 5451
+*Tx: UlTx resend frame at 5458
+Rx: Error UlRx frame at 5509
+*Tx: UlTx resend frame at 5516
+Rx: Error UlRx frame at 5524
+*Tx: UlTx resend frame at 5531
+Rx: Error UlRx frame at 5537
+*Tx: UlTx resend frame at 5544
+Rx: Error UlRx frame at 5551
+*Tx: UlTx resend frame at 5558
+Rx: UlRx received retransmitted HARQ frame at 5558
+Rx: Error UlRx frame at 5609
+*Tx: UlTx resend frame at 5616
+Rx: Error UlRx frame at 5623
+*Tx: UlTx resend frame at 5630
+Rx: UlRx received retransmitted HARQ frame at 5630
+Rx: Error UlRx frame at 5653
+*Tx: UlTx resend frame at 5660
+Rx: Error UlRx frame at 5682
+*Tx: UlTx resend frame at 5689
+Rx: Error UlRx frame at 5695
+*Tx: UlTx resend frame at 5702
+Rx: UlRx received retransmitted HARQ frame at 5702
+Rx: Error UlRx frame at 5739
+Rx: Error UlRx frame at 5740
+*Tx: UlTx resend frame at 5746
+*Tx: UlTx resend frame at 5747
+Rx: Error UlRx frame at 5754
+Rx: Error UlRx frame at 5782
+*Tx: UlTx resend frame at 5789
+Rx: Error UlRx frame at 5797
+*Tx: UlTx resend frame at 5804
+Rx: Error UlRx frame at 5812
+Rx: Error UlRx frame at 5825
+*Tx: UlTx resend frame at 5832
+Rx: Error UlRx frame at 5839
+*Tx: UlTx resend frame at 5846
+Rx: UlRx received retransmitted HARQ frame at 5846
+Rx: Error UlRx frame at 5869
+*Tx: UlTx resend frame at 5876
+Rx: Error UlRx frame at 5883
+*Tx: UlTx resend frame at 5890
+Rx: Error UlRx frame at 5911
+*Tx: UlTx resend frame at 5918
+Rx: UlRx received retransmitted HARQ frame at 5918
+Rx: Error UlRx frame at 5927
+*Tx: UlTx resend frame at 5934
+Rx: Error UlRx frame at 5955
+Rx: Error UlRx frame at 5956
+*Tx: UlTx resend frame at 5962
+*Tx: UlTx resend frame at 5963
+Rx: Error UlRx frame at 5983
+*Tx: UlTx resend frame at 5990
+Rx: UlRx received retransmitted HARQ frame at 5990
+Rx: Error UlRx frame at 5999
+*Tx: UlTx resend frame at 6006
+Rx: Error UlRx frame at 6027
+*Tx: UlTx resend frame at 6034
+Rx: Error UlRx frame at 6042
+Rx: Error UlRx frame at 6084
+*Tx: UlTx resend frame at 6091
+Rx: UlRx received retransmitted HARQ frame at 6091
+Rx: Error UlRx frame at 6099
+Rx: Error UlRx frame at 6100
+*Tx: UlTx resend frame at 6106
+*Tx: UlTx resend frame at 6107
+Rx: Error UlRx frame at 6128
+Rx: Error UlRx frame at 6185
+Rx: Error UlRx frame at 6186
+*Tx: UlTx resend frame at 6192
+*Tx: UlTx resend frame at 6193
+Rx: Error UlRx frame at 6229
+*Tx: UlTx resend frame at 6236
+Rx: Error UlRx frame at 6272
+*Tx: UlTx resend frame at 6279
+Rx: Error UlRx frame at 6287
+*Tx: UlTx resend frame at 6294
+Rx: Error UlRx frame at 6329
+Rx: Error UlRx frame at 6401
+Rx: Error UlRx frame at 6415
+*Tx: UlTx resend frame at 6422
+Rx: UlRx received retransmitted HARQ frame at 6422
+Rx: Error UlRx frame at 6532
+*Tx: UlTx resend frame at 6539
+Rx: Error UlRx frame at 6560
+*Tx: UlTx resend frame at 6567
+Rx: Error UlRx frame at 6604
+*Tx: UlTx resend frame at 6611
+Rx: Error UlRx frame at 6631
+*Tx: UlTx resend frame at 6638
+Rx: UlRx received retransmitted HARQ frame at 6638
+Rx: Error UlRx frame at 6676
+*Tx: UlTx resend frame at 6683
+Rx: Error UlRx frame at 6719
+*Tx: UlTx resend frame at 6726
+Rx: Error UlRx frame at 6732
+*Tx: UlTx resend frame at 6739
+Rx: UlRx received retransmitted HARQ frame at 6739
+Rx: Error UlRx frame at 6747
+*Tx: UlTx resend frame at 6754
+Rx: Error UlRx frame at 6761
+Rx: Error UlRx frame at 6775
+*Tx: UlTx resend frame at 6782
+Rx: UlRx received retransmitted HARQ frame at 6782
+Rx: Error UlRx frame at 6834
+*Tx: UlTx resend frame at 6841
+Rx: Error UlRx frame at 6876
+*Tx: UlTx resend frame at 6883
+Rx: UlRx received retransmitted HARQ frame at 6883
+Rx: Error UlRx frame at 6920
+*Tx: UlTx resend frame at 6927
+Rx: Error UlRx frame at 6934
+*Tx: UlTx resend frame at 6941
+Rx: Error UlRx frame at 6949
+*Tx: UlTx resend frame at 6956
+Rx: Error UlRx frame at 6964
+Rx: Error UlRx frame at 7007
+*Tx: UlTx resend frame at 7014
+Rx: Error UlRx frame at 7021
+*Tx: UlTx resend frame at 7028
+Rx: Error UlRx frame at 7036
+*Tx: UlTx resend frame at 7043
+Rx: Error UlRx frame at 7078
+*Tx: UlTx resend frame at 7085
+Rx: Error UlRx frame at 7108
+*Tx: UlTx resend frame at 7115
+Rx: Error UlRx frame at 7121
+Rx: Error UlRx frame at 7193
+Rx: Error UlRx frame at 7194
+*Tx: UlTx resend frame at 7201
+Rx: Error UlRx frame at 7207
+Rx: Error UlRx frame at 7208
+*Tx: UlTx resend frame at 7214
+*Tx: UlTx resend frame at 7215
+Rx: UlRx received retransmitted HARQ frame at 7214
+Rx: Error UlRx frame at 7252
+*Tx: UlTx resend frame at 7259
+Rx: Error UlRx frame at 7266
+*Tx: UlTx resend frame at 7273
+Rx: Error UlRx frame at 7279
+Rx: Error UlRx frame at 7280
+*Tx: UlTx resend frame at 7286
+*Tx: UlTx resend frame at 7287
+Rx: UlRx received retransmitted HARQ frame at 7286
+Rx: Error UlRx frame at 7309
+Rx: Error UlRx frame at 7410
+*Tx: UlTx resend frame at 7417
+Rx: Error UlRx frame at 7423
+*Tx: UlTx resend frame at 7430
+Rx: UlRx received retransmitted HARQ frame at 7430
+Rx: Error UlRx frame at 7438
+*Tx: UlTx resend frame at 7445
+Rx: Error UlRx frame at 7482
+*Tx: UlTx resend frame at 7489
+Rx: Error UlRx frame at 7495
+*Tx: UlTx resend frame at 7502
+Rx: UlRx received retransmitted HARQ frame at 7502
+Rx: Error UlRx frame at 7511
+*Tx: UlTx resend frame at 7518
+Rx: Error UlRx frame at 7554
+*Tx: UlTx resend frame at 7561
+Rx: Error UlRx frame at 7596
+*Tx: UlTx resend frame at 7603
+Rx: UlRx received retransmitted HARQ frame at 7603
+Rx: Error UlRx frame at 7654
+*Tx: UlTx resend frame at 7661
+Rx: Error UlRx frame at 7697
+*Tx: UlTx resend frame at 7704
+Rx: Error UlRx frame at 7740
+Rx: Error UlRx frame at 7741
+*Tx: UlTx resend frame at 7747
+*Tx: UlTx resend frame at 7748
+Rx: UlRx received retransmitted HARQ frame at 7747
+Rx: Error UlRx frame at 7769
+*Tx: UlTx resend frame at 7776
+Rx: Error UlRx frame at 7783
+Rx: Error UlRx frame at 7784
+*Tx: UlTx resend frame at 7790
+*Tx: UlTx resend frame at 7791
+Rx: UlRx received retransmitted HARQ frame at 7790
+Rx: Error UlRx frame at 7812
+Rx: Error UlRx frame at 7813
+*Tx: UlTx resend frame at 7820
+Rx: Error UlRx frame at 7827
+Rx: Error UlRx frame at 7828
+*Tx: UlTx resend frame at 7834
+*Tx: UlTx resend frame at 7835
+Rx: Error UlRx frame at 7884
+*Tx: UlTx resend frame at 7891
+Rx: UlRx received retransmitted HARQ frame at 7891
+Rx: Error UlRx frame at 7913
+*Tx: UlTx resend frame at 7920
+Rx: Error UlRx frame at 7985
+*Tx: UlTx resend frame at 7992
+Rx: Error UlRx frame at 8028
+*Tx: UlTx resend frame at 8035
+Rx: UlRx received retransmitted HARQ frame at 8035
+Rx: Error UlRx frame at 8043
+*Tx: UlTx resend frame at 8050
+Rx: Error UlRx frame at 8057
+Rx: Error UlRx frame at 8058
+*Tx: UlTx resend frame at 8064
+*Tx: UlTx resend frame at 8065
+Rx: Error UlRx frame at 8086
+*Tx: UlTx resend frame at 8093
+Rx: Error UlRx frame at 8100
+*Tx: UlTx resend frame at 8107
+Rx: UlRx received retransmitted HARQ frame at 8107
+Rx: Error UlRx frame at 8159
+*Tx: UlTx resend frame at 8166
+Rx: Error UlRx frame at 8187
+*Tx: UlTx resend frame at 8194
+Rx: Error UlRx frame at 8244
+*Tx: UlTx resend frame at 8251
+Rx: UlRx received retransmitted HARQ frame at 8251
+Rx: Error UlRx frame at 8259
+*Tx: UlTx resend frame at 8266
+Rx: Error UlRx frame at 8316
+*Tx: UlTx resend frame at 8323
+Rx: UlRx received retransmitted HARQ frame at 8323
+Rx: Error UlRx frame at 8359
+*Tx: UlTx resend frame at 8366
+Rx: UlRx received retransmitted HARQ frame at 8366
+Rx: Error UlRx frame at 8375
+*Tx: UlTx resend frame at 8382
+Rx: Error UlRx frame at 8403
+*Tx: UlTx resend frame at 8410
+Rx: Error UlRx frame at 8432
+*Tx: UlTx resend frame at 8439
+Rx: Error UlRx frame at 8447
+*Tx: UlTx resend frame at 8454
+Rx: Error UlRx frame at 8460
+*Tx: UlTx resend frame at 8467
+Rx: UlRx received retransmitted HARQ frame at 8467
+Rx: Error UlRx frame at 8489
+Rx: Error UlRx frame at 8503
+*Tx: UlTx resend frame at 8510
+Rx: UlRx received retransmitted HARQ frame at 8510
+Rx: Error UlRx frame at 8547
+*Tx: UlTx resend frame at 8554
+Rx: Error UlRx frame at 8633
+Rx: Error UlRx frame at 8634
+*Tx: UlTx resend frame at 8641
+Rx: Error UlRx frame at 8691
+*Tx: UlTx resend frame at 8698
+Rx: Error UlRx frame at 8720
+*Tx: UlTx resend frame at 8727
+Rx: Error UlRx frame at 8748
+Rx: Error UlRx frame at 8749
+*Tx: UlTx resend frame at 8755
+*Tx: UlTx resend frame at 8756
+Rx: UlRx received retransmitted HARQ frame at 8755
+Rx: Error UlRx frame at 8820
+Rx: Error UlRx frame at 8850
+*Tx: UlTx resend frame at 8857
+Rx: Error UlRx frame at 8863
+Rx: Error UlRx frame at 8864
+*Tx: UlTx resend frame at 8870
+*Tx: UlTx resend frame at 8871
+Rx: UlRx received retransmitted HARQ frame at 8870
+Rx: Error UlRx frame at 8879
+*Tx: UlTx resend frame at 8886
+Rx: Error UlRx frame at 8936
+*Tx: UlTx resend frame at 8943
+Rx: Error UlRx frame at 8965
+*Tx: UlTx resend frame at 8972
+Rx: Error UlRx frame at 8980
+*Tx: UlTx resend frame at 8987
+Rx: Error UlRx frame at 8993
+*Tx: UlTx resend frame at 9000
+Rx: Error UlRx frame at 9008
+Rx: Error UlRx frame at 9079
+*Tx: UlTx resend frame at 9086
+Rx: UlRx received retransmitted HARQ frame at 9086
+Rx: Error UlRx frame at 9094
+Rx: Error UlRx frame at 9095
+*Tx: UlTx resend frame at 9101
+*Tx: UlTx resend frame at 9102
+Rx: Error UlRx frame at 9124
+*Tx: UlTx resend frame at 9131
+Rx: Error UlRx frame at 9196
+*Tx: UlTx resend frame at 9203
+Rx: Error UlRx frame at 9252
+*Tx: UlTx resend frame at 9259
+Rx: UlRx received retransmitted HARQ frame at 9259
+Rx: Error UlRx frame at 9340
+*Tx: UlTx resend frame at 9347
+Rx: Error UlRx frame at 9454
+*Tx: UlTx resend frame at 9461
+Rx: Error UlRx frame at 9541
+*Tx: UlTx resend frame at 9548
+Rx: Error UlRx frame at 9599
+*Tx: UlTx resend frame at 9606
+Rx: Error UlRx frame at 9642
+*Tx: UlTx resend frame at 9649
+Rx: Error UlRx frame at 9671
+*Tx: UlTx resend frame at 9678
+Rx: Error UlRx frame at 9685
+*Tx: UlTx resend frame at 9692
+Rx: Error UlRx frame at 9699
+Rx: Error UlRx frame at 9700
+*Tx: UlTx resend frame at 9706
+*Tx: UlTx resend frame at 9707
+Rx: Error UlRx frame at 9727
+*Tx: UlTx resend frame at 9734
+Rx: UlRx received retransmitted HARQ frame at 9734
+Rx: Error UlRx frame at 9872
+Rx: Error UlRx frame at 9930
+*Tx: UlTx resend frame at 9937
+Rx: Error UlRx frame at 9943
+*Tx: UlTx resend frame at 9950
+Rx: UlRx received retransmitted HARQ frame at 9950
+Rx: Error UlRx frame at 10002
+*Tx: UlTx resend frame at 10009
+Rx: Error UlRx frame at 10016
+Rx: Error UlRx frame at 10116
+*Tx: UlTx resend frame at 10123
+Rx: UlRx received retransmitted HARQ frame at 10123
+Rx: Error UlRx frame at 10132
+*Tx: UlTx resend frame at 10139
+Rx: Error UlRx frame at 10159
+*Tx: UlTx resend frame at 10166
+Rx: UlRx received retransmitted HARQ frame at 10166
+Rx: Error UlRx frame at 10217
+*Tx: UlTx resend frame at 10224
+Rx: Error UlRx frame at 10276
+*Tx: UlTx resend frame at 10283
+Rx: Error UlRx frame at 10290
+*Tx: UlTx resend frame at 10297
+Rx: Error UlRx frame at 10303
+*Tx: UlTx resend frame at 10310
+Rx: UlRx received retransmitted HARQ frame at 10310
+Rx: Error UlRx frame at 10505
+*Tx: UlTx resend frame at 10512
+Rx: Error UlRx frame at 10519
+*Tx: UlTx resend frame at 10526
+Rx: UlRx received retransmitted HARQ frame at 10526
+Rx: Error UlRx frame at 10548
+*Tx: UlTx resend frame at 10555
+Rx: UlRx received retransmitted HARQ frame at 10555
+Rx: Error UlRx frame at 10564
+*Tx: UlTx resend frame at 10571
+Rx: Error UlRx frame at 10591
+*Tx: UlTx resend frame at 10598
+Rx: UlRx received retransmitted HARQ frame at 10598
+Rx: Error UlRx frame at 10649
+*Tx: UlTx resend frame at 10656
+Rx: Error UlRx frame at 10751
+*Tx: UlTx resend frame at 10758
+Rx: Error UlRx frame at 10764
+*Tx: UlTx resend frame at 10771
+Rx: UlRx received retransmitted HARQ frame at 10771
+Rx: Error UlRx frame at 10780
+*Tx: UlTx resend frame at 10787
+Rx: Error UlRx frame at 10793
+*Tx: UlTx resend frame at 10800
+Rx: Error UlRx frame at 10836
+*Tx: UlTx resend frame at 10843
+Rx: UlRx received retransmitted HARQ frame at 10843
+Rx: Error UlRx frame at 10851
+*Tx: UlTx resend frame at 10858
+Rx: Error UlRx frame at 10865
+*Tx: UlTx resend frame at 10872
+Rx: Error UlRx frame at 10895
+*Tx: UlTx resend frame at 10902
+Rx: Error UlRx frame at 10908
+*Tx: UlTx resend frame at 10915
+Rx: UlRx received retransmitted HARQ frame at 10915
+Rx: Error UlRx frame at 10924
+*Tx: UlTx resend frame at 10931
+Rx: Error UlRx frame at 10938
+*Tx: UlTx resend frame at 10945
+Rx: Error UlRx frame at 10952
+*Tx: UlTx resend frame at 10959
+Rx: Error UlRx frame at 10966
+Rx: Error UlRx frame at 10967
+*Tx: UlTx resend frame at 10973
+*Tx: UlTx resend frame at 10974
+Rx: Error UlRx frame at 10995
+*Tx: UlTx resend frame at 11002
+Rx: Error UlRx frame at 11053
+*Tx: UlTx resend frame at 11060
+Rx: Error UlRx frame at 11095
+*Tx: UlTx resend frame at 11102
+Rx: UlRx received retransmitted HARQ frame at 11102
+Rx: Error UlRx frame at 11110
+Rx: Error UlRx frame at 11111
+*Tx: UlTx resend frame at 11117
+*Tx: UlTx resend frame at 11118
+Rx: Error UlRx frame at 11140
+Rx: Error UlRx frame at 11153
+Rx: Error UlRx frame at 11196
+Rx: Error UlRx frame at 11197
+*Tx: UlTx resend frame at 11204
+Rx: Error UlRx frame at 11212
+Rx: Error UlRx frame at 11239
+*Tx: UlTx resend frame at 11246
+Rx: UlRx received retransmitted HARQ frame at 11246
+Rx: Error UlRx frame at 11297
+Rx: Error UlRx frame at 11298
+*Tx: UlTx resend frame at 11305
+Rx: Error UlRx frame at 11311
+*Tx: UlTx resend frame at 11318
+Rx: UlRx received retransmitted HARQ frame at 11318
+Rx: Error UlRx frame at 11340
+Rx: Error UlRx frame at 11370
+*Tx: UlTx resend frame at 11377
+Rx: Error UlRx frame at 11456
+*Tx: UlTx resend frame at 11463
+Rx: Error UlRx frame at 11470
+*Tx: UlTx resend frame at 11477
+Rx: Error UlRx frame at 11527
+*Tx: UlTx resend frame at 11534
+Rx: UlRx received retransmitted HARQ frame at 11534
+Rx: Error UlRx frame at 11572
+Rx: Error UlRx frame at 11615
+*Tx: UlTx resend frame at 11622
+Rx: Error UlRx frame at 11671
+*Tx: UlTx resend frame at 11678
+Rx: UlRx received retransmitted HARQ frame at 11678
+Rx: Error UlRx frame at 11687
+*Tx: UlTx resend frame at 11694
+Rx: Error UlRx frame at 11716
+Rx: Error UlRx frame at 11729
+*Tx: UlTx resend frame at 11736
+Rx: Error UlRx frame at 11744
+*Tx: UlTx resend frame at 11751
+Rx: Error UlRx frame at 11802
+*Tx: UlTx resend frame at 11809
+Rx: Error UlRx frame at 11831
+Rx: Error UlRx frame at 11860
+Rx: Error UlRx frame at 11932
+Rx: Error UlRx frame at 11946
+*Tx: UlTx resend frame at 11953
+Rx: Error UlRx frame at 11988
+Rx: Error UlRx frame at 12004
+Rx: Error UlRx frame at 12018
+*Tx: UlTx resend frame at 12025
+Rx: Error UlRx frame at 12032
+*Tx: UlTx resend frame at 12039
+Rx: Error UlRx frame at 12104
+*Tx: UlTx resend frame at 12111
+Rx: Error UlRx frame at 12190
+*Tx: UlTx resend frame at 12197
+Rx: Error UlRx frame at 12233
+*Tx: UlTx resend frame at 12240
+Rx: Error UlRx frame at 12276
+Rx: Error UlRx frame at 12305
+*Tx: UlTx resend frame at 12312
+Rx: Error UlRx frame at 12320
+*Tx: UlTx resend frame at 12327
+Rx: Error UlRx frame at 12334
+*Tx: UlTx resend frame at 12341
+Rx: Error UlRx frame at 12348
+Rx: Error UlRx frame at 12349
+*Tx: UlTx resend frame at 12356
+Rx: Error UlRx frame at 12377
+*Tx: UlTx resend frame at 12384
+Rx: Error UlRx frame at 12420
+*Tx: UlTx resend frame at 12427
+Rx: UlRx received retransmitted HARQ frame at 12427
+Rx: Error UlRx frame at 12492
+*Tx: UlTx resend frame at 12499
+Rx: UlRx received retransmitted HARQ frame at 12499
+Rx: Error UlRx frame at 12536
+*Tx: UlTx resend frame at 12543
+Rx: Error UlRx frame at 12551
+*Tx: UlTx resend frame at 12558
+Rx: Error UlRx frame at 12564
+*Tx: UlTx resend frame at 12571
+Rx: UlRx received retransmitted HARQ frame at 12571
+Rx: Error UlRx frame at 12593
+Rx: Error UlRx frame at 12594
+*Tx: UlTx resend frame at 12600
+*Tx: UlTx resend frame at 12601
+Rx: Error UlRx frame at 12651
+*Tx: UlTx resend frame at 12658
+Rx: Error UlRx frame at 12665
+Rx: Error UlRx frame at 12666
+*Tx: UlTx resend frame at 12672
+*Tx: UlTx resend frame at 12673
+Rx: Error UlRx frame at 12694
+Rx: Error UlRx frame at 12737
+Rx: Error UlRx frame at 12738
+*Tx: UlTx resend frame at 12745
+Rx: Error UlRx frame at 12780
+*Tx: UlTx resend frame at 12787
+Rx: UlRx received retransmitted HARQ frame at 12787
+Rx: Error UlRx frame at 12810
+*Tx: UlTx resend frame at 12817
+Rx: Error UlRx frame at 12895
+*Tx: UlTx resend frame at 12902
+Rx: UlRx received retransmitted HARQ frame at 12902
+Rx: Error UlRx frame at 12910
+*Tx: UlTx resend frame at 12917
+Rx: Error UlRx frame at 12924
+*Tx: UlTx resend frame at 12931
+Rx: UlRx received retransmitted HARQ frame at 12931
+Rx: Error UlRx frame at 12940
+*Tx: UlTx resend frame at 12947
+Rx: Error UlRx frame at 12953
+*Tx: UlTx resend frame at 12960
+Rx: Error UlRx frame at 12982
+*Tx: UlTx resend frame at 12989
+Rx: Error UlRx frame at 13011
+*Tx: UlTx resend frame at 13018
+Rx: Error UlRx frame at 13055
+*Tx: UlTx resend frame at 13062
+Rx: Error UlRx frame at 13097
+*Tx: UlTx resend frame at 13104
+Rx: Error UlRx frame at 13111
+*Tx: UlTx resend frame at 13118
+Rx: UlRx received retransmitted HARQ frame at 13118
+Rx: Error UlRx frame at 13155
+*Tx: UlTx resend frame at 13162
+Rx: Error UlRx frame at 13170
+*Tx: UlTx resend frame at 13177
+Rx: Error UlRx frame at 13212
+*Tx: UlTx resend frame at 13219
+Rx: UlRx received retransmitted HARQ frame at 13219
+Rx: Error UlRx frame at 13284
+*Tx: UlTx resend frame at 13291
+Rx: UlRx received retransmitted HARQ frame at 13291
+Rx: Error UlRx frame at 13299
+*Tx: UlTx resend frame at 13306
+Rx: Error UlRx frame at 13327
+*Tx: UlTx resend frame at 13334
+Rx: UlRx received retransmitted HARQ frame at 13334
+Rx: Error UlRx frame at 13356
+Rx: Error UlRx frame at 13357
+*Tx: UlTx resend frame at 13363
+*Tx: UlTx resend frame at 13364
+Rx: UlRx received retransmitted HARQ frame at 13363
+Rx: Error UlRx frame at 13385
+*Tx: UlTx resend frame at 13392
+Rx: Error UlRx frame at 13399
+*Tx: UlTx resend frame at 13406
+Rx: UlRx received retransmitted HARQ frame at 13406
+Rx: Error UlRx frame at 13443
+*Tx: UlTx resend frame at 13450
+Rx: Error UlRx frame at 13501
+*Tx: UlTx resend frame at 13508
+Rx: Error UlRx frame at 13516
+*Tx: UlTx resend frame at 13523
+Rx: Error UlRx frame at 13544
+Rx: Error UlRx frame at 13587
+*Tx: UlTx resend frame at 13594
+Rx: Error UlRx frame at 13601
+*Tx: UlTx resend frame at 13608
+Rx: Error UlRx frame at 13615
+Rx: Error UlRx frame at 13616
+*Tx: UlTx resend frame at 13622
+*Tx: UlTx resend frame at 13623
+Rx: UlRx received retransmitted HARQ frame at 13622
+Rx: Error UlRx frame at 13630
+Rx: Error UlRx frame at 13631
+*Tx: UlTx resend frame at 13637
+*Tx: UlTx resend frame at 13638
+Rx: Error UlRx frame at 13645
+*Tx: UlTx resend frame at 13652
+Rx: Error UlRx frame at 13703
+*Tx: UlTx resend frame at 13710
+Rx: Error UlRx frame at 13717
+*Tx: UlTx resend frame at 13724
+Rx: Error UlRx frame at 13760
+*Tx: UlTx resend frame at 13767
+Rx: Error UlRx frame at 13788
+*Tx: UlTx resend frame at 13795
+Rx: UlRx received retransmitted HARQ frame at 13795
+Rx: Error UlRx frame at 13903
+*Tx: UlTx resend frame at 13910
+Rx: UlRx received retransmitted HARQ frame at 13910
+Rx: Error UlRx frame at 13918
+*Tx: UlTx resend frame at 13925
+Rx: Error UlRx frame at 13976
+*Tx: UlTx resend frame at 13983
+Rx: Error UlRx frame at 14076
+Rx: Error UlRx frame at 14077
+*Tx: UlTx resend frame at 14083
+Rx: UlRx received retransmitted HARQ frame at 14083
+Rx: Error UlRx frame at 14119
+Rx: Error UlRx frame at 14120
+*Tx: UlTx resend frame at 14126
+*Tx: UlTx resend frame at 14127
+Rx: UlRx received retransmitted HARQ frame at 14126
+Rx: Error UlRx frame at 14134
+*Tx: UlTx resend frame at 14141
+Rx: Error UlRx frame at 14221
+Rx: Error UlRx frame at 14235
+*Tx: UlTx resend frame at 14242
+Rx: Error UlRx frame at 14278
+*Tx: UlTx resend frame at 14285
+Rx: Error UlRx frame at 14292
+*Tx: UlTx resend frame at 14299
+Rx: UlRx received retransmitted HARQ frame at 14299
+Rx: Error UlRx frame at 14307
+*Tx: UlTx resend frame at 14314
+Rx: Error UlRx frame at 14379
+*Tx: UlTx resend frame at 14386
+Rx: Error UlRx frame at 14393
+Rx: Error UlRx frame at 14394
+*Tx: UlTx resend frame at 14400
+*Tx: UlTx resend frame at 14401
+Rx: Error UlRx frame at 14407
+Rx: Error UlRx frame at 14408
+*Tx: UlTx resend frame at 14414
+*Tx: UlTx resend frame at 14415
+Rx: UlRx received retransmitted HARQ frame at 14414
+Rx: Error UlRx frame at 14422
+*Tx: UlTx resend frame at 14429
+Rx: Error UlRx frame at 14437
+Rx: Error UlRx frame at 14480
+*Tx: UlTx resend frame at 14487
+Rx: Error UlRx frame at 14495
+*Tx: UlTx resend frame at 14502
+Rx: Error UlRx frame at 14524
+*Tx: UlTx resend frame at 14531
+Rx: Error UlRx frame at 14552
+*Tx: UlTx resend frame at 14559
+Rx: Error UlRx frame at 14595
+*Tx: UlTx resend frame at 14602
+Rx: Error UlRx frame at 14609
+*Tx: UlTx resend frame at 14616
+Rx: Error UlRx frame at 14639
+*Tx: UlTx resend frame at 14646
+Rx: Error UlRx frame at 14710
+*Tx: UlTx resend frame at 14717
+Rx: Error UlRx frame at 14724
+*Tx: UlTx resend frame at 14731
+Rx: UlRx received retransmitted HARQ frame at 14731
+Rx: Error UlRx frame at 14739
+Rx: Error UlRx frame at 14740
+*Tx: UlTx resend frame at 14746
+*Tx: UlTx resend frame at 14747
+Rx: Error UlRx frame at 14797
+Rx: Error UlRx frame at 14854
+*Tx: UlTx resend frame at 14861
+Rx: Error UlRx frame at 14869
+*Tx: UlTx resend frame at 14876
+Rx: Error UlRx frame at 14897
+*Tx: UlTx resend frame at 14904
+Rx: Error UlRx frame at 14912
+*Tx: UlTx resend frame at 14919
+Rx: Error UlRx frame at 14927
+*Tx: UlTx resend frame at 14934
+Rx: Error UlRx frame at 14998
+Rx: Error UlRx frame at 15171
+*Tx: UlTx resend frame at 15178
+Rx: Error UlRx frame at 15228
+*Tx: UlTx resend frame at 15235
+Rx: UlRx received retransmitted HARQ frame at 15235
+Rx: Error UlRx frame at 15243
+Rx: Error UlRx frame at 15271
+*Tx: UlTx resend frame at 15278
+Rx: UlRx received retransmitted HARQ frame at 15278
+Rx: Error UlRx frame at 15343
+*Tx: UlTx resend frame at 15350
+Rx: UlRx received retransmitted HARQ frame at 15350
+Rx: Error UlRx frame at 15445
+*Tx: UlTx resend frame at 15452
+Rx: Error UlRx frame at 15474
+*Tx: UlTx resend frame at 15481
+Rx: Error UlRx frame at 15502
+*Tx: UlTx resend frame at 15509
+Rx: Error UlRx frame at 15531
+Rx: Error UlRx frame at 15560
+*Tx: UlTx resend frame at 15567
+Rx: Error UlRx frame at 15574
+*Tx: UlTx resend frame at 15581
+Rx: Error UlRx frame at 15631
+*Tx: UlTx resend frame at 15638
+Rx: UlRx received retransmitted HARQ frame at 15638
+Rx: Error UlRx frame at 15661
+*Tx: UlTx resend frame at 15668
+Rx: Error UlRx frame at 15675
+Rx: Error UlRx frame at 15703
+*Tx: UlTx resend frame at 15710
+Rx: UlRx received retransmitted HARQ frame at 15710
+Rx: Error UlRx frame at 15718
+*Tx: UlTx resend frame at 15725
+Rx: Error UlRx frame at 15732
+*Tx: UlTx resend frame at 15739
+Rx: UlRx received retransmitted HARQ frame at 15739
+Rx: Error UlRx frame at 15775
+*Tx: UlTx resend frame at 15782
+Rx: UlRx received retransmitted HARQ frame at 15782
+Rx: Error UlRx frame at 15791
+*Tx: UlTx resend frame at 15798
+Rx: Error UlRx frame at 15805
+*Tx: UlTx resend frame at 15812
+Rx: Error UlRx frame at 15819
+Rx: Error UlRx frame at 15847
+*Tx: UlTx resend frame at 15854
+Rx: UlRx received retransmitted HARQ frame at 15854
+Rx: Error UlRx frame at 15877
+*Tx: UlTx resend frame at 15884
+Rx: Error UlRx frame at 15906
+*Tx: UlTx resend frame at 15913
+Rx: Error UlRx frame at 15919
+*Tx: UlTx resend frame at 15926
+Rx: UlRx received retransmitted HARQ frame at 15926
+Rx: Error UlRx frame at 15935
+*Tx: UlTx resend frame at 15942
+Rx: Error UlRx frame at 15948
+*Tx: UlTx resend frame at 15955
+Rx: UlRx received retransmitted HARQ frame at 15955
+Rx: Error UlRx frame at 15963
+*Tx: UlTx resend frame at 15970
+Rx: Error UlRx frame at 16006
+*Tx: UlTx resend frame at 16013
+Rx: Error UlRx frame at 16020
+Rx: Error UlRx frame at 16021
+*Tx: UlTx resend frame at 16027
+*Tx: UlTx resend frame at 16028
+Rx: UlRx received retransmitted HARQ frame at 16027
+Rx: Error UlRx frame at 16050
+Rx: Error UlRx frame at 16078
+*Tx: UlTx resend frame at 16085
+Rx: Error UlRx frame at 16108
+Rx: Error UlRx frame at 16207
+*Tx: UlTx resend frame at 16214
+Rx: UlRx received retransmitted HARQ frame at 16214
+Rx: Error UlRx frame at 16222
+Rx: Error UlRx frame at 16223
+*Tx: UlTx resend frame at 16229
+*Tx: UlTx resend frame at 16230
+Rx: Error UlRx frame at 16236
+Rx: Error UlRx frame at 16252
+Rx: Error UlRx frame at 16266
+Rx: Error UlRx frame at 16294
+*Tx: UlTx resend frame at 16301
+Rx: Error UlRx frame at 16324
+Rx: Error UlRx frame at 16352
+*Tx: UlTx resend frame at 16359
+Rx: Error UlRx frame at 16396
+Rx: Error UlRx frame at 16409
+*Tx: UlTx resend frame at 16416
+Rx: Error UlRx frame at 16481
+*Tx: UlTx resend frame at 16488
+Rx: Error UlRx frame at 16511
+*Tx: UlTx resend frame at 16518
+Rx: Error UlRx frame at 16525
+*Tx: UlTx resend frame at 16532
+Rx: Error UlRx frame at 16553
+Rx: Error UlRx frame at 16554
+*Tx: UlTx resend frame at 16560
+Rx: Error UlRx frame at 16567
+Rx: Error UlRx frame at 16568
+*Tx: UlTx resend frame at 16574
+*Tx: UlTx resend frame at 16575
+Rx: UlRx received retransmitted HARQ frame at 16574
+Rx: Error UlRx frame at 16583
+*Tx: UlTx resend frame at 16590
+Rx: Error UlRx frame at 16596
+Rx: Error UlRx frame at 16597
+*Tx: UlTx resend frame at 16604
+Rx: Error UlRx frame at 16625
+*Tx: UlTx resend frame at 16632
+Rx: Error UlRx frame at 16711
+Rx: Error UlRx frame at 16712
+*Tx: UlTx resend frame at 16718
+*Tx: UlTx resend frame at 16719
+Rx: UlRx received retransmitted HARQ frame at 16718
+Rx: Error UlRx frame at 16740
+Rx: Error UlRx frame at 16741
+*Tx: UlTx resend frame at 16747
+*Tx: UlTx resend frame at 16748
+Rx: UlRx received retransmitted HARQ frame at 16747
+Rx: Error UlRx frame at 16855
+Rx: Error UlRx frame at 16856
+*Tx: UlTx resend frame at 16862
+*Tx: UlTx resend frame at 16863
+Rx: UlRx received retransmitted HARQ frame at 16862
+Rx: Error UlRx frame at 16870
+Rx: Error UlRx frame at 16900
+*Tx: UlTx resend frame at 16907
+Rx: Error UlRx frame at 17071
+*Tx: UlTx resend frame at 17078
+Rx: UlRx received retransmitted HARQ frame at 17078
+Rx: Error UlRx frame at 17100
+*Tx: UlTx resend frame at 17107
+Rx: UlRx received retransmitted HARQ frame at 17107
+Rx: Error UlRx frame at 17115
+*Tx: UlTx resend frame at 17122
+Rx: Error UlRx frame at 17129
+*Tx: UlTx resend frame at 17136
+Rx: Error UlRx frame at 17143
+*Tx: UlTx resend frame at 17150
+Rx: UlRx received retransmitted HARQ frame at 17150
+Rx: Error UlRx frame at 17158
+*Tx: UlTx resend frame at 17165
+Rx: Error UlRx frame at 17173
+*Tx: UlTx resend frame at 17180
+Rx: Error UlRx frame at 17215
+*Tx: UlTx resend frame at 17222
+Rx: UlRx received retransmitted HARQ frame at 17222
+Rx: Error UlRx frame at 17230
+*Tx: UlTx resend frame at 17237
+Rx: Error UlRx frame at 17259
+*Tx: UlTx resend frame at 17266
+Rx: Error UlRx frame at 17274
+*Tx: UlTx resend frame at 17281
+Rx: Error UlRx frame at 17287
+*Tx: UlTx resend frame at 17294
+Rx: UlRx received retransmitted HARQ frame at 17294
+Rx: Error UlRx frame at 17302
+Rx: Error UlRx frame at 17303
+*Tx: UlTx resend frame at 17309
+*Tx: UlTx resend frame at 17310
+Rx: Error UlRx frame at 17331
+*Tx: UlTx resend frame at 17338
+Rx: Error UlRx frame at 17374
+*Tx: UlTx resend frame at 17381
+Rx: Error UlRx frame at 17418
+*Tx: UlTx resend frame at 17425
+Rx: Error UlRx frame at 17446
+*Tx: UlTx resend frame at 17453
+Rx: Error UlRx frame at 17490
+*Tx: UlTx resend frame at 17497
+Rx: Error UlRx frame at 17590
+*Tx: UlTx resend frame at 17597
+Rx: Error UlRx frame at 17634
+*Tx: UlTx resend frame at 17641
+Rx: Error UlRx frame at 17735
+*Tx: UlTx resend frame at 17742
+Rx: Error UlRx frame at 17806
+Rx: Error UlRx frame at 17807
+*Tx: UlTx resend frame at 17813
+*Tx: UlTx resend frame at 17814
+Rx: Error UlRx frame at 17849
+*Tx: UlTx resend frame at 17856
+Rx: Error UlRx frame at 17863
+*Tx: UlTx resend frame at 17870
+Rx: UlRx received retransmitted HARQ frame at 17870
+Rx: Error UlRx frame at 17893
+*Tx: UlTx resend frame at 17900
+Rx: Error UlRx frame at 17921
+*Tx: UlTx resend frame at 17928
+Rx: Error UlRx frame at 17935
+*Tx: UlTx resend frame at 17942
+Rx: UlRx received retransmitted HARQ frame at 17942
+Rx: Error UlRx frame at 17950
+*Tx: UlTx resend frame at 17957
+Rx: Error UlRx frame at 17980
+Rx: Error UlRx frame at 18022
+*Tx: UlTx resend frame at 18029
+Rx: Error UlRx frame at 18065
+*Tx: UlTx resend frame at 18072
+Rx: Error UlRx frame at 18079
+*Tx: UlTx resend frame at 18086
+Rx: UlRx received retransmitted HARQ frame at 18086
+Rx: Error UlRx frame at 18124
+Rx: Error UlRx frame at 18166
+Rx: Error UlRx frame at 18167
+*Tx: UlTx resend frame at 18173
+*Tx: UlTx resend frame at 18174
+Rx: Error UlRx frame at 18180
+Rx: Error UlRx frame at 18209
+*Tx: UlTx resend frame at 18216
+Rx: Error UlRx frame at 18223
+Rx: Error UlRx frame at 18224
+*Tx: UlTx resend frame at 18230
+*Tx: UlTx resend frame at 18231
+Rx: UlRx received retransmitted HARQ frame at 18230
+Rx: Error UlRx frame at 18455
+*Tx: UlTx resend frame at 18462
+Rx: Error UlRx frame at 18498
+*Tx: UlTx resend frame at 18505
+Rx: Error UlRx frame at 18527
+*Tx: UlTx resend frame at 18534
+Rx: Error UlRx frame at 18540
+Rx: Error UlRx frame at 18569
+*Tx: UlTx resend frame at 18576
+Rx: Error UlRx frame at 18656
+*Tx: UlTx resend frame at 18663
+Rx: Error UlRx frame at 18670
+*Tx: UlTx resend frame at 18677
+Rx: Error UlRx frame at 18727
+Rx: Error UlRx frame at 18742
+*Tx: UlTx resend frame at 18749
+Rx: Error UlRx frame at 18771
+*Tx: UlTx resend frame at 18778
+Rx: Error UlRx frame at 18799
+Rx: Error UlRx frame at 18829
+*Tx: UlTx resend frame at 18836
+Rx: Error UlRx frame at 18843
+*Tx: UlTx resend frame at 18850
+Rx: Error UlRx frame at 18857
+*Tx: UlTx resend frame at 18864
+Rx: Error UlRx frame at 18871
+Rx: Error UlRx frame at 18901
+*Tx: UlTx resend frame at 18908
+Rx: Error UlRx frame at 18988
+*Tx: UlTx resend frame at 18995
+Rx: Error UlRx frame at 19059
+Rx: Error UlRx frame at 19060
+*Tx: UlTx resend frame at 19066
+*Tx: UlTx resend frame at 19067
+Rx: Error UlRx frame at 19074
+Rx: Error UlRx frame at 19102
+*Tx: UlTx resend frame at 19109
+Rx: Error UlRx frame at 19132
+*Tx: UlTx resend frame at 19139
+Rx: Error UlRx frame at 19159
+Rx: Error UlRx frame at 19188
+*Tx: UlTx resend frame at 19195
+Rx: UlRx received retransmitted HARQ frame at 19195
+Rx: Error UlRx frame at 19203
+*Tx: UlTx resend frame at 19210
+Rx: Error UlRx frame at 19217
+*Tx: UlTx resend frame at 19224
+Rx: Error UlRx frame at 19247
+Rx: Error UlRx frame at 19318
+*Tx: UlTx resend frame at 19325
+Rx: Error UlRx frame at 19390
+Rx: Error UlRx frame at 19391
+*Tx: UlTx resend frame at 19397
+Rx: Error UlRx frame at 19434
+*Tx: UlTx resend frame at 19441
+Rx: Error UlRx frame at 19448
+*Tx: UlTx resend frame at 19455
+Rx: Error UlRx frame at 19463
+*Tx: UlTx resend frame at 19470
+Rx: Error UlRx frame at 19505
+Rx: Error UlRx frame at 19519
+Rx: Error UlRx frame at 19520
+*Tx: UlTx resend frame at 19526
+*Tx: UlTx resend frame at 19527
+Rx: UlRx received retransmitted HARQ frame at 19526
+Rx: Error UlRx frame at 19534
+*Tx: UlTx resend frame at 19541
+Rx: Error UlRx frame at 19563
+*Tx: UlTx resend frame at 19570
+Rx: Error UlRx frame at 19592
+*Tx: UlTx resend frame at 19599
+Rx: Error UlRx frame at 19650
+*Tx: UlTx resend frame at 19657
+Rx: Error UlRx frame at 19679
+*Tx: UlTx resend frame at 19686
+Rx: Error UlRx frame at 19765
+*Tx: UlTx resend frame at 19772
+Rx: Error UlRx frame at 19837
+*Tx: UlTx resend frame at 19844
+Rx: Error UlRx frame at 19865
+*Tx: UlTx resend frame at 19872
+Rx: Error UlRx frame at 19980
+Rx: Error UlRx frame at 19981
+*Tx: UlTx resend frame at 19987
+*Tx: UlTx resend frame at 19988
+Rx: UlRx received retransmitted HARQ frame at 19987
+Rx: Error UlRx frame at 19996
+*Tx: UlTx resend frame at 20003
+*************UL experiment**************
+NumberofUeNodes = 1
+NumberOfEnodeBs = 1
+Distance = 100
+Interval = 2000
+Packet size = 900
+Rate = 500kb/s
+Number of Packets = 0
+S1uLink 1Gb/s 0.01
+p2pLink 1Gb/s 0.01
+CellId         Imsi           PdcpUL(ms)     PdcpDL(ms)     RlcUl(ms)      RlcDl(ms)      ULPDCPTxs      ULRLCTxs       UlPathloss     DlPathloss     OnOffSent      packetSinkReceived  OnOffSentTotal packetSinkReceivedTotal
+1              1              132.541        0              5.02379        0              1354           2706           inf            inf            1354           809            1218600        728100         
+***Flow ID: 1 Src Addr 7.0.0.2 Dst Addr 1.0.0.2
+Tx Packets 1354
+Rx Packets 809
+Lost packets 263
+Lost ratio 0.245336
+Average delay received +152.10575143286060884307
+Mean received bitrate +301.12793687361975744834
+Mean transmitted bitrate +503.15575926638441240277
+Total Error UlRx 305610
+Total Error DlRx 0
+Total UlTx HARQ 263025
+Total DlTx HARQ 0
+Phy UlRx = 1355706
+Phy DlRx = 0
+Phy UlTx = 1355706
+Phy DlTx = 0
