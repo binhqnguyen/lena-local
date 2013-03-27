@@ -94,6 +94,12 @@ getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 uint32_t
 getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 
+uint32_t
+getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
+
+//static void
+//CwndChange (Ptr<OutputStreamWrapper> stream, uint32_t oldCwnd, uint32_t newCwnd);
+
 
 int
 main (int argc, char *argv[])
@@ -143,7 +149,7 @@ main (int argc, char *argv[])
     uint16_t radioUlBandwidth = 25;	//the radio link bandwidth among UEs and EnodeB (in Resource Blocks). This is the configuration on LteEnbDevice.
     uint16_t radioDlBandwidth = 50;	//same as above, for downlink.
     std::string pcapName = "e2e-tcp-ul";
-    std::string dataRate = "100kb/s";
+    std::string dataRate = "1000kb/s";
     
     std::ofstream oFile;
     oFile.open("/Users/binh/Desktop/ns3_play/output-tcp-ul.txt", std::ios::app);
@@ -308,6 +314,7 @@ main (int argc, char *argv[])
     {
         ++ulPort;				//each Ue will contact with the remoteHost by a different ulport (the remoteHost needs this).
         
+
         if (isTcp == 1){
 					/*********TCP Application********/
 					//Create a packet sink to receive packet on remoteHost
@@ -349,6 +356,18 @@ main (int argc, char *argv[])
 //        clientApps.Add (ulClient.Install (ueNodes.Get(u)));	//install the client to the Ue node.
     }
     
+
+    //    Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
+    //    em->SetAttribute ("ErrorRate", DoubleValue (0.00001));
+    //    internetDevices.Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+
+//        AsciiTraceHelper asciiTraceHelper;
+//        Ptr<OutputStreamWrapper> stream = asciiTraceHelper.CreateFileStream ("sixth.cwnd");
+//    		Ptr<Application> app = clientApps.Get(0);
+//    		Ptr<Socket> appsocket = app->GetObject<OnOffApplication>()->GetSocket();
+//    		appsocket->TraceConnectWithoutContext ("CongestionWindow", MakeBoundCallback (&CwndChange, stream));
+
+
     /*******************Start client and server apps***************/
     serverApps.Start (Seconds (0.01));		//All server start at 0.01s.
     clientApps.Start(Seconds(0.5));
@@ -382,10 +401,12 @@ main (int argc, char *argv[])
     DownlinkLteGlobalPathlossDatabase dlPathlossDb;
     UplinkLteGlobalPathlossDatabase ulPathlossDb;
 
+
     /*********Start the simulation*****/
     Simulator::Stop(Seconds(simTime));
     Simulator::Run();
     
+
     /**************Simulation stops here. Start printing out information (if needed)***********/
     
     /******Print out simulation settings, client/server sent/received status*******/
@@ -411,6 +432,8 @@ main (int argc, char *argv[])
     << std::left << std::setw(SPC) << "RlcDl(ms)"
     << std::left << std::setw(SPC) << "ULPDCPTxs"
     << std::left << std::setw(SPC) << "ULRLCTxs"
+    << std::left << std::setw(SPC) << "DLPDCPTxs"
+    << std::left << std::setw(SPC) << "DLRLCTxs"
     << std::left << std::setw(SPC) << "UlPathloss"
     << std::left << std::setw(SPC) << "DlPathloss"
     << std::left << std::setw(SPC) << "OnOffSent"
@@ -432,6 +455,8 @@ main (int argc, char *argv[])
             std::cout << std::left << std::setw(SPC) << getDlRlcDelay(lteHelper,j+1,3);
             std::cout << std::left << std::setw(SPC) << getUlPdcpTxs( lteHelper, j+1, 3);
             std::cout << std::left << std::setw(SPC) << getUlRlcTxs(lteHelper, j+1, 3);
+            std::cout << std::left << std::setw(SPC) << getDlPdcpTxs(lteHelper, j+1, 3);
+            std::cout << std::left << std::setw(SPC) << getDlRlcTxs(lteHelper, j+1, 3);
             std::cout << std::left << std::setw(SPC) << ulPathlossDb.GetPathloss(i+1,j+1);
             std::cout << std::left << std::setw(SPC) << dlPathlossDb.GetPathloss(i+1,j+1);
             std::cout << std::left << std::setw(SPC) << clientApps.Get(j)->GetObject<ns3::OnOffApplication>()->GetSent();
@@ -507,13 +532,17 @@ main (int argc, char *argv[])
   NS_LOG_UNCOND("Total UlTx HARQ " <<  harqUl);
   NS_LOG_UNCOND("Total DlTx HARQ " << harqDl);
 
-  //#AppRate	MeanTx_1	Goodput(MeanRx)_1	TcpDelay_1	ul pdcp delay		ul rlc delay		lostPkt_1
-  //MeanTx_2	Goodput(MeanRx)_2	TcpDelay_2	dl pdcp delay		dl rlc delay		lostPkt_2
+
+
+  //#Distance AppRate	MeanTx_1	Goodput(MeanRx)_1	TcpDelay_1	ul pdcp delay		ul rlc delay		ulPdcpTxs 	ulRlcTxs lostPkt_1
+  //MeanTx_2	Goodput(MeanRx)_2	TcpDelay_2	dl pdcp delay		dl rlc delay		dlPdcpTxs 	dlRlcTxs	lostPkt_2
   //UlTx		UlRx	DlTx	DlRx
   //ErrorUlRx	ErrorDlRx	UlTxHarq	DlTxHarq
+  //IsPhyError
 
   /*Write to file*/
   //Application rate
+  oFile << distance << "	";
   oFile << dataRate.substr(0,dataRate.length()-4) << "   ";
   /*sending flow*/
   //Mean transmitted
@@ -526,6 +555,10 @@ main (int argc, char *argv[])
   oFile << getUlPdcpDelay(lteHelper,1,3) << "		";
   //UL RLC PDUs
   oFile << getUlRlcDelay(lteHelper,1,3) << "		";
+  //ulPdcpTxs
+  oFile << getUlPdcpTxs(lteHelper,1,3)	<< "	";
+  //ulRlcTxs
+  oFile << getUlRlcTxs(lteHelper,1,3) << "		";
   //Lost packets
   oFile << numOfLostPackets_1 << "	";
 
@@ -540,6 +573,10 @@ main (int argc, char *argv[])
   oFile << getDlPdcpDelay(lteHelper,1,3) << "		";
   //DL RLC PDUs
   oFile << getDlRlcDelay(lteHelper,1,3) << "		";
+  //dlPdcpTxs
+  oFile << getDlPdcpTxs(lteHelper,1,3) << " 	";
+  //dlRlcTxs
+  oFile << getDlRlcTxs(lteHelper,1,3) << "		";
   //Lost packets
   oFile << numOfLostPackets_2 << "	";
 
@@ -557,8 +594,14 @@ main (int argc, char *argv[])
    oFile << errorUlRx << "	";
    oFile << errorDlRx << "	";
    oFile << harqUl << "	";
-   oFile << harqDl << "\n";
+   oFile << harqDl << "	";
 
+   if (harqUl != 0 or harqDl != 0){
+  	 NS_LOG_UNCOND("IsPhyError: True");
+  	 oFile << "true";
+   }
+
+   oFile << "\n";
 
   oFile.close();
 
@@ -651,4 +694,19 @@ getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
 	ImsiLcidPair_t p (imsi, lcid);
 	return (lteHelper->GetPdcpStats()->ulTxPacketsMap[p]);
 }
+
+uint32_t
+getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
+	ImsiLcidPair_t p (imsi, lcid);
+	return (lteHelper->GetPdcpStats()->dlTxPacketsMap[p]);
+}
+
+/*
+static void
+CwndChange (Ptr<OutputStreamWrapper> stream, uint32_t oldCwnd, uint32_t newCwnd)
+{
+  NS_LOG_UNCOND (Simulator::Now ().GetSeconds () << "\t" << newCwnd);
+  *stream->GetStream () << Simulator::Now ().GetSeconds () << "\t" << oldCwnd << "\t" << newCwnd << std::endl;
+}
+*/
 
