@@ -190,17 +190,25 @@ main (int argc, char *argv[])
 
     tcpThroughput.open("/Users/binh/Desktop/ns3_play/tcp-put.txt", std::ios::out);
 
-    tcpThroughput << "#Time\t\t"
-                  << "Tcp throughput\t\t"
-                  << "Tcp delay\t\t"
-                  << "Number of Lost Pkts\t\t"
-                  << "Number of Tx Pkts\n";
+    tcpThroughput << "#Time\t"
+                  << "Tcp throughput\t"
+                  << "Tcp delay\t"
+                  << "Number of Lost Pkts\t"
+                  << "Number of Tx Pkts\t"
+                  << "ErrorUlTx\t"
+                  << "ErrorDlTx\t"
+                  << "HarqUlTx\t"
+                  << "HarqDlTx\n";
 
-    std::cout		  << "Time\t\t"
-                  << "Tcp throughput\t\t"
-                  << "Tcp delay\t\t"
-                  << "Number of Lost Pkts\t\t"
-                  << "Number of Tx Pkts\n";
+    std::cout		  << "Time\t"
+                  << "Tcp throughput\t"
+                  << "Tcp delay\t"
+                  << "Number of Lost Pkts\t"
+                  << "Number of Tx Pkts\t"
+                  << "ErrorUlTx\t"
+                  << "ErrorDlTx\t"
+                  << "HarqUlTx\t"
+                  << "HarqDlTx\n";
  
     uint16_t isAMRLC = 1;    
     uint16_t isTcp = 1;
