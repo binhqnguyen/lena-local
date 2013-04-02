@@ -38,6 +38,8 @@ PhyTxStatsCalculator::PhyTxStatsCalculator ()
   NS_LOG_FUNCTION (this);
   totalUlTx = 0;
   totalDlTx = 0;
+  totalUlHarqRetransmission = 0;
+  totalDlHarqRetransmission = 0;
 }
 
 PhyTxStatsCalculator::~PhyTxStatsCalculator ()
