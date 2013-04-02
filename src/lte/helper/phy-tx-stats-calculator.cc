@@ -138,7 +138,7 @@ PhyTxStatsCalculator::DlPhyTransmission (PhyTransmissionStatParameters params)
   if (params.m_ndi == 1)
     totalDlTx += params.m_size;
   else{
-    totalDlHarqRetransmission += params.m_size;
+    totalDlHarqRetransmission++;
     NS_LOG_UNCOND("*Tx: DlTx resend frame at " << params.m_timestamp);
   }
   outFile.close ();
@@ -190,7 +190,7 @@ PhyTxStatsCalculator::UlPhyTransmission (PhyTransmissionStatParameters params)
   if (params.m_ndi == 1)
     totalUlTx += params.m_size;
   else{
-    totalUlHarqRetransmission += params.m_size;
+    totalUlHarqRetransmission++;
     NS_LOG_UNCOND("*Tx: UlTx resend frame at " << params.m_timestamp);
   }
   outFile.close ();
