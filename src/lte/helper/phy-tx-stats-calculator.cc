@@ -40,6 +40,7 @@ PhyTxStatsCalculator::PhyTxStatsCalculator ()
   totalDlTx = 0;
   totalUlHarqRetransmission = 0;
   totalDlHarqRetransmission = 0;
+  init_mcs_map();
 }
 
 PhyTxStatsCalculator::~PhyTxStatsCalculator ()
@@ -141,6 +142,7 @@ PhyTxStatsCalculator::DlPhyTransmission (PhyTransmissionStatParameters params)
     totalDlHarqRetransmission++;
     NS_LOG_UNCOND("*Tx: DlTx resend frame at " << params.m_timestamp);
   }
+  time_dlcap[params.m_timestamp] = mcs_cap_100_single[params.m_mcs]; /*obtain link capacity through mcs_index*/
   outFile.close ();
 }
 
@@ -193,6 +195,8 @@ PhyTxStatsCalculator::UlPhyTransmission (PhyTransmissionStatParameters params)
     totalUlHarqRetransmission++;
     NS_LOG_UNCOND("*Tx: UlTx resend frame at " << params.m_timestamp);
   }
+  time_ulcap[params.m_timestamp] = mcs_cap_100_single[(uint32_t)params.m_mcs]; /*obtain link capacity through mcs_index*/
+
   outFile.close ();
 }
 
@@ -207,15 +211,6 @@ PhyTxStatsCalculator::GetTotalDl(){
   return totalDlTx;
 }
 
-// uint64_t
-// PhyTxStatsCalculator::GetTotalErrorUl(){
-//   return totalErrorUlTx;
-// }
-// uint64_t 
-// PhyTxStatsCalculator::GetTotalErrorDl(){
-//   return totalErrorDlTx;
-// }
-
 uint64_t
 PhyTxStatsCalculator::GetTotalUlHarqRetransmission(){
   return totalUlHarqRetransmission;
@@ -224,6 +219,34 @@ PhyTxStatsCalculator::GetTotalUlHarqRetransmission(){
 uint64_t
 PhyTxStatsCalculator::GetTotalDlHarqRetransmission(){
   return totalDlHarqRetransmission;
+}
+
+void
+PhyTxStatsCalculator::init_mcs_map(){
+  double siso[29] = { /*as in mcs-put-table.xls*/
+    2.792, 3.624, 4.584, 5.736, 7.224, 8.76, 10.296, 12.216, 14.112, 15.84,
+    15.84, 17.568, 19.848, 22.92, 25.456, 28.336, 30.576, 30.576, 32.856, 36.696, 39.232,
+    43.816, 46.888, 51.024, 55.056, 57.336, 61.664, 63.776, 75.376
+  };
+  double mimo[29] = { /*as in mcs-put-table.xls examples*/
+    5.584, 7.248, 9.168, 11.472, 14.448, 17.52, 20.592, 24.432, 28.224, 31.68,
+    31.68, 35.136, 39.696, 45.84, 50.912, 56.672, 61.152, 61.152, 65.712, 73.392, 78.464,
+    87.632, 93.776, 102.048, 110.112, 114.672, 123.328, 127.552, 150.752
+  };
+  for (uint32_t i=0; i < 29; ++i){
+      mcs_cap_100_single[i] = siso[i];   /*100RBs, single attenna*/
+      mcs_cap_100_double[i] = mimo[i];    /*100RBs, double attenna*/
+  };
+}
+
+std::map<double, double>
+PhyTxStatsCalculator::GetUlCap(){
+  return time_ulcap;
+}
+
+std::map<double, double>
+PhyTxStatsCalculator::GetDlCap(){
+  return time_dlcap;
 }
 
 } // namespace ns3

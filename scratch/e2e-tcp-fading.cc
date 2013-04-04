@@ -133,6 +133,11 @@ uint64_t errorDlRx = 0; //Error detected on the Dl Received side (UE).
 uint64_t harqUl = 0;   //HARQ transmitted from eNB.
 uint64_t harqDl = 0;  //HAEQ transmitted from Ue.
 
+std::map<double, double> time_ulcap; /*uplink link capacity histogram*/
+std::map<double, double> time_dlcap; /*downlink link capacity histogram*/
+std::ofstream link_cap_ul;
+std::ofstream link_cap_dl;
+
 
 
 
@@ -180,8 +185,8 @@ main (int argc, char *argv[])
     uint32_t packetSize = 900;
     double distance = 100.0;
     double interPacketInterval = 2000;	//in micro seconds, minimum 1.
-    uint16_t radioUlBandwidth = 25;	//the radio link bandwidth among UEs and EnodeB (in Resource Blocks). This is the configuration on LteEnbDevice.
-    uint16_t radioDlBandwidth = 25;	//same as above, for downlink.
+    uint16_t radioUlBandwidth = 100;	//the radio link bandwidth among UEs and EnodeB (in Resource Blocks). This is the configuration on LteEnbDevice.
+    uint16_t radioDlBandwidth = 100;	//same as above, for downlink.
     std::string pcapName = "e2e-tcp-dl";
     std::string dataRate = "1000kb/s";
     
@@ -189,6 +194,10 @@ main (int argc, char *argv[])
     oFile.open("/Users/binh/Desktop/ns3_play/output-tcp-dl.txt", std::ios::app);
 
     tcpThroughput.open("/Users/binh/Desktop/ns3_play/tcp-put.txt", std::ios::out);
+
+    link_cap_ul.open("/Users/binh/Desktop/ns3_play/link_cap_ul.txt", std::ios::out);
+    link_cap_dl.open("/Users/binh/Desktop/ns3_play/link_cap_dl.txt", std::ios::out);
+
 
     tcpThroughput << "#Time\t"
                   << "Tcp throughput\t"
@@ -452,7 +461,7 @@ main (int argc, char *argv[])
     lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( Seconds (simTime)) );		//set collection interval for PDCP.
     lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( Seconds (simTime)))	;		//same for RLC
     // Uncomment to enable PCAP tracing
-    p2ph.EnablePcapAll("pcaps/"+pcapName);
+    //p2ph.EnablePcapAll("pcaps/"+pcapName);
     
 
 
@@ -609,6 +618,20 @@ main (int argc, char *argv[])
   NS_LOG_UNCOND("Total UlTx HARQ " <<  harqUl);
   NS_LOG_UNCOND("Total DlTx HARQ " << harqDl);
 
+  /*============Get link capacity histogram==============*/
+  time_ulcap = lteHelper->GetPhyTxStatsCalculator()->GetUlCap();
+  time_dlcap = lteHelper->GetPhyTxStatsCalculator()->GetDlCap();
+  link_cap_ul << "#time stamp(ms)\t\t uplink link capacity(Mbps)\n";
+  link_cap_dl << "#time stamp(ms)\t\t downlink link capacity(Mbps)\n";
+  /*uplink cap out*/
+  for (std::map<double, double>::iterator ii = time_ulcap.begin(); ii != time_ulcap.end(); ++ii){
+  		link_cap_ul << (*ii).first << "\t\t" << (*ii).second << "\n";
+  }
+  /*downlink cap out*/
+  for (std::map<double, double>::iterator ii = time_dlcap.begin(); ii != time_dlcap.end(); ++ii){
+  		link_cap_dl << (*ii).first << "\t\t" << (*ii).second << "\n";
+  }
+
 
 
   //#Distance AppRate	MeanTx_1	Goodput(MeanRx)_1	TcpDelay_1	ul pdcp delay		ul rlc delay		ulPdcpTxs 	ulRlcTxs lostPkt_1
@@ -681,6 +704,7 @@ main (int argc, char *argv[])
 
   oFile.close();
   tcpThroughput.close();
+  link_cap_ul.close();
 
 
   Simulator::Destroy();

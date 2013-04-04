@@ -128,7 +128,8 @@ public:
   // uint64_t GetTotalErrorDl();
   uint64_t GetTotalUlHarqRetransmission();
   uint64_t GetTotalDlHarqRetransmission();
-
+  std::map<double, double> GetUlCap();
+  std::map<double, double> GetDlCap();
 
 private:
 
@@ -142,7 +143,14 @@ private:
   uint64_t totalUlHarqRetransmission;
   uint64_t totalDlHarqRetransmission;
 
+  /*map: <mcs index, link capacity>*/
+  std::map<uint32_t, double> mcs_cap_100_single; /*100RBs, single antenna*/
+  std::map<uint32_t, double> mcs_cap_100_double; /*100RBs, double antenna*/
+  void init_mcs_map();
 
+  /*capacity map in time line*/
+  std::map<double, double> time_ulcap;  /*using mcs_cap_100_single*/
+  std::map<double, double> time_dlcap;  /*using mcs_cap_100_double*/
 };
 
 } // namespace ns3
