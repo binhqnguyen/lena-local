@@ -142,7 +142,7 @@ PhyTxStatsCalculator::DlPhyTransmission (PhyTransmissionStatParameters params)
     totalDlHarqRetransmission++;
     NS_LOG_UNCOND("*Tx: DlTx resend frame at " << params.m_timestamp);
   }
-  time_dlcap[params.m_timestamp] = mcs_cap_100_single[params.m_mcs]; /*obtain link capacity through mcs_index*/
+  time_dlcap[params.m_timestamp] = mcs_cap_100_single[(uint32_t)params.m_mcs]; /*obtain link capacity through mcs_index*/
   outFile.close ();
 }
 
