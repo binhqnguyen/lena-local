@@ -151,6 +151,9 @@ private:
   /*capacity map in time line*/
   std::map<double, double> time_ulcap;  /*using mcs_cap_100_single*/
   std::map<double, double> time_dlcap;  /*using mcs_cap_100_double*/
+  double last_sampling_time_dl;
+  double last_sampling_time_ul;
+  double sampling_interval; /*link capacity sampling interval, in ms*/
 };
 
 } // namespace ns3

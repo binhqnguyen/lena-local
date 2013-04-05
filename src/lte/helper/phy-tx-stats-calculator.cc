@@ -40,6 +40,9 @@ PhyTxStatsCalculator::PhyTxStatsCalculator ()
   totalDlTx = 0;
   totalUlHarqRetransmission = 0;
   totalDlHarqRetransmission = 0;
+  last_sampling_time_dl = 0;
+  last_sampling_time_ul = 0;
+  sampling_interval = 50; /*sampling each 50ms*/
   init_mcs_map();
 }
 
@@ -142,7 +145,9 @@ PhyTxStatsCalculator::DlPhyTransmission (PhyTransmissionStatParameters params)
     totalDlHarqRetransmission++;
     NS_LOG_UNCOND("*Tx: DlTx resend frame at " << params.m_timestamp);
   }
-  time_dlcap[params.m_timestamp] = mcs_cap_100_single[(uint32_t)params.m_mcs]; /*obtain link capacity through mcs_index*/
+  if (params.m_timestamp > (last_sampling_time_dl + sampling_interval)) /**/
+    time_dlcap[params.m_timestamp] = mcs_cap_100_single[(uint32_t)params.m_mcs]; /*obtain link capacity through mcs_index*/
+  last_sampling_time_dl = params.m_timestamp;
   outFile.close ();
 }
 
@@ -195,7 +200,9 @@ PhyTxStatsCalculator::UlPhyTransmission (PhyTransmissionStatParameters params)
     totalUlHarqRetransmission++;
     NS_LOG_UNCOND("*Tx: UlTx resend frame at " << params.m_timestamp);
   }
-  time_ulcap[params.m_timestamp] = mcs_cap_100_single[(uint32_t)params.m_mcs]; /*obtain link capacity through mcs_index*/
+  if (params.m_timestamp > (last_sampling_time_ul + sampling_interval)) /**/
+    time_ulcap[params.m_timestamp] = mcs_cap_100_single[(uint32_t)params.m_mcs]; /*obtain link capacity through mcs_index*/
+  last_sampling_time_ul = params.m_timestamp;
 
   outFile.close ();
 }
