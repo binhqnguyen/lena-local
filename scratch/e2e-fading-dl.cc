@@ -65,8 +65,6 @@ using namespace ns3;
  */
 NS_LOG_COMPONENT_DEFINE ("e2e-tcp-dl");
 
-typedef std::map<double, double> Time_cap;
-
 double
 CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray);
 
@@ -136,9 +134,9 @@ uint64_t errorUlRx = 0;  //Error detected on the Ul Received side (eNB).
 uint64_t errorDlRx = 0; //Error detected on the Dl Received side (UE).
 uint64_t harqUl = 0;   //HARQ transmitted from eNB.
 uint64_t harqDl = 0;  //HAEQ transmitted from Ue.
-typedef std::map<uint32_t, Time_cap> Imsi_cap;
-Imsi_cap time_ulcap; /*uplink link capacity histogram*/
-Imsi_cap time_dlcap; /*downlink link capacity histogram*/
+typedef std::map<uint32_t, Time_cap> Imsi_timecap;  /*<imsi, Time_cap> map*/
+Imsi_timecap time_ulcap; /*uplink link capacity histogram*/
+Imsi_timecap time_dlcap; /*downlink link capacity histogram*/
 std::ofstream link_cap_ul;
 std::ofstream link_cap_dl;
 
@@ -619,13 +617,13 @@ main (int argc, char *argv[])
   link_cap_dl << "#Imis\t\t time stamp(ms)\t\t downlink link capacity(Mbps)\n";
   /*uplink cap out*/
   for (std::map<uint32_t, Time_cap>::iterator ii = time_ulcap.begin(); ii != time_ulcap.end(); ++ii){
-      for (std::map<double, double>::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
+      for (Time_cap::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
             link_cap_ul << "UE" << (*ii).first << "\t\t" << (*it).first << "\t\t" << (*it).second <<"\n";
       }
   }
   /*downlink cap out*/
   for (std::map<uint32_t, Time_cap>::iterator ii = time_dlcap.begin(); ii != time_dlcap.end(); ++ii){
-      for (std::map<double, double>::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
+      for (Time_cap::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
             link_cap_dl << "UE" << (*ii).first << "\t\t" << (*it).first << "\t\t" << (*it).second << "\n";
       }
   }
