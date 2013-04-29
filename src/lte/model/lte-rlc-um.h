@@ -26,6 +26,7 @@
 
 #include <ns3/event-id.h>
 #include <map>
+#include <fstream>
 
 namespace ns3 {
 
@@ -64,6 +65,8 @@ private:
   void ReassembleAndDeliver (Ptr<Packet> packet);
 
   void DoReportBufferStatus ();
+
+  uint32_t GetQueuingDelay();
 
 private:
   uint32_t m_maxTxBufferSize;
@@ -107,6 +110,11 @@ private:
    * Expected Sequence Number
    */
   SequenceNumber10 m_expectedSeqNumber;
+
+  //std::ofstream buff_report_file;
+  uint32_t t;
+  uint32_t m_sent;
+  double m_total_queuing_delay;
 
 };
 

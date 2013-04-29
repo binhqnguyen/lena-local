@@ -44,6 +44,11 @@ LteRlcUm::LteRlcUm ()
 {
   NS_LOG_FUNCTION (this);
   m_reassemblingState = WAITING_S0_FULL;
+  //buff_report_file.open("/Users/binh/Document/workspace/lena/RCL_buffer.txt", std::ios::out);
+  //buff_report_file << "#ID\txQueueSize\txQueueHolDelay\n";
+  // t = 0;
+  m_sent = 0;
+  m_total_queuing_delay = 0;
 }
 
 LteRlcUm::~LteRlcUm ()
@@ -72,7 +77,7 @@ LteRlcUm::DoDispose ()
   NS_LOG_FUNCTION (this);
   m_reorderingTimer.Cancel ();
   m_rbsTimer.Cancel ();
-
+//  buff_report_file.close();
   LteRlc::DoDispose ();
 }
 
@@ -1131,6 +1136,14 @@ LteRlcUm::DoReportBufferStatus (void)
   r.retxQueueHolDelay = 0;
   r.statusPduSize = 0;
 
+ // buff_report_file << "ID" << r.rnti << "\t" << r.txQueueSize << "\t" << r.txQueueHolDelay << "\n"; 
+  if( r.txQueueSize != t){
+    m_sent++;
+    m_total_queuing_delay += r.txQueueHolDelay;
+    NS_LOG_UNCOND("ID" << r.rnti << "\t" << m_sent << "\t" << "\t" << r.txQueueHolDelay << "\t" << m_total_queuing_delay << "\t" << Simulator::Now().GetMilliSeconds() << "\t" << m_total_queuing_delay/m_sent);
+    // NS_LOG_UNCOND("*rlc_b: " << Simulator::Now ().GetMilliSeconds() << "\tID" << r.rnti << "\t" << r.txQueueSize << "\t" << r.txQueueHolDelay);
+    t = r.txQueueSize;
+  }
   NS_LOG_LOGIC ("Send ReportBufferStatus = " << r.txQueueSize << ", " << r.txQueueHolDelay );
   m_macSapProvider->ReportBufferStatus (r);
 }
@@ -1185,6 +1198,19 @@ LteRlcUm::ExpireRbsTimer (void)
       DoReportBufferStatus ();
       m_rbsTimer = Simulator::Schedule (MilliSeconds (10), &LteRlcUm::ExpireRbsTimer, this);
     }
+}
+
+uint32_t
+LteRlcUm::GetQueuingDelay(){
+  Time holDelay (0);
+
+  if (! m_txBuffer.empty ())
+    {
+      RlcTag holTimeTag;
+      m_txBuffer.front ()->PeekPacketTag (holTimeTag);
+      holDelay = Simulator::Now () - holTimeTag.GetSenderTimestamp ();
+    }
+  return holDelay.GetMilliSeconds();
 }
 
 } // namespace ns3
