@@ -44,7 +44,6 @@
 #include "ns3/flow-monitor-helper.h"
 #include "ns3/lte-global-pathloss-database.h"
 
-//#include "ns3/gtk-config-store.h"
 
 #include <map>
 
@@ -68,8 +67,6 @@ NS_LOG_COMPONENT_DEFINE ("e2e-fading-ul-mobile");
 double
 CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray);
 
-// double
-// getAverage(std::list<double> array);
 double
 getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t, uint8_t);
 double
@@ -97,9 +94,6 @@ getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 
 uint32_t
 getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
-
-//static void
-//CwndChange (Ptr<OutputStreamWrapper> stream, uint32_t oldCwnd, uint32_t newCwnd);
 
 
 
@@ -212,8 +206,6 @@ main (int argc, char *argv[])
     uint32_t moving_speed=0;  //moving speed
 
 
-    // std::ofstream oFile;
-    // oFile.open("/Users/binh/Desktop/ns3_play/output-tcp-dl.txt", std::ios::app);
 
     uint16_t isAMRLC = 1;
     uint16_t isTcp = 1;
@@ -313,7 +305,6 @@ main (int argc, char *argv[])
     Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
     Ptr<EpcHelper>  epcHelper = CreateObject<EpcHelper> ();
     lteHelper->SetEpcHelper (epcHelper);
-    // lteHelper->SetSchedulerType("ns3::PfFfMacScheduler");
 
 
     /*=================Enable Fading model and its settings=================*/
@@ -425,35 +416,6 @@ main (int argc, char *argv[])
     ueMobility.Install (ueNodes);
     NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes);
 
-    // MobilityHelper enbMobility;
-    // enbMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    // enbMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
-    //                                   "MinX", DoubleValue (0.0),	//zero point
-    //                                   "MinY", DoubleValue (0.0),	//zero point
-    //                                   "DeltaX", DoubleValue (10000.0),	//distance among nodes
-    //                                   "DeltaY", DoubleValue (10000.0),
-    //                                   "GridWidth", UintegerValue (3),	//number of nodes on a line
-    //                                   "LayoutType", StringValue ("RowFirst"));
-    // enbMobility.Install (enbNodes);
-
-    /****************Set radio uplink/downlink bandwidth on eNB. Maximum 100 RBs, correspond to ~70Mbps peak rate***********/
-    // lteHelper->SetEnbDeviceAttribute("UlBandwidth",UintegerValue(radioUlBandwidth));
-    // lteHelper->SetEnbDeviceAttribute("DlBandwidth",UintegerValue(radioDlBandwidth));
-
-
-
-
-    /**********************Ues position allocation*********************/
-    // NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin ();
-    // Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
-    // MobilityHelper ueMobility;
-    // ueMobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator",	//nodes are put randomly inside a circle with the central point is (x,y).
-    //                                  "X", DoubleValue (enbPosition.x),
-    //                                  "Y", DoubleValue (enbPosition.y),
-    //                                  "rho", DoubleValue (distance));	//radius of the circle.
-    // ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    // ueMobility.Install (ueNodes);
-
 
     //**********************Assign Ipv4 addresses for UEs. Install the IP stack on the UEs******************//
     internet.Install (ueNodes);	//internet (InternetStackHelper) again be used to install an Internet stack for a node.
@@ -525,14 +487,9 @@ main (int argc, char *argv[])
 
     /*********Tracing settings***************/
     lteHelper->EnableTraces ();
-    // lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( Seconds (simTime)) );		//set collection interval for PDCP.
-    // lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( Seconds (simTime)))	;		//same for RLC
     
     lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( MilliSeconds (3)) );        //set collection interval for PDCP.
     lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( MilliSeconds (3)))  ;       //same for RLC
-    
-    // Uncomment to enable PCAP tracing
-    //p2ph.EnablePcapAll("pcaps/"+pcapName);
 
 
     monitor = flowHelper.Install(ueNodes);
@@ -633,9 +590,6 @@ main (int argc, char *argv[])
       if (iter->second.rxPackets > 1){
         meanTxRate_send[t.sourceAddress] = 8*iter->second.txBytes/(iter->second.timeLastTxPacket.GetDouble()-iter->second.timeFirstTxPacket.GetDouble())*ONEBIL/(1024);
         meanRxRate_send[t.sourceAddress] = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/(1024);
-      	//intervalMeanTcpDelay_send[t.destinationAddress] =  iter->second.delaySum.GetDouble() - 0; //1st time
-	//lastSumintervalMeanTcpDelay_send[t.destinationAddress] =  iter->second.delaySum.GetDouble();
-	//std::cout << "1st pkt delay = " << intervalMeanTcpDelay_send[t.destinationAddress] << " last sum = " << lastSumTcpDelay_send[t.destinationAddress] << std::endl;
       }
       numOfLostPackets_send[t.sourceAddress] = iter->second.lostPackets;
       numOfTxPacket_send[t.sourceAddress] = iter->second.txPackets;
