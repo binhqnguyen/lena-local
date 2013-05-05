@@ -146,8 +146,8 @@ main (int argc, char *argv[])
     double simTime = 20;	//simulation time for EACH application
     double distance = 100.0;
     double interPacketInterval = 2000;	//in micro seconds, minimum 1.
-    uint16_t radioUlBandwidth = 25;	//the radio link bandwidth among UEs and EnodeB (in Resource Blocks). This is the configuration on LteEnbDevice.
-    uint16_t radioDlBandwidth = 50;	//same as above, for downlink.
+    uint16_t radioUlBandwidth = 100;	//the radio link bandwidth among UEs and EnodeB (in Resource Blocks). This is the configuration on LteEnbDevice.
+    uint16_t radioDlBandwidth = 100;	//same as above, for downlink.
     std::string pcapName = "e2e-tcp-ul";
     std::string dataRate = "1000kb/s";
     

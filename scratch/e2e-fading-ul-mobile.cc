@@ -106,7 +106,7 @@ getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 static void
 getTcpPut(Ptr<LteHelper>);
 
-double simTime = 20;	//simulation time for EACH application
+double simTime = 100;	//simulation time for EACH application
 std::ofstream tcpThroughput;
 std::ofstream tcpThroughput_ack;
 Ptr<ns3::FlowMonitor> monitor;
@@ -214,8 +214,8 @@ main (int argc, char *argv[])
 
     uint16_t isAMRLC = 1;
     uint16_t isTcp = 1;
-    uint16_t isPedestrian = 0;
-    uint16_t isVehicular = 0;
+    uint16_t isTraceFading = 0;
+    uint16_t isMobile = 0; 
 
 
     // Command line arguments
@@ -239,13 +239,13 @@ main (int argc, char *argv[])
     cmd.AddValue("isAMRLC", "Whether using AM RLC (UM RLC if false)", isAMRLC);
     cmd.AddValue("dataRate", "TCP application data rate", dataRate);
     cmd.AddValue("isTcp", "TCP application if true, Udp if false", isTcp);
-    cmd.AddValue("isPedestrian", "Pedestrian fading model enable", isPedestrian);
-    cmd.AddValue("isVehicular", "Vehicular fading model enable", isVehicular);
+    cmd.AddValue("isTraceFading", "Is the trace fading enabled", isTraceFading);
     cmd.AddValue("traceFile", "Tracefile Name", traceFile);
     cmd.AddValue("tag", "Tag for tcp-put outfile name", tag);
     cmd.AddValue("traceTime", "TraceFile length in second", traceTime);
     cmd.AddValue("moving_bound", "Size of the rectangle box that user moving inside", moving_bound);
     cmd.AddValue("moving_speed", "User moving speed", moving_speed);
+    cmd.AddValue("isMobile", "Is Ue moving", isMobile);
 
 
 
@@ -262,16 +262,7 @@ main (int argc, char *argv[])
     inputConfig.ConfigureAttributes();
 
     cmd.Parse(argc, argv);
-    //*************************************************/
-    if (traceTime==0){
-      std::cout << "Please set traceTime of traceFile\n";
-      return 0;
-    }
-    if (moving_speed==0){
-      std::cout << "Please set moving speed\n";
-      return 0;
-    }
-
+    
     
     std::string str = "/Users/binh/Desktop/ns3_play/tcp-put-ul-send-"+tag+".txt";
     const char* fn = str.c_str();
@@ -323,19 +314,24 @@ main (int argc, char *argv[])
 
 
     /*=================Enable Fading model and its settings=================*/
-    if (isPedestrian >= 1 || isVehicular == 1){
+    if (isTraceFading){
       lteHelper->SetFadingModel("ns3::TraceFadingLossModel");
       lteHelper->SetFadingModelAttribute("TraceLength",TimeValue(Seconds(traceTime)));
       lteHelper->SetFadingModelAttribute("SamplesNum",UintegerValue(traceTime*1000));  /*1sample/1ms*/
       lteHelper->SetFadingModelAttribute("WindowSize",TimeValue(Seconds(0.5)));
       lteHelper->SetFadingModelAttribute("RbNum",UintegerValue(100));
-    }
-    if(isPedestrian==1)
-        lteHelper->SetFadingModelAttribute("TraceFilename", StringValue(traceFile));
-    if(isPedestrian==2)
-      lteHelper->SetFadingModelAttribute("TraceFilename", StringValue("/Users/binh/Documents/workspace/lena/src/lte/model/fading-traces/fading_trace_ETU_3kmph.fad"));
-    if(isVehicular==1)
-        lteHelper->SetFadingModelAttribute("TraceFilename", StringValue("/Users/binh/Documents/workspace/lena/src/lte/model/fading-traces/fading_trace_EVA_60kmph.fad"));
+      lteHelper->SetFadingModelAttribute("TraceFilename", StringValue(traceFile));
+      //*************************************************/
+      if (traceTime==0){
+        std::cout << "Please set traceTime of traceFile\n";
+        return 0;
+      }
+      if (moving_speed==0){
+        std::cout << "Please set moving speed\n";
+        return 0;
+      }
+    } else if (traceTime!=0 || moving_speed!=0)
+	std::cout << "Trace Fading not enabled, but traceTime and moving_speed specified, invalid!\n";
 
 
 
@@ -409,32 +405,23 @@ main (int argc, char *argv[])
                                      "X", DoubleValue (enbPosition.x),
                                      "Y", DoubleValue (enbPosition.y),
                                      "rho", DoubleValue (distance));  //radius of the circle.
-    // ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
 
-    /*
-     *
-     */
-    double speed = double (moving_speed)*1000/3600; //kmph to mps.
-    std::stringstream mss;
-    mss << speed;
-    std::string ms = mss.str();
-    std::cout << "enb " << enbPosition.x << " " << enbPosition.y << " " << moving_bound/2;
-    ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
+    if (isMobile){	//if UE is moving
+	double speed = double (moving_speed)*1000/3600; //kmph to mps.
+    	std::stringstream mss;
+    	mss << speed;
+    	std::string ms = mss.str();
+    	ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
                              "Mode", StringValue ("Time"),  //change distance and speed based on TIME.
-                             "Time", StringValue ("2s"), //change direction and speed after each 2s.
-                             // "Speed", StringValue ("ns3::ConstantRandomVariable[Constant=1.0]"),  //m/s
+                             "Time", StringValue ("200s"), //change direction and speed after each 2s.
+                             // "Speed", StringValue (ms),  //m/s
                              "Speed", StringValue ("ns3::ConstantRandomVariable[Constant="+ms+"]"),  //m/s
-                             "Bounds", RectangleValue (Rectangle (-50, 50, -50, 50)));  //bound
+                             "Bounds", RectangleValue (Rectangle (-10000, 10000, -10000, 10000)));  //bound
+    }
+    else ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     ueMobility.Install (ueNodes);
     NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes);
 
-                             
-
-
-
-
-    //*************************Create positions, mobility model, and install Mobility Model************************//
-    //************************Install LTE Devices to the nodes (install LTE stack to enodeB and Ue)******************//
     // MobilityHelper enbMobility;
     // enbMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     // enbMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
@@ -535,8 +522,12 @@ main (int argc, char *argv[])
 
     /*********Tracing settings***************/
     lteHelper->EnableTraces ();
-    lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( Seconds (simTime)) );		//set collection interval for PDCP.
-    lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( Seconds (simTime)))	;		//same for RLC
+    // lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( Seconds (simTime)) );		//set collection interval for PDCP.
+    // lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( Seconds (simTime)))	;		//same for RLC
+    
+    lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( MilliSeconds (3)) );        //set collection interval for PDCP.
+    lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( MilliSeconds (3)))  ;       //same for RLC
+    
     // Uncomment to enable PCAP tracing
     //p2ph.EnablePcapAll("pcaps/"+pcapName);
 

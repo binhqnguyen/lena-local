@@ -102,13 +102,13 @@ main (int argc, char *argv[])
     uint16_t p2pLinkMtu = 1000;
     
     //Simulation
-    uint32_t numberOfPackets = 10000000;
+    uint32_t numberOfPackets = 100000000;
     uint16_t packetSize = 900;
     double simTime = 10;	//simulation time for EACH application
     double distance = 100.0;
     double interPacketInterval = 2000;	//in micro seconds, minimum 1.
-    uint16_t radioUlBandwidth = 25;	//the radio link bandwidth among UEs and EnodeB (in Resource Blocks). This is the configuration on LteEnbDevice.
-    uint16_t radioDlBandwidth = 25;	//same as above, for downlink.
+    uint16_t radioUlBandwidth = 100;	//the radio link bandwidth among UEs and EnodeB (in Resource Blocks). This is the configuration on LteEnbDevice.
+    uint16_t radioDlBandwidth = 100;	//same as above, for downlink.
     std::string pcapName = "e2e-udp-dl";
     std::ofstream oFile;
     oFile.open("/Users/binh/Desktop/ns3_play/output-dl.txt", std::ios::app);
@@ -316,7 +316,6 @@ main (int argc, char *argv[])
     }
     //clientApps.Start(Seconds(0.5));
     //clientApps.Get(0)->SetStartTime(Seconds(0.5));
-    
     
     /*********Tracing settings***************/
     lteHelper->EnableTraces ();

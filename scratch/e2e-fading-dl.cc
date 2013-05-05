@@ -117,6 +117,8 @@ double t = 0.0;
 std::map<Ipv4Address, double> meanTxRate_send;
 std::map<Ipv4Address, double> meanRxRate_send;
 std::map<Ipv4Address, double> meanTcpDelay_send;
+std::map<Ipv4Address, double> lastMeanTcpDelay_send;	//last meanTcpDelay, used to calculate per packet delay.
+std::map<Ipv4Address, double> TcpDelay_send; 	//per packet TCP delay.										
 std::map<Ipv4Address, uint64_t> numOfLostPackets_send;
 std::map<Ipv4Address, uint64_t> numOfTxPacket_send;
 
@@ -588,6 +590,7 @@ main (int argc, char *argv[])
         meanTxRate_send[t.sourceAddress] = 8*iter->second.txBytes/(iter->second.timeLastTxPacket.GetDouble()-iter->second.timeFirstTxPacket.GetDouble())*ONEBIL/(1024);
         meanRxRate_send[t.sourceAddress] = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/(1024);
         meanTcpDelay_send[t.sourceAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
+	lastMeanTcpDelay_send[t.sourceAddress] = meanTcpDelay_send[t.sourceAddress];
       }
       numOfLostPackets_send[t.sourceAddress] = iter->second.lostPackets;
       numOfTxPacket_send[t.sourceAddress] = iter->second.txPackets;
@@ -833,6 +836,8 @@ getTcpPut(Ptr<LteHelper> lteHelper){
         meanTxRate_send[t.destinationAddress] = 8*iter->second.txBytes/(iter->second.timeLastTxPacket.GetDouble()-iter->second.timeFirstTxPacket.GetDouble())*ONEBIL/(1024);
         meanRxRate_send[t.destinationAddress] = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/(1024);
         meanTcpDelay_send[t.destinationAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
+	TcpDelay_send[t.destinationAddress] = meanTcpDelay_send[t.destinationAddress] - lastMeanTcpDelay_send[t.destinationAddress];
+	lastMeanTcpDelay_send[t.destinationAddress] = meanTcpDelay_send[t.destinationAddress];
       }
       numOfLostPackets_send[t.destinationAddress] = iter->second.lostPackets;
       numOfTxPacket_send[t.destinationAddress] = iter->second.txPackets;
@@ -857,6 +862,7 @@ getTcpPut(Ptr<LteHelper> lteHelper){
 
     std::map<Ipv4Address,double>::iterator it1 = meanRxRate_send.begin();
     std::map<Ipv4Address,double>::iterator it2 = meanTcpDelay_send.begin();
+    std::map<Ipv4Address,double>::iterator it5 = TcpDelay_send.begin();
     std::map<Ipv4Address,uint64_t>::iterator it3 = numOfLostPackets_send.begin();
     std::map<Ipv4Address,uint64_t>::iterator it4 = numOfTxPacket_send.begin();
 
@@ -870,7 +876,8 @@ getTcpPut(Ptr<LteHelper> lteHelper){
                   << errorUlRx << "\t\t"
                   << errorDlRx << "\t\t"
                   << harqUl << "\t\t"
-                  << harqDl << "\n";
+                  << harqDl << "\t"
+		  << (*it5).second << "\n";	//per packet Tcp delay.
 
       std::cout << Simulator::Now().GetMilliSeconds() << "\t\t"
                   << (*it1).first << "\t\t"
@@ -881,12 +888,14 @@ getTcpPut(Ptr<LteHelper> lteHelper){
                   << errorUlRx << "\t\t"
                   << errorDlRx << "\t\t"
                   << harqUl << "\t\t"
-                  << harqDl << "\n";
+                  << harqDl << "\t"
+		  << (*it5).second << "\n";	//per packet Tcp delay.
 
                   ++it1;
                   ++it2;
                   ++it3;
                   ++it4;
+		  ++it5;
     }
 
 
