@@ -1,0 +1,18 @@
+set title "AM RLC and UM RLC (25 RBs Uplink, peak rate ~16Mbps)"
+set key inside bottom right box
+set xlabel "Application Rate (Mbps)"
+set xtic 5
+set ylabel "Delay (ms)"
+set y2label "Goodput (Mbps)"
+set output "compare-um-am.svg"
+set log y
+set autoscale y
+set autoscale y2
+set y2range [0:20]
+set y2tics nomirror tc lt  1
+set terminal svg
+
+plot "output-ul.txt" using 1:2 title "AM RLC Goodput" with line axes x2y2, \
+"output-ul.txt" using 1:4 title "AM ULPDCP PDUs delay" with line,\
+"output-ul-um.txt" using 1:2 title "UM RLC Goodput" with line axes x2y2,\
+"output-ul-um.txt" using 1:4 title "AM ULPDCP PDUs delay" with line

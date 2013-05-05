@@ -1,0 +1,9 @@
+#UeNoise		Ue TxPower	goodput 	Ul Pdcp Delay		Lost	packet sent simTime 20
+10			30		3.38		5.9			 0	9738
+15			30		3.38		5.9			 0
+20
+25
+30	
+50					0
+75				      2.91	     1253		    0       8368
+80				      1.25           6009	            0.36    3059

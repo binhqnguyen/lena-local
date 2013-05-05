@@ -1,0 +1,20 @@
+*************UL experiment**************
+NumberofUeNodes = 1
+NumberOfEnodeBs = 1
+Distance = 100
+Interval = 189
+Packet size = 900
+Rate = 36.3305Mbps
+Number of Packets = 10000000
+S1uLink 1000Mb/s 0.01
+p2pLink 1000Mb/s 0.01
+Server sent/received = 0 / 47855
+CellId         Imsi           PdcpUL(ms)     PdcpDL(ms)     RlcUl(ms)      RlcDl(ms)      Latency(ms)    Client Sent    Server Received (Total*)Rnd_succ       ULPDCPTxs      ULRLCTxs       
+1              1              882.222        0              4.71429        0              nan            103175         47855          0              103175         19492          
+
+Cell 1 average latency nanms
+Cell 1 eNBs ul/dl bandwidth(RBs): 25/100
+Client 0 TxRate/RxRate = 36.3308 nan Mbps
+Server 0 TxRate/RxRate = nan 16.6545 Mbps
+Client total received 0 packets
+Server total received 47855 packets

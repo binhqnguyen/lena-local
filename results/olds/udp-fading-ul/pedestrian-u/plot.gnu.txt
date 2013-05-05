@@ -1,0 +1,62 @@
+set title "UDP performance with pedestrian fading (UMRLC Uplink)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "UDP goodput (Mbps)"
+set y2label "UDP delay (ms)"
+set output "udp-put-pedestrian.svg"
+#set log y
+set autoscale y
+#set autoscale y2
+set y2tics nomirror tc lt  1
+#set y2tic 10
+
+
+set terminal svg
+
+plot "tcp-put-ul-send.txt" using ($1/1000):4 title "Udp Dl Delay" with line axes x2y2,\
+"tcp-put-ul-send.txt" using ($1/1000):($3/1000) title "Udp throughput" with line
+
+
+reset 
+
+set title "UDP performance with pedestrian fading 3 Ues (UMRLC Uplink)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "UDP goodput (Mbps)"
+set output "udp-put-pedestrian-3.svg"
+#set log y
+set autoscale y
+#set autoscale y2
+#set y2tic 10
+
+
+set terminal svg
+ 
+plot "tcp_ul_1.txt" using ($1/1000):($3/1000) title "Udp throughput 1" with line,\
+"tcp_ul_2.txt" using ($1/1000):($3/1000) title "Udp throughput 2" with line,\
+"tcp_ul_3.txt" using ($1/1000):($3/1000) title "Udp throughput 3" with line
+
+
+set title "UDP performance with pedestrian fading (UMRLC Uplink)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "UDP goodput (Mbps)"
+set y2label "UDP delay (ms)"
+set output "udp-put-pedestrian-1.svg"
+#set log y
+set autoscale y
+#set autoscale y2
+set y2tics nomirror tc lt  1
+#set y2tic 10
+
+
+set terminal svg
+
+plot "tcp-put-ul-send_1.txt" using ($1/1000):4 title "Udp Dl Delay" with line axes x2y2,\
+"tcp-put-ul-send_1.txt" using ($1/1000):($3/1000) title "Udp throughput" with line
+
+
+

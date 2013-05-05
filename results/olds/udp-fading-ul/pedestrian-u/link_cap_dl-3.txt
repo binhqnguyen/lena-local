@@ -1,0 +1,1 @@
+#Imis		 time stamp(ms)		 downlink link capacity(Mbps)

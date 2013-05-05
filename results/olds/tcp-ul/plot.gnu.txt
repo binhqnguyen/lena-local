@@ -1,0 +1,47 @@
+set title "TCP application Ul Delay (UMRLC, 16Mbps radio link)"
+set key inside bottom right box
+set xlabel "TCP Rate (Mbps)"
+set xtic 5
+set ylabel "Delay (ms)"
+set y2label "Goodput (Mbps)"
+set output "tcp-ul.svg"
+#set log y
+set autoscale y
+set autoscale y2
+set y2range [0:20]
+set y2tics nomirror tc lt  1
+set y2tic 5
+
+
+set terminal svg
+
+plot "output-tcp-ul.txt" using ($1/1024):3 title "Goodput" with line axes x2y2, \
+"output-tcp-ul.txt" using ($1/1024):4 title "Tcp Ul Delay" with line,\
+"output-tcp-ul.txt" using ($1/1024):5 title "UL PDCP PDUs delay" with line,\
+"output-tcp-ul.txt" using ($1/1024):6 title "UL RLC PDUs delay" with line,\
+"output-tcp-ul.txt" using ($1/1024):8 title "Mean AckTx Rate" with line axes x2y2
+
+reset
+
+set title "TCP application Ul Delay (AMRLC, 16Mbps radio link)"
+set key inside bottom right box
+set xlabel "TCP Rate (Mbps)"
+set xtic 5
+set ylabel "Delay (ms)"
+set y2label "Goodput (Mbps)"
+set output "tcp-ul-am.svg"
+#set log y
+set autoscale y
+set autoscale y2
+set y2range [0:20]
+set y2tics nomirror tc lt  1
+set y2tic 5
+
+
+set terminal svg
+
+plot "output-tcp-ul-am.txt" using ($1/1024):3 title "Goodput" with line axes x2y2, \
+"output-tcp-ul-am.txt" using ($1/1024):4 title "Tcp Ul Delay" with line,\
+"output-tcp-ul-am.txt" using ($1/1024):5 title "UL PDCP PDUs delay" with line,\
+"output-tcp-ul-am.txt" using ($1/1024):6 title "UL RLC PDUs delay" with line,\
+"output-tcp-ul-am.txt" using ($1/1024):8 title "Mean AckTx Rate" with line axes x2y2

@@ -1,0 +1,70 @@
+*************UL experiment**************
+NumberofUeNodes = 3
+NumberOfEnodeBs = 1
+Distance = 100
+Interval = 2000
+Packet size = 900
+Rate = 100000kb/s
+Number of Packets = 0
+S1uLink 1Gb/s 0.01
+p2pLink 1Gb/s 0.01
+CellId         Imsi           PdcpUL(ms)     PdcpDL(ms)     RlcUl(ms)      RlcDl(ms)      ULPDCPTxs      ULRLCTxs       DLPDCPTxs      DLRLCTxs       UlPathloss     DlPathloss     OnOffSent      packetSinkReceived  OnOffSentTotal packetSinkReceivedTotal
+1              1              24.2665        3.57019        4.71895        3              46304          15723          23837          10960          inf            inf            1381963        44128          1243766700     24437312       
+1              2              29.4131        3.12981        4.75299        3              14893          8518           7786           5560           inf            inf            1381963        13508          1243766700     7547952        
+1              3              14.619         3.34895        4.71461        3              186882         27344          93594          23458          inf            inf            1381963        186349         1243766700     100120640      
+***Flow ID: 1 Src Addr 7.0.0.2 Dst Addr 1.0.0.2
+Tx Packets 46304
+Rx Packets 45779
+Lost packets 426
+Lost ratio 0.00921978
+Average delay received +44.04969934283077468205
+Mean received bitrate +2071.04781957026710009514
+Mean transmitted bitrate +2097.02263256493820261248
+***Flow ID: 2 Src Addr 7.0.0.3 Dst Addr 1.0.0.2
+Tx Packets 14893
+Rx Packets 14462
+Lost packets 380
+Lost ratio 0.025603
+Average delay received +49.07948445755498833088
+Mean received bitrate +654.04773852667625118136
+Mean transmitted bitrate +673.14015200354066488994
+***Flow ID: 3 Src Addr 7.0.0.4 Dst Addr 1.0.0.2
+Tx Packets 186882
+Rx Packets 186797
+Lost packets 83
+Lost ratio 0.000444135
+Average delay received +34.11798487972427387166
+Mean received bitrate +8451.11765556724994332246
+Mean transmitted bitrate +8452.1573474718698399938
+***Flow ID: 4 Src Addr 1.0.0.2 Dst Addr 7.0.0.2
+Tx Packets 23839
+Rx Packets 23837
+Lost packets 0
+Lost ratio 0
+Average delay received +23.10536424358427884153
+Mean received bitrate +75.00290262211632261612
+Mean transmitted bitrate +74.16696036143909196041
+***Flow ID: 5 Src Addr 1.0.0.2 Dst Addr 7.0.0.3
+Tx Packets 7788
+Rx Packets 7786
+Lost packets 0
+Lost ratio 0
+Average delay received +23.02412816549969961113
+Mean received bitrate +24.08819733522163144028
+Mean transmitted bitrate +24.08676812838349667466
+***Flow ID: 6 Src Addr 1.0.0.2 Dst Addr 7.0.0.4
+Tx Packets 93654
+Rx Packets 93594
+Lost packets 0
+Lost ratio 0
+Average delay received +23.06455284198789408104
+Mean received bitrate +294.02804523997930887396
+Mean transmitted bitrate +294.04915674269536356146
+Total Error UlRx 14220524
+Total Error DlRx 0
+Total UlTx HARQ 209
+Total DlTx HARQ 0
+Phy UlRx = 178422860
+Phy DlRx = 360846509
+Phy UlTx = 244852336
+Phy DlTx = 360846509

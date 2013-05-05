@@ -1,0 +1,16 @@
+#(UeTxPower=10, noise=9, eNBTxPower=30, noise=37)
+#EnbNoise 		Enb TxPower	goodput 	Ul Pdcp Delay		Lost	packet sent simTime 20
+10			30		3.38		5.9			 0	9738
+15			30		3.38		5.9			 0
+20
+25
+30
+35
+36				      3.38	     5.9                    0      9738
+38				      0.185097       4130                   0.89   525
+
+38				        3.16           662.6
+40					2.35		3004.5			0	6747
+45					0.98		6937.8			0.55	2095
+50					0		0			1	
+

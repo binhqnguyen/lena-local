@@ -1,0 +1,39 @@
+set title "Goodput and Loss rate Uplink (17Mbps ul, 70Mbps dl)"
+set xlabel "Application rate (Mbps)"
+set key bot right box
+set output "/Users/binh/Desktop/ns3_play/result/goodput-loss-ul/goodput-loss-ul.svg"
+set terminal svg
+set log y
+set autoscale y
+set autoscale y2
+
+set ylabel "Goodput (Mbps)"
+set y2label "Loss rate (%)"
+set y2tics nomirror tc lt  1
+set ytics nomirror tc lt 3
+
+set y2range [0:100]
+
+plot "/Users/binh/Desktop/ns3_play/result/goodput-loss-ul/output-ul.txt" using 1:2 title "goodput" with line, /Users/binh/Desktop/ns3_play/result/goodput-loss-ul/output-ul.txt" using 1:3 title "loss rate" with line axes x2y2
+
+reset
+
+set title "Goodput and Loss rate Downlink (17Mbps dl, 70Mbps ul)"
+set xlabel "Application rate (Mbps)"
+set key bot right box
+set output "/Users/binh/Desktop/ns3_play/result/goodput-loss-ul/goodput-loss-dl.svg"
+set terminal svg
+set log y
+set autoscale y
+set autoscale y2
+
+set ylabel "Goodput (Mbps)"
+set y2label "Loss rate (%)"
+set y2tics nomirror tc lt  1
+set ytics nomirror tc lt 3
+
+set y2range [0:100]
+
+
+plot "/Users/binh/Desktop/ns3_play/result/goodput-loss-ul/output-dl.txt" using 1:2 title "goodput" with line, "/Users/binh/Desktop/ns3_play/result/goodput-loss-ul/output-dl.txt" using 1:3 title "loss rate" with line axes x2y2
+

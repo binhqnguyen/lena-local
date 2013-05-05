@@ -1,0 +1,42 @@
+set title "TCP performance with pedestrian fading (UMRLC downlink)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "TCP goodput (kbps)"
+set y2label "TCP delay (ms)"
+set output "tcp-put-pedestrian.svg"
+#set log y
+set autoscale y
+set autoscale y2
+set y2tics nomirror tc lt  1
+set y2tic 10
+
+
+set terminal svg
+
+plot "tcp-put-dl-send.txt" using ($1/1000):4 title "Tcp Dl Delay" with line axes x2y2,\
+"tcp-put-dl-send.txt" using ($1/1000):($3/1000) title "TCP throughput" with line,\
+"link_cap_dl.txt" using ($2/1000):3 title "Downlink capacity (Mbps)" axes x2y2,\
+"link_cap_ul.txt" using ($2/1000):3 title "Uplink capacity (Mbps)" with line axes x2y2
+
+
+reset
+
+set title "TCP throughput and Link Capacity (Downlink, 100RBs, 3Ues)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "TCP goodput (kbps)"
+set y2label "Link capacity (Mbps)"
+set output "tcp-cap.svg"
+#set log y
+set autoscale y
+#set autoscale y2
+set y2tics nomirror tc lt  1
+set y2tic 10
+
+
+set terminal svg
+
+plot "c_dl_1.txt" using ($2/1000):3 title "Link Capacity UE1",\
+"tcp_dl_1.txt" using ($1/1000):($3/1000) title "TCP throughput UE1" with line

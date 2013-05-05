@@ -1,0 +1,19 @@
+set title "Uplink delays with AM RLC (25 RBs Uplink, peak rate ~16Mbps)"
+set key inside bottom right box
+set xlabel "Application Rate (Mbps)"
+set xtic 5
+set ylabel "Delay (ms)"
+set y2label "Goodput (Mbps)"
+set output "delay-amrlc-ul.svg"
+set log y
+set autoscale y
+set autoscale y2
+set y2range [0:20]
+set y2tics nomirror tc lt  1
+
+
+set terminal svg
+
+plot "output-ul.txt" using 1:2 title "Goodput" with line axes x2y2, \
+"output-ul.txt" using 1:4 title "UL PDCP PDUs delay" with line,\
+"output-ul.txt" using 1:5 title "UL RLC PDUs delay" with line

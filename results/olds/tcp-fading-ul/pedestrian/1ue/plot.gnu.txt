@@ -1,0 +1,22 @@
+#================1 UE uplink====================#
+set title "TCP throughput with pedestrian fading (UMRLC Uplink)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "Throughput (Mbps)"
+set y2label "TCP delay (ms)"
+set output "tcp-put-pedestrian.svg"
+#set log y
+set autoscale y
+set autoscale y2
+set y2tics nomirror tc lt  1
+set y2tic 10
+
+
+set terminal svg
+
+plot "tcp-put-ul-send.txt" using ($1/1000):4 title "Tcp Ul Delay" with line axes x2y2,\
+"tcp-put-ul-send.txt" using ($1/1000):($3/1000) title "TCP Ul throughput" with line,\
+"/Users/binh/Desktop/ns3_play/result/udp-fading-ul/pedestrian/tcp-put-ul-send.txt" using ($1/1000):($3/1000) title "UpLink capacity" with line
+
+

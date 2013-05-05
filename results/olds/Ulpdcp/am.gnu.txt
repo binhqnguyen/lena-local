@@ -1,0 +1,11 @@
+set title "Uplink PDCP PDUs delay with AM RLC (25 RBs Uplink, peak rate ~16Mbps)"
+set key inside bottom right box
+set xlabel "Packet sequence number"
+set autoscale x
+set ylabel "Delay (ms)"
+set output "ul-pdcp-am.svg"
+set log y
+set autoscale y
+set terminal svg
+
+plot "ulpdcp-17-am.txt" using 1:2 title "Application rate 17.16Mbps" with line,   "ulpdcp-34-am.txt" using 1:2 title "Application rate 34.33Mbps" with line, "ulpdcp-7-am.txt" using 1:2 title "Application rate 6.8Mbps" with line, "ulpdcp-8-am.txt" using 1:2 title "Application rate 8.15Mbps" with line,"ulpdcp-3-am.txt" using 1:2 title "Application rate 3.4Mbps" with line

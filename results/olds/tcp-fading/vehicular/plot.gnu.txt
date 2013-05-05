@@ -1,0 +1,18 @@
+set title "TCP performance with vehicular fading (UMRLC downlink)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "TCP goodput (kbps)"
+set y2label "TCP delay (ms)"
+set output "tcp-put-vehicular.svg"
+#set log y
+set autoscale y
+set autoscale y2
+set y2tics nomirror tc lt  1
+set y2tic 5
+
+
+set terminal svg
+
+plot "tcp-put-vehicular.txt" using ($1/1000):3 title "Tcp Dl Delay" with line axes x2y2,\
+"tcp-put-vehicular.txt" using ($1/1000):2 title "TCP thoughput" with line

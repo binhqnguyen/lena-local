@@ -1,0 +1,22 @@
+set title "TCP performance in time without error and fading (UMRLC downlink)"
+set key inside bottom right box
+set xlabel "Time (s)"
+set xtic 5
+set ylabel "TCP goodput (kbps)"
+set y2label "TCP delay (ms)"
+set output "tcp-put.svg"
+#set log y
+set autoscale y
+set autoscale y2
+set y2tics nomirror tc lt  1
+set y2tic 5
+
+
+set terminal svg
+
+plot "tcp-put.txt" using ($1/1000):3 title "Tcp Dl Delay" with line axes x2y2,\
+"tcp-put.txt" using ($1/1000):2 title "TCP throughput" with line
+
+
+reset
+

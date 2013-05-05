@@ -1,0 +1,46 @@
+*************UL experiment**************
+NumberofUeNodes = 3
+NumberOfEnodeBs = 1
+Distance = 100
+Interval = 2000
+Packet size = 900
+Rate = 100000kb/s
+Number of Packets = 0
+S1uLink 1Gb/s 0.01
+p2pLink 1Gb/s 0.01
+CellId         Imsi           PdcpUL(ms)     PdcpDL(ms)     RlcUl(ms)      RlcDl(ms)      ULPDCPTxs      ULRLCTxs       DLPDCPTxs      DLRLCTxs       UlPathloss     DlPathloss     OnOffSent      packetSinkReceived  OnOffSentTotal packetSinkReceivedTotal
+1              1              2463.82        0              4.71428        0              1381963        70490          0              0              inf            inf            1381963        90137          1243766700     81123300       
+1              2              1099.65        0              4.71428        0              1381963        99492          0              0              inf            inf            1381963        203526         1243766700     183173400      
+1              3              751.153        0              4.71428        0              1381963        97543          0              0              inf            inf            1381963        299082         1243766700     269173800      
+***Flow ID: 1 Src Addr 7.0.0.2 Dst Addr 1.0.0.2
+Tx Packets 1381963
+Rx Packets 90137
+Lost packets 0
+Lost ratio 0
+Average delay received +2483.16390092467663200743
+Mean received bitrate +6570.01520769128883578192
+Mean transmitted bitrate +100695.16894676115743972192
+***Flow ID: 2 Src Addr 7.0.0.3 Dst Addr 1.0.0.2
+Tx Packets 1381963
+Rx Packets 203526
+Lost packets 0
+Lost ratio 0
+Average delay received +1119.12493148498498775241
+Mean received bitrate +14834.12964648053356054818
+Mean transmitted bitrate +100695.16894676115743972192
+***Flow ID: 3 Src Addr 7.0.0.4 Dst Addr 1.0.0.2
+Tx Packets 1381963
+Rx Packets 299082
+Lost packets 0
+Lost ratio 0
+Average delay received +771.03815451090413703216
+Mean received bitrate +21799.11657679428960885316
+Mean transmitted bitrate +100695.16894676115743972192
+Total Error UlRx 0
+Total Error DlRx 0
+Total UlTx HARQ 0
+Total DlTx HARQ 0
+Phy UlRx = 552841970
+Phy DlRx = 0
+Phy UlTx = 552863137
+Phy DlTx = 0
