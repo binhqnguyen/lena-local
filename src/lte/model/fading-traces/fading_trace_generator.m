@@ -18,7 +18,7 @@ power_urbanETU = [-1.0 -1.0 -1.0 0.0 0.0 0.0 -3.0 -5.0 -7.0];
 % fc = 2160e6; %
 
 % UL  EARFCN=18100
-fc = 1930e6;
+fc = 1930e6;    %frequency
 
 lambda = c/fc;
 v_km_h = 3.0;  % speed of mobile node

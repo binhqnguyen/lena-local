@@ -306,4 +306,9 @@ OnOffApplication::GetSentBytes(){
   return m_totBytes;
 }
 
+void
+OnOffApplication::SetSocket(Ptr<Socket> socket){
+  m_socket = socket;
+}
+
 } // Namespace ns3

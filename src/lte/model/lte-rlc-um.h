@@ -114,6 +114,7 @@ private:
   //std::ofstream buff_report_file;
   uint32_t t;
   uint32_t m_sent;
+  uint32_t counter;
   double m_total_queuing_delay;
 
 };

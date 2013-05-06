@@ -120,6 +120,8 @@ public:
 
   uint32_t GetSentBytes();
 
+  void SetSocket(Ptr<Socket>);
+
 protected:
   virtual void DoDispose (void);
 private:

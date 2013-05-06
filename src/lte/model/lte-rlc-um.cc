@@ -27,13 +27,13 @@
 #include "ns3/lte-rlc-tag.h"
 
 NS_LOG_COMPONENT_DEFINE ("LteRlcUm");
-
+#define MAX_TX_BUFFER_SIZE  2 //max tx buffer size 2MB.
 namespace ns3 {
 
 NS_OBJECT_ENSURE_REGISTERED (LteRlcUm);
 
 LteRlcUm::LteRlcUm ()
-  : m_maxTxBufferSize (2 * 1024 * 1024),
+  : m_maxTxBufferSize (MAX_TX_BUFFER_SIZE * 1024 * 1024),
     m_txBufferSize (0),
     m_sequenceNumber (0),
     m_vrUr (0),
@@ -48,6 +48,7 @@ LteRlcUm::LteRlcUm ()
   //buff_report_file << "#ID\txQueueSize\txQueueHolDelay\n";
   // t = 0;
   m_sent = 0;
+  counter = 0;
   m_total_queuing_delay = 0;
 }
 
@@ -386,6 +387,8 @@ LteRlcUm::DoNotifyTxOpportunity (uint32_t bytes, uint8_t layer, uint8_t harqId)
   params.lcid = m_lcid;
   params.layer = layer;
   params.harqProcessId = harqId;
+
+  m_sent++;
 
   m_macSapProvider->TransmitPdu (params);
 
@@ -1136,11 +1139,13 @@ LteRlcUm::DoReportBufferStatus (void)
   r.retxQueueHolDelay = 0;
   r.statusPduSize = 0;
 
+  counter++;
+	
  // buff_report_file << "ID" << r.rnti << "\t" << r.txQueueSize << "\t" << r.txQueueHolDelay << "\n"; 
-  if( r.txQueueSize != t){
-    m_sent++;
+  if( r.txQueueSize != t || counter > 10){
+    counter = 0;
     m_total_queuing_delay += r.txQueueHolDelay;
-    NS_LOG_UNCOND("ID" << r.rnti << "\t" << m_sent << "\t" << "\t" << r.txQueueHolDelay << "\t" << m_total_queuing_delay << "\t" << Simulator::Now().GetMilliSeconds() << "\t" << m_total_queuing_delay/m_sent);
+    NS_LOG_UNCOND("ID" << r.rnti << "\t" << m_sent << "\t" << "\t" << r.txQueueHolDelay << "\t" << m_total_queuing_delay << "\t" << Simulator::Now().GetMilliSeconds() << "\t" << m_total_queuing_delay/m_sent << "\t" << r.txQueueSize );
     // NS_LOG_UNCOND("*rlc_b: " << Simulator::Now ().GetMilliSeconds() << "\tID" << r.rnti << "\t" << r.txQueueSize << "\t" << r.txQueueHolDelay);
     t = r.txQueueSize;
   }

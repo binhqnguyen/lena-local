@@ -153,6 +153,7 @@ NscTcpSocketImpl::SetNode (Ptr<Node> node)
   m_node = node;
   // Initialize some variables 
   m_cWnd = m_initialCWnd * m_segmentSize;
+  NS_LOG_UNCOND(m_cWnd);
   m_rxWindowSize = m_advertisedWindowSize;
 }
 
@@ -619,6 +620,8 @@ bool NscTcpSocketImpl::SendPendingData (void)
 {
   NS_LOG_FUNCTION (this);
   NS_LOG_LOGIC ("ENTERING SendPendingData");
+
+  NS_LOG_UNCOND(Simulator::now() << "   " << m_cWnd);
 
   if (m_txBuffer.empty ())
     {

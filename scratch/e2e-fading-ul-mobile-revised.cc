@@ -270,7 +270,9 @@ main (int argc, char *argv[])
     std::string str = "/Users/binh/Documents/workspace/lena/out/"+tag+".txt";
     const char* fn = str.c_str();
     tcpThroughput.open(fn, std::ios::out);
-    tcpThroughput_ack.open("/Users/binh/Documents/workspace/out/"+tag+"-ack.txt", std::ios::out);
+    str = "/Users/binh/Documents/workspace/lena/out/"+tag+"-ack.txt";
+    fn = str.c_str();
+    tcpThroughput_ack.open(fn, std::ios::out);
 
     link_cap_ul.open("/Users/binh/Desktop/ns3_play/link_cap_ul.txt", std::ios::out);
     link_cap_dl.open("/Users/binh/Desktop/ns3_play/link_cap_dl.txt", std::ios::out);

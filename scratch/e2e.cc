@@ -105,7 +105,7 @@ std::ofstream tcpThroughput;
 std::ofstream tcpThroughput_ack;
 Ptr<ns3::FlowMonitor> monitor;
 FlowMonitorHelper flowHelper;
-double samplingInterval = 0.10;    /*sample TCP thoughput for each 100ms*/
+double samplingInterval = 0.1;    /*sample TCP thoughput for each 100ms*/
 double t = 0.0;
 /**sending flowS stats***/
 std::map<Ipv4Address, double> meanTxRate_send;
@@ -113,7 +113,8 @@ std::map<Ipv4Address, double> meanRxRate_send;
 std::map<Ipv4Address, double> meanTcpDelay_send;
 std::map<Ipv4Address, double> lastSumTcpDelay_send;	//sum of delays of all of pkts of the last sampling period.
 std::map<Ipv4Address, double> intervalMeanTcpDelay_send; 	//mean of delays of a sampling period.								
-std::map<Ipv4Address, double> lastRxPkts_send;	//number of pkts received during the last sampling period.
+std::map<Ipv4Address, double> lastRxPkts_send;	//number of pkts received during the last sampling period.  
+std::map<Ipv4Address, double> lastIntervalMeanTcpDelay_send;
 std::map<Ipv4Address, uint64_t> numOfLostPackets_send;
 std::map<Ipv4Address, uint64_t> numOfTxPacket_send;
 
@@ -132,10 +133,10 @@ uint64_t errorDlRx = 0; //Error detected on the Dl Received side (UE).
 uint64_t harqUl = 0;   //HARQ transmitted from eNB.
 uint64_t harqDl = 0;  //HAEQ transmitted from Ue.
 typedef std::map<uint32_t, Time_cap> Imsi_timecap;  /*<imsi, Time_cap> map*/
-Imsi_timecap time_ulcap; /*uplink link capacity histogram*/
-Imsi_timecap time_dlcap; /*downlink link capacity histogram*/
-std::ofstream link_cap_ul;
-std::ofstream link_cap_dl;
+//Imsi_timecap time_ulcap; /*uplink link capacity histogram*/
+//Imsi_timecap time_dlcap; /*downlink link capacity histogram*/
+//std::ofstream link_cap_ul;
+//std::ofstream link_cap_dl;
 
 const uint32_t ONEBIL = 1000000000;
 
@@ -210,7 +211,7 @@ main (int argc, char *argv[])
     uint16_t isAMRLC = 1;
     uint16_t isTcp = 1;
     uint16_t isTraceFading = 0;
-    uint16_t isMobile = 0; 
+    uint16_t isMobile = 1; 
 
 
     // Command line arguments
@@ -242,12 +243,6 @@ main (int argc, char *argv[])
     cmd.AddValue("moving_speed", "User moving speed", moving_speed);
     cmd.AddValue("isMobile", "Is Ue moving", isMobile);
 
-
-
-
-
-
-
     /**ConfigStore setting*/
     Config::SetDefault("ns3::ConfigStore::Filename", StringValue("config-in-tcp-ul.txt"));
     Config::SetDefault("ns3::ConfigStore::FileFormat", StringValue("RawText"));
@@ -262,10 +257,12 @@ main (int argc, char *argv[])
     std::string str = "/Users/binh/Documents/workspace/lena/out/"+tag+".txt";
     const char* fn = str.c_str();
     tcpThroughput.open(fn, std::ios::out);
-    tcpThroughput_ack.open("/Users/binh/Documents/workspace/out/"+tag+"-ack.txt", std::ios::out);
+    str = "/Users/binh/Documents/workspace/lena/out/"+tag+"-ack.txt";
+    fn = str.c_str();
+    tcpThroughput_ack.open(fn, std::ios::out);
 
-    link_cap_ul.open("/Users/binh/Desktop/ns3_play/link_cap_ul.txt", std::ios::out);
-    link_cap_dl.open("/Users/binh/Desktop/ns3_play/link_cap_dl.txt", std::ios::out);
+    //link_cap_ul.open("/Users/binh/Desktop/ns3_play/link_cap_ul.txt", std::ios::out);
+    //link_cap_dl.open("/Users/binh/Desktop/ns3_play/link_cap_dl.txt", std::ios::out);
 
 
     tcpThroughput << "#DestinationIp\t"
@@ -308,7 +305,7 @@ main (int argc, char *argv[])
 
 
     /*=================Enable Fading model and its settings=================*/
-    if (isTraceFading){
+    if (isTraceFading && isMobile){
       lteHelper->SetFadingModel("ns3::TraceFadingLossModel");
       lteHelper->SetFadingModelAttribute("TraceLength",TimeValue(Seconds(traceTime)));
       lteHelper->SetFadingModelAttribute("SamplesNum",UintegerValue(traceTime*1000));  /*1sample/1ms*/
@@ -324,8 +321,11 @@ main (int argc, char *argv[])
         std::cout << "Please set moving speed\n";
         return 0;
       }
-    } else if (traceTime!=0 || moving_speed!=0)
+	std::cout << "Trace based fading enabled, vel = " << moving_speed << " traceTime = " << traceTime << std::endl;
+    } else if (traceTime!=0 || moving_speed!=0){
 	std::cout << "Trace Fading not enabled, but traceTime and moving_speed specified, invalid!\n";
+	return 0;
+	}
 
 
 
@@ -407,12 +407,18 @@ main (int argc, char *argv[])
     	std::string ms = mss.str();
     	ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
                              "Mode", StringValue ("Time"),  //change distance and speed based on TIME.
-                             "Time", StringValue ("200s"), //change direction and speed after each 2s.
+                             "Time", StringValue ("1000s"), //change direction and speed after each 2s.
                              // "Speed", StringValue (ms),  //m/s
                              "Speed", StringValue ("ns3::ConstantRandomVariable[Constant="+ms+"]"),  //m/s
                              "Bounds", RectangleValue (Rectangle (-10000, 10000, -10000, 10000)));  //bound
+	std::cout << "Mobility model enabled, distance = " << distance << ", vel = " << speed << std::endl;
     }
-    else ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+    else if (moving_speed != 0){
+	std::cout << "no mobility model set but moving speed is not zero!";
+	return 0;
+	} 
+	else 
+	ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     ueMobility.Install (ueNodes);
     NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes);
 
@@ -631,22 +637,22 @@ main (int argc, char *argv[])
 
   /*============Get link capacity histogram==============*/
 
-  time_ulcap = lteHelper->GetPhyTxStatsCalculator()->GetUlCap();
-  time_dlcap = lteHelper->GetPhyTxStatsCalculator()->GetDlCap();
-  link_cap_ul << "#Imsi\t\t time stamp(ms)\t\t uplink link capacity(Mbps)\n";
-  link_cap_dl << "#Imis\t\t time stamp(ms)\t\t downlink link capacity(Mbps)\n";
+  //time_ulcap = lteHelper->GetPhyTxStatsCalculator()->GetUlCap();
+  //time_dlcap = lteHelper->GetPhyTxStatsCalculator()->GetDlCap();
+  //link_cap_ul << "#Imsi\t\t time stamp(ms)\t\t uplink link capacity(Mbps)\n";
+  //link_cap_dl << "#Imis\t\t time stamp(ms)\t\t downlink link capacity(Mbps)\n";
   /*uplink cap out*/
-  for (std::map<uint32_t, Time_cap>::iterator ii = time_ulcap.begin(); ii != time_ulcap.end(); ++ii){
-      for (Time_cap::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
-            link_cap_ul << "UE" << (*ii).first << "\t\t" << (*it).first << "\t\t" << (*it).second <<"\n";
-      }
-  }
+  //for (std::map<uint32_t, Time_cap>::iterator ii = time_ulcap.begin(); ii != time_ulcap.end(); ++ii){
+  //    for (Time_cap::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
+  //          link_cap_ul << "UE" << (*ii).first << "\t\t" << (*it).first << "\t\t" << (*it).second <<"\n";
+  //    }
+  //}
   /*downlink cap out*/
-  for (std::map<uint32_t, Time_cap>::iterator ii = time_dlcap.begin(); ii != time_dlcap.end(); ++ii){
-      for (Time_cap::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
-            link_cap_dl << "UE" << (*ii).first << "\t\t" << (*it).first << "\t\t" << (*it).second << "\n";
-      }
-  }
+  //for (std::map<uint32_t, Time_cap>::iterator ii = time_dlcap.begin(); ii != time_dlcap.end(); ++ii){
+  //    for (Time_cap::iterator it = (*ii).second.begin(); it != (*ii).second.end(); ++it){
+  //          link_cap_dl << "UE" << (*ii).first << "\t\t" << (*it).first << "\t\t" << (*it).second << "\n";
+  //    }
+  //}
 
 
 
@@ -720,8 +726,8 @@ main (int argc, char *argv[])
 
   // oFile.close();
   tcpThroughput.close();
-  link_cap_ul.close();
-  link_cap_dl.close();
+  //link_cap_ul.close();
+  //link_cap_dl.close();
 
 
   Simulator::Destroy();
@@ -740,20 +746,6 @@ CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){
 	}
 	return (sum/counter);
 }
-
-/**Calculate average of an array**/
-// double
-// getAverage(std::list<double> array){
-// 	double sum = 0;
-// 	uint32_t ctr = 0;
-// 	std::vector<double>::iterator it;
-// 	for (it = array.begin(); it != array.end(); it++){
-// 		ctr++;
-// 		sum += *it;
-// 	}
-// 	return sum/ctr;
-// }
-
 /*
  * Get ul rlc pdus delay in ms
  */
@@ -838,11 +830,14 @@ getTcpPut(Ptr<LteHelper> lteHelper){
         meanTcpDelay_send[t.sourceAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
 	lastSumTcpDelay_send[t.destinationAddress] = (lastSumTcpDelay_send[t.destinationAddress] < 0)? 0:lastSumTcpDelay_send[t.destinationAddress];//init to 0 for the 1st time.
 	lastRxPkts_send[t.destinationAddress] = (lastRxPkts_send[t.destinationAddress] < 0)? 0:lastRxPkts_send[t.destinationAddress];	
+	lastIntervalMeanTcpDelay_send[t.destinationAddress] = 	(lastIntervalMeanTcpDelay_send[t.destinationAddress] < 0)? 0:lastIntervalMeanTcpDelay_send[t.destinationAddress];
 	interval_received_pkts = iter->second.rxPackets-lastRxPkts_send[t.destinationAddress];
-	intervalMeanTcpDelay_send[t.destinationAddress] = (interval_received_pkts == 0)? (iter->second.delaySum.GetDouble() - lastSumTcpDelay_send[t.destinationAddress]) / (iter->second.rxPackets-lastRxPkts_send[t.destinationAddress]) / 1000000 : lastSumTcpDelay_send[t.destinationAddress]/lastRxPkts_send[t.destinationAddress]/1000000 ; //intervalMeanTcpDelay_send = sum of delays during this period / number of rx pkts during this period.
+	intervalMeanTcpDelay_send[t.destinationAddress] = (interval_received_pkts != 0)? (iter->second.delaySum.GetDouble() - lastSumTcpDelay_send[t.destinationAddress]) / interval_received_pkts / 1000000 : lastIntervalMeanTcpDelay_send[t.destinationAddress]; //intervalMeanTcpDelay_send = sum of delays during this period / number of rx pkts during this period.
 	lastSumTcpDelay_send[t.destinationAddress] =  iter->second.delaySum.GetDouble(); //update
 	lastRxPkts_send[t.destinationAddress] = iter->second.rxPackets;
-	//std::cout << "xxx interval delay = " << intervalMeanTcpDelay_send[t.destinationAddress] << " last sum = " << lastSumTcpDelay_send[t.destinationAddress] << " last pkts = " << lastRxPkts_send[t.destinationAddress] << std::endl;
+	lastIntervalMeanTcpDelay_send[t.destinationAddress] = intervalMeanTcpDelay_send[t.destinationAddress];
+	std::cout << "xxx interval delay = " << intervalMeanTcpDelay_send[t.destinationAddress] << " last sum = " << lastSumTcpDelay_send[t.destinationAddress] << " last pkts = " << lastRxPkts_send[t.destinationAddress] << std::endl;
+	std::cout << "xxx delay sum = " << iter->second.delaySum.GetDouble()/1000000 << " num pkts = " << iter->second.rxPackets << std::endl;
       }
       numOfLostPackets_send[t.sourceAddress] = iter->second.lostPackets;
       numOfTxPacket_send[t.sourceAddress] = iter->second.txPackets;

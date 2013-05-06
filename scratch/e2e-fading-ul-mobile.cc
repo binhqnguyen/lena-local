@@ -215,7 +215,7 @@ main (int argc, char *argv[])
     uint16_t isAMRLC = 1;
     uint16_t isTcp = 1;
     uint16_t isTraceFading = 0;
-    uint16_t isMobile = 0; 
+    uint16_t isMobile = 1; 
 
 
     // Command line arguments
@@ -314,7 +314,7 @@ main (int argc, char *argv[])
 
 
     /*=================Enable Fading model and its settings=================*/
-    if (isTraceFading){
+    if (isTraceFading && isMobile) {
       lteHelper->SetFadingModel("ns3::TraceFadingLossModel");
       lteHelper->SetFadingModelAttribute("TraceLength",TimeValue(Seconds(traceTime)));
       lteHelper->SetFadingModelAttribute("SamplesNum",UintegerValue(traceTime*1000));  /*1sample/1ms*/
@@ -330,9 +330,10 @@ main (int argc, char *argv[])
         std::cout << "Please set moving speed\n";
         return 0;
       }
-    } else if (traceTime!=0 || moving_speed!=0)
+    } else if (traceTime!=0 || moving_speed!=0){
 	std::cout << "Trace Fading not enabled, but traceTime and moving_speed specified, invalid!\n";
-
+	return 0;
+      }
 
 
     //*********************Use epcHelper to get the PGW node********************//

@@ -47,6 +47,8 @@ namespace ns3 {
  *   - MCS for transport block 2 (0 if not used)
  *   - Size of transport block 2 (0 if not used)
  */
+typedef std::map<double,double> Time_cap; /*<time stamp, link cap> map*/
+
 class PhyTxStatsCalculator : public LteStatsCalculator
 {
 public:
@@ -128,7 +130,8 @@ public:
   // uint64_t GetTotalErrorDl();
   uint64_t GetTotalUlHarqRetransmission();
   uint64_t GetTotalDlHarqRetransmission();
-
+  std::map<uint32_t, Time_cap> GetUlCap();
+  std::map<uint32_t, Time_cap> GetDlCap();
 
 private:
 
@@ -142,7 +145,18 @@ private:
   uint64_t totalUlHarqRetransmission;
   uint64_t totalDlHarqRetransmission;
 
+  /*map: <mcs index, link capacity>*/
+  std::map<uint32_t, double> mcs_cap_100_single; /*100RBs, single antenna*/
+  std::map<uint32_t, double> mcs_cap_100_double; /*100RBs, double antenna*/
+  void init_mcs_map();
 
+  /*capacity map in time line*/
+  std::map<uint32_t, Time_cap> time_ulcap;  /*<imsi, time-capacity> map for uplinks*/
+  std::map<uint32_t, Time_cap> time_dlcap;  /*<imsi, time-capacity> map for downlinks*/
+  Time_cap t_c; /*just temporary a <time, capacity> map, meaningless*/
+  std::map<uint32_t,double> last_sampling_time_dl; /*<imsi, last_sampling_time_dl> map: sampling time of each users*/
+  std::map<uint32_t,double> last_sampling_time_ul;
+  double sampling_interval; /*link capacity sampling interval, in ms*/
 };
 
 } // namespace ns3

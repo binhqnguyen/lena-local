@@ -166,6 +166,9 @@ private:
   uint32_t                       m_ssThresh;             //Slow Start Threshold
   uint32_t                       m_initialCWnd;          //Initial cWnd value
 
+
+  
+
   // Round trip time estimation
   Time m_lastMeasuredRtt;
 
