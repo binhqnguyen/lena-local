@@ -106,26 +106,28 @@ getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 static void
 getTcpPut(Ptr<LteHelper>);
 
-double simTime = 20;	//simulation time for EACH application
+double simTime = 100;	//simulation time for EACH application
 std::ofstream tcpThroughput;
 std::ofstream tcpThroughput_ack;
 Ptr<ns3::FlowMonitor> monitor;
 FlowMonitorHelper flowHelper;
-double samplingInterval = 0.050;    /*sample TCP thoughput for each 50ms*/
+double samplingInterval = 0.010;    /*sample TCP thoughput for each 50ms*/
 double t = 0.0;
+
 /**sending flowS stats***/
 std::map<Ipv4Address, double> meanTxRate_send;
 std::map<Ipv4Address, double> meanRxRate_send;
 std::map<Ipv4Address, double> meanTcpDelay_send;
 std::map<Ipv4Address, uint64_t> numOfLostPackets_send;
 std::map<Ipv4Address, uint64_t> numOfTxPacket_send;
-
+double last_lost = 0;
 /***acking flowS stats***/
 std::map<Ipv4Address, double> meanTxRate_ack;
 std::map<Ipv4Address, double> meanRxRate_ack;
 std::map<Ipv4Address, double> meanTcpDelay_ack;
 std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;
 std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;
+double last_lost_ack = 0;
 
 Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
@@ -421,10 +423,10 @@ main (int argc, char *argv[])
     std::cout << "enb " << enbPosition.x << " " << enbPosition.y << " " << moving_bound/2;
     ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
                              "Mode", StringValue ("Time"),  //change distance and speed based on TIME.
-                             "Time", StringValue ("2s"), //change direction and speed after each 2s.
+                             "Time", StringValue ("10000s"), //change direction and speed after each 2s.
                              // "Speed", StringValue ("ns3::ConstantRandomVariable[Constant=1.0]"),  //m/s
                              "Speed", StringValue ("ns3::ConstantRandomVariable[Constant="+ms+"]"),  //m/s
-                             "Bounds", RectangleValue (Rectangle (-50, 50, -50, 50)));  //bound
+                             "Bounds", RectangleValue (Rectangle (-10000, 10000, -10000, 10000)));  //bound
     ueMobility.Install (ueNodes);
     NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes);
 
@@ -887,6 +889,10 @@ getTcpPut(Ptr<LteHelper> lteHelper){
         meanTcpDelay_send[t.sourceAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
       }
       numOfLostPackets_send[t.sourceAddress] = iter->second.lostPackets;
+      if (iter->second.lostPackets > last_lost){
+	NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp lost= " << iter->second.lostPackets - last_lost);
+	last_lost = iter->second.lostPackets;
+	}
       numOfTxPacket_send[t.sourceAddress] = iter->second.txPackets;
     }
 
@@ -898,6 +904,10 @@ getTcpPut(Ptr<LteHelper> lteHelper){
         meanTcpDelay_ack[t.destinationAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
       }
       numOfLostPackets_ack[t.destinationAddress] = iter->second.lostPackets;
+      if (iter->second.lostPackets > last_lost_ack){
+	NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp_ack lost= " << iter->second.lostPackets - last_lost_ack);
+	last_lost_ack = iter->second.lostPackets;
+      }
       numOfTxPacket_ack[t.destinationAddress] = iter->second.txPackets;
     }
   }

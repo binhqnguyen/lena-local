@@ -44,6 +44,7 @@ LteRlcUm::LteRlcUm ()
 {
   NS_LOG_FUNCTION (this);
   m_reassemblingState = WAITING_S0_FULL;
+  last_sampling_time = 0;
 }
 
 LteRlcUm::~LteRlcUm ()
@@ -106,6 +107,7 @@ LteRlcUm::DoTransmitPdcpPdu (Ptr<Packet> p)
   else
     {
       // Discard full RLC SDU
+      NS_LOG_UNCOND(Simulator::Now() << " RLC_buffer_discarded. TxBufferSize = " << m_txBufferSize);
       NS_LOG_LOGIC ("TxBuffer is full. RLC SDU discarded");
       NS_LOG_LOGIC ("MaxTxBufferSize = " << m_maxTxBufferSize);
       NS_LOG_LOGIC ("txBufferSize    = " << m_txBufferSize);
@@ -1130,7 +1132,11 @@ LteRlcUm::DoReportBufferStatus (void)
   r.retxQueueSize = 0;
   r.retxQueueHolDelay = 0;
   r.statusPduSize = 0;
-
+  
+  if (Simulator::Now().GetMilliSeconds() - last_sampling_time >= SAMPLING_INTERVAL){
+  	NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << "\tID" << m_rnti << "\tbuf= " << queueSize << "\tdelay= " << holDelay.GetMilliSeconds());
+	last_sampling_time = Simulator::Now().GetMilliSeconds();
+  }
   NS_LOG_LOGIC ("Send ReportBufferStatus = " << r.txQueueSize << ", " << r.txQueueHolDelay );
   m_macSapProvider->ReportBufferStatus (r);
 }
