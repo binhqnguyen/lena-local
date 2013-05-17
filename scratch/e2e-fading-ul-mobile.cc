@@ -921,6 +921,7 @@ getTcpPut(Ptr<LteHelper> lteHelper){
     std::map<Ipv4Address,double>::iterator it2 = meanTcpDelay_send.begin();
     std::map<Ipv4Address,uint64_t>::iterator it3 = numOfLostPackets_send.begin();
     std::map<Ipv4Address,uint64_t>::iterator it4 = numOfTxPacket_send.begin();
+    std::map<Ipv4Address,double>::iterator it5 = meanTxRate_send.begin();
 
     for (;it1 != meanRxRate_send.end(); ){
       tcpThroughput << Simulator::Now().GetMilliSeconds() << "\t\t"
@@ -932,7 +933,8 @@ getTcpPut(Ptr<LteHelper> lteHelper){
                   << errorUlRx << "\t\t"
                   << errorDlRx << "\t\t"
                   << harqUl << "\t\t"
-                  << harqDl << "\n";
+                  << harqDl << "\t"
+		  << (*it5).second << "\n";
 
       std::cout << Simulator::Now().GetMilliSeconds() << "\t\t"
                   << (*it1).first << "\t\t"
@@ -943,12 +945,14 @@ getTcpPut(Ptr<LteHelper> lteHelper){
                   << errorUlRx << "\t\t"
                   << errorDlRx << "\t\t"
                   << harqUl << "\t\t"
-                  << harqDl << "\n";
+                  << harqDl << "\t"
+		  << (*it5).second << "\n";
 
                   ++it1;
                   ++it2;
                   ++it3;
                   ++it4;
+		  ++it5;
     }
 
 
