@@ -27,6 +27,8 @@
 #include <ns3/event-id.h>
 #include <map>
 
+#define SAMPLING_INTERVAL 1
+
 namespace ns3 {
 
 /**
@@ -107,6 +109,8 @@ private:
    * Expected Sequence Number
    */
   SequenceNumber10 m_expectedSeqNumber;
+
+  double last_sampling_time;
 
 };
 

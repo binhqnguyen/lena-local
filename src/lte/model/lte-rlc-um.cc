@@ -107,7 +107,7 @@ LteRlcUm::DoTransmitPdcpPdu (Ptr<Packet> p)
   else
     {
       // Discard full RLC SDU
-      NS_LOG_UNCOND(Simulator::Now() << " RLC_buffer_discarded. TxBufferSize = " << m_txBufferSize);
+      NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " RLC_buffer_discarded. TxBufferSize = " << m_txBufferSize);
       NS_LOG_LOGIC ("TxBuffer is full. RLC SDU discarded");
       NS_LOG_LOGIC ("MaxTxBufferSize = " << m_maxTxBufferSize);
       NS_LOG_LOGIC ("txBufferSize    = " << m_txBufferSize);

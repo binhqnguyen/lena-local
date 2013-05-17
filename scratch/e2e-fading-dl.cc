@@ -119,14 +119,14 @@ std::map<Ipv4Address, double> meanRxRate_send;
 std::map<Ipv4Address, double> meanTcpDelay_send;
 std::map<Ipv4Address, uint64_t> numOfLostPackets_send;
 std::map<Ipv4Address, uint64_t> numOfTxPacket_send;
-
+double last_lost = 0;
 /***acking flowS stats***/
 std::map<Ipv4Address, double> meanTxRate_ack;
 std::map<Ipv4Address, double> meanRxRate_ack;
 std::map<Ipv4Address, double> meanTcpDelay_ack;
 std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;
 std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;
-
+double last_lost_ack = 0;
 Ptr<ns3::Ipv4FlowClassifier> classifier;
 std::map <FlowId, FlowMonitor::FlowStats> stats;
 
@@ -608,8 +608,8 @@ main (int argc, char *argv[])
         meanRxRate_send[t.sourceAddress] = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/(1024);
         meanTcpDelay_send[t.sourceAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
       }
-      numOfLostPackets_send[t.sourceAddress] = iter->second.lostPackets;
-      numOfTxPacket_send[t.sourceAddress] = iter->second.txPackets;
+      numOfLostPackets_send[t.sourceAddress] = iter->second.lostPackets; 
+     numOfTxPacket_send[t.sourceAddress] = iter->second.txPackets;
     }
 
     /*ack flow, from Ues (7.0.0.2:200x) to endhost (1.0.0.2:49153)*/
@@ -619,7 +619,8 @@ main (int argc, char *argv[])
         meanRxRate_ack[t.sourceAddress] = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/(1024);
         meanTcpDelay_ack[t.sourceAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
       }
-      numOfLostPackets_ack[t.sourceAddress] = iter->second.lostPackets;
+      numOfLostPackets_ack[t.sourceAddress] = iter->second.lostPackets; 
+
       numOfTxPacket_ack[t.sourceAddress] = iter->second.txPackets;
     }
 
@@ -854,6 +855,11 @@ getTcpPut(Ptr<LteHelper> lteHelper){
         meanTcpDelay_send[t.destinationAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
       }
       numOfLostPackets_send[t.destinationAddress] = iter->second.lostPackets;
+      if (iter->second.lostPackets > last_lost){
+	NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp lost= " << iter->second.lostPackets - last_lost);
+	last_lost = iter->second.lostPackets;
+      }
+ 
       numOfTxPacket_send[t.destinationAddress] = iter->second.txPackets;
     }
 
@@ -865,6 +871,10 @@ getTcpPut(Ptr<LteHelper> lteHelper){
         meanTcpDelay_ack[t.sourceAddress] = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
       }
       numOfLostPackets_ack[t.sourceAddress] = iter->second.lostPackets;
+      if (iter->second.lostPackets > last_lost_ack){
+	NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp_ack lost= " << iter->second.lostPackets - last_lost_ack);
+	last_lost_ack = iter->second.lostPackets;
+      }
       numOfTxPacket_ack[t.sourceAddress] = iter->second.txPackets;
     }
   }
