@@ -28,12 +28,14 @@
 
 NS_LOG_COMPONENT_DEFINE ("LteRlcUm");
 
+#define MAX_TX_BUFFER 2 //TX buffer in MB
+
 namespace ns3 {
 
 NS_OBJECT_ENSURE_REGISTERED (LteRlcUm);
 
 LteRlcUm::LteRlcUm ()
-  : m_maxTxBufferSize (2 * 1024 * 1024),
+  : m_maxTxBufferSize (MAX_TX_BUFFER * 1024 * 1024),
     m_txBufferSize (0),
     m_sequenceNumber (0),
     m_vrUr (0),
@@ -60,7 +62,7 @@ LteRlcUm::GetTypeId (void)
     .AddConstructor<LteRlcUm> ()
     .AddAttribute ("MaxTxBufferSize",
                    "Maximum Size of the Transmission Buffer (in Bytes)",
-                   UintegerValue (2 * 1024 * 1024),
+                   UintegerValue (MAX_TX_BUFFER * 1024 * 1024),
                    MakeUintegerAccessor (&LteRlcUm::m_maxTxBufferSize),
                    MakeUintegerChecker<uint32_t> ())
     ;
