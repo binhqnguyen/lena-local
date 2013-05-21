@@ -11,38 +11,27 @@ cd ..
 cd data-scripts
 pwd
 
-cat < TCP-700m | grep ID1 | grep -v 7.0.0.2 > tcp-700m-queue.txt
-cat < TCP-700m | grep "RLC_buffer_discarded" > tcp_buffer_discarded_700m.txt
-cat < TCP-700m | grep "Tcp lost=" > tcp_lost_700m.txt
-cat < UDP-700m | grep ID1 | grep -v 7.0.0.2 > udp-700m-queue.txt
+cat < TCP | grep ID1 | grep -v 7.0.0.2 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > tcp-queue.txt
+cat < TCP | grep "RLC_buffer_discarded" > tcp_buffer_discarded.txt
+cat < TCP | grep "Tcp lost=" > tcp_lost.txt
+cat < UDP | grep ID1 | grep -v 7.0.0.2 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > udp-queue.txt
 #cat < tcp-100-3-ul-700m-nofading | grep ID1 > tcp-100-3-ul-700m-buffer-nofading.txt
 #cat < udp-100-3-ul-700m-nofading | grep ID1 > udp-100-3-ul-700m-buffer-nofading.txt
-cat < TCP-700m | grep 7.0.0.2 | grep -v ID1 > tcp-700m-put.txt
-cat < UDP-700m | grep 7.0.0.2 | grep -v ID1 > udp-700m-put.txt
+cat < TCP | grep 7.0.0.2 | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > tcp-put.txt
+cat < TCP | grep cwnd | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' | grep -v '7.0.0.2' > cwnd.txt
+cat < TCP | grep UlTx | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' | grep -v '7.0.0.2' > harq.txt
+cat < UDP | grep 7.0.0.2 | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > udp-put.txt
 
-cat < TCP-700m-dl | grep ID1 | grep -v 7.0.0.2 > tcp-700m-queue-dl.txt
-cat < TCP-700m-dl | grep "RLC_buffer_discarded" > tcp_buffer_discarded_dl_700m.txt
-cat < TCP-700m-dl | grep "Tcp lost=" > tcp_lost_dl_700m.txt
-cat < UDP-700m-dl | grep ID1 | grep -v 7.0.0.2 > udp-700m-queue-dl.txt
+cat < TCP-dl | grep ID1 | grep -v 7.0.0.2 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > tcp-queue-dl.txt
+cat < TCP-dl | grep "RLC_buffer_discarded" > tcp_buffer_discarded_dl.txt
+cat < TCP-dl | grep "Tcp lost=" > tcp_lost_dl.txt
+cat < UDP-dl | grep ID1 | grep -v 7.0.0.2 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > udp-queue-dl.txt
 #cat < tcp-100-3-ul-700m-nofading | grep ID1 > tcp-100-3-ul-700m-buffer-nofading.txt
 #cat < udp-100-3-ul-700m-nofading | grep ID1 > udp-100-3-ul-700m-buffer-nofading.txt
-cat < TCP-700m-dl | grep 7.0.0.2 | grep -v ID1 | grep -v enb > tcp-700m-put-dl.txt
-cat < UDP-700m-dl | grep 7.0.0.2 | grep -v ID1 | grep -v enb > udp-700m-put-dl.txt
-
-
-cat < TCP-200m | grep ID1 | grep -v 7.0.0.2 > tcp-200m-queue.txt
-cat < TCP-200m | grep "RLC_buffer_discarded" > tcp_buffer_discarded_200m.txt
-cat < TCP-200m | grep "Tcp lost=" > tcp_lost_200m.txt
-cat < UDP-200m | grep ID1 | grep -v 7.0.0.2 > udp-200m-queue.txt
-cat < TCP-200m | grep 7.0.0.2 | grep -v ID1 > tcp-200m-put.txt
-cat < UDP-200m | grep 7.0.0.2 | grep -v ID1 > udp-200m-put.txt
-
-cat < TCP-200m-dl | grep ID1 | grep -v 7.0.0.2 > tcp-200m-queue-dl.txt
-cat < TCP-200m-dl | grep "RLC_buffer_discarded" > tcp_buffer_discarded_dl_200m.txt
-cat < TCP-200m-dl | grep "Tcp lost=" > tcp_lost_dl_200m.txt
-cat < UDP-200m-dl | grep ID1 | grep -v 7.0.0.2 > udp-200m-queue-dl.txt
-cat < TCP-200m-dl | grep 7.0.0.2 | grep -v ID1 | grep -v enb > tcp-200m-put-dl.txt
-cat < UDP-200m-dl | grep 7.0.0.2 | grep -v ID1 | grep -v enb > udp-200m-put-dl.txt
+cat < TCP-dl | grep 7.0.0.2 | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > tcp-put-dl.txt
+cat < TCP-dl | grep cwnd | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' | grep -v '7.0.0.2' > cwnd-dl.txt
+cat < TCP-dl | grep DlTx | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' | grep -v '7.0.0.2' > harq-dl.txt
+cat < UDP-dl | grep 7.0.0.2 | grep -v ID1 | grep -v enb | grep -v RLC_buffer | grep -v 'lost=' > udp-put-dl.txt
 
 
 

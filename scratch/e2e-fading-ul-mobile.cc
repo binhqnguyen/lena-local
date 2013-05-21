@@ -98,6 +98,12 @@ getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 uint32_t
 getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 
+static void 
+CwndTracer (uint32_t oldval, uint32_t newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetMilliSeconds() << " cwnd_from " << oldval << " to " << newval);
+}
+static void enable_cwnd_trace(Ptr<Application> app);
 //static void
 //CwndChange (Ptr<OutputStreamWrapper> stream, uint32_t oldCwnd, uint32_t newCwnd);
 
@@ -218,6 +224,7 @@ main (int argc, char *argv[])
     uint16_t isTcp = 1;
     uint16_t isPedestrian = 0;
     uint16_t isVehicular = 0;
+    uint16_t isMobile = 0;
 
 
     // Command line arguments
@@ -243,6 +250,7 @@ main (int argc, char *argv[])
     cmd.AddValue("isTcp", "TCP application if true, Udp if false", isTcp);
     cmd.AddValue("isPedestrian", "Pedestrian fading model enable", isPedestrian);
     cmd.AddValue("isVehicular", "Vehicular fading model enable", isVehicular);
+    cmd.AddValue("isMobile", "Does UEs move", isMobile);
     cmd.AddValue("traceFile", "Tracefile Name", traceFile);
     cmd.AddValue("tag", "Tag for tcp-put outfile name", tag);
     cmd.AddValue("traceTime", "TraceFile length in second", traceTime);
@@ -265,13 +273,15 @@ main (int argc, char *argv[])
 
     cmd.Parse(argc, argv);
     //*************************************************/
-    if (traceTime==0){
-      std::cout << "Please set traceTime of traceFile\n";
-      return 0;
-    }
-    if (moving_speed==0){
-      std::cout << "Please set moving speed\n";
-      return 0;
+    if (isPedestrian != 0 || isVehicular != 0){
+    	if (traceTime==0){
+      		std::cout << "Please set traceTime of traceFile\n";
+     		return 0;
+    	}
+    	if (moving_speed==0){
+      		std::cout << "Please set moving speed\n";
+      		return 0;
+    	}
     }
 
     
@@ -351,7 +361,7 @@ main (int argc, char *argv[])
 
 
     //***********Create a single RemoteHost, install the Internet stack on it*************//
-    NodeContainer remoteHostContainer;
+    NodeContainer remoteHostContainer; ///RemoteHost Node # = 0///
     remoteHostContainer.Create (1);
     Ptr<Node> remoteHost = remoteHostContainer.Get (0);
     //Install Internet stack on the remoteHost.
@@ -384,12 +394,12 @@ main (int argc, char *argv[])
     //**********************************Create Ue nodes, EnodeBs*******************************//
     NodeContainer ueNodes;
     NodeContainer enbNodes;
-    enbNodes.Create(numberOfEnodebs);
-    ueNodes.Create(numberOfUeNodes);
+    enbNodes.Create(numberOfEnodebs);	//EnodeB nodes # from 1 to (1+numberOfEnodebs) //////
+    ueNodes.Create(numberOfUeNodes); 	//Ue nodes # from 2 to (2+numberOfUeNodes) ///////
 
 
 
-    //=============================Install mobility model for UE nodes and EnodeB nodes=================//
+   //=============================Install mobility model for UE nodes and EnodeB nodes=================//
     MobilityHelper enbMobility;
     enbMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     enbMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
@@ -411,60 +421,23 @@ main (int argc, char *argv[])
                                      "X", DoubleValue (enbPosition.x),
                                      "Y", DoubleValue (enbPosition.y),
                                      "rho", DoubleValue (distance));  //radius of the circle.
-    // ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
 
-    /*
-     *
-     */
-    double speed = double (moving_speed)*1000/3600; //kmph to mps.
-    std::stringstream mss;
-    mss << speed;
-    std::string ms = mss.str();
-    std::cout << "enb " << enbPosition.x << " " << enbPosition.y << " " << moving_bound/2;
-    ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
+    if (isMobile){	//if UE is moving
+	double speed = double (moving_speed)*1000/3600; //kmph to mps.
+    	std::stringstream mss;
+    	mss << speed;
+    	std::string ms = mss.str();
+    	ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
                              "Mode", StringValue ("Time"),  //change distance and speed based on TIME.
-                             "Time", StringValue ("10000s"), //change direction and speed after each 2s.
-                             // "Speed", StringValue ("ns3::ConstantRandomVariable[Constant=1.0]"),  //m/s
+                             "Time", StringValue ("200s"), //change direction and speed after each 2s.
+                             // "Speed", StringValue (ms),  //m/s
                              "Speed", StringValue ("ns3::ConstantRandomVariable[Constant="+ms+"]"),  //m/s
                              "Bounds", RectangleValue (Rectangle (-10000, 10000, -10000, 10000)));  //bound
+    }
+    else ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     ueMobility.Install (ueNodes);
     NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes);
 
-                             
-
-
-
-
-    //*************************Create positions, mobility model, and install Mobility Model************************//
-    //************************Install LTE Devices to the nodes (install LTE stack to enodeB and Ue)******************//
-    // MobilityHelper enbMobility;
-    // enbMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    // enbMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
-    //                                   "MinX", DoubleValue (0.0),	//zero point
-    //                                   "MinY", DoubleValue (0.0),	//zero point
-    //                                   "DeltaX", DoubleValue (10000.0),	//distance among nodes
-    //                                   "DeltaY", DoubleValue (10000.0),
-    //                                   "GridWidth", UintegerValue (3),	//number of nodes on a line
-    //                                   "LayoutType", StringValue ("RowFirst"));
-    // enbMobility.Install (enbNodes);
-
-    /****************Set radio uplink/downlink bandwidth on eNB. Maximum 100 RBs, correspond to ~70Mbps peak rate***********/
-    // lteHelper->SetEnbDeviceAttribute("UlBandwidth",UintegerValue(radioUlBandwidth));
-    // lteHelper->SetEnbDeviceAttribute("DlBandwidth",UintegerValue(radioDlBandwidth));
-
-
-
-
-    /**********************Ues position allocation*********************/
-    // NetDeviceContainer::Iterator enbLteDevIt = enbLteDevs.Begin ();
-    // Vector enbPosition = (*enbLteDevIt)->GetNode ()->GetObject<MobilityModel> ()->GetPosition ();
-    // MobilityHelper ueMobility;
-    // ueMobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator",	//nodes are put randomly inside a circle with the central point is (x,y).
-    //                                  "X", DoubleValue (enbPosition.x),
-    //                                  "Y", DoubleValue (enbPosition.y),
-    //                                  "rho", DoubleValue (distance));	//radius of the circle.
-    // ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    // ueMobility.Install (ueNodes);
 
 
     //**********************Assign Ipv4 addresses for UEs. Install the IP stack on the UEs******************//
@@ -537,8 +510,8 @@ main (int argc, char *argv[])
 
     /*********Tracing settings***************/
     lteHelper->EnableTraces ();
-    lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( Seconds (simTime)) );		//set collection interval for PDCP.
-    lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( Seconds (simTime)))	;		//same for RLC
+    lteHelper->GetPdcpStats()->SetAttribute("EpochDuration", TimeValue( Seconds (0.001)));		//set collection interval for PDCP.
+    lteHelper->GetRlcStats()->SetAttribute("EpochDuration", TimeValue ( Seconds (0.001)));		//same for RLC
     // Uncomment to enable PCAP tracing
     //p2ph.EnablePcapAll("pcaps/"+pcapName);
 
@@ -556,6 +529,11 @@ main (int argc, char *argv[])
     outputConfig.ConfigureDefaults();
     outputConfig.ConfigureAttributes();
 
+    /**Sender's TCP congestion window monitoring****/
+    //NodeList: 0 - remote_host; (1..) - enodeB; (enodeB..) - Ue
+    //Sender is Ue, node # 2.
+    //Config::ConnectWithoutContext ("/NodeList/2/$ns3::TcpL4Protocol/SocketList/0/CongestionWindow", MakeCallback (&CwndTracer));
+
     /**Pathloss**/
     DownlinkLteGlobalPathlossDatabase dlPathlossDb;
     UplinkLteGlobalPathlossDatabase ulPathlossDb;
@@ -563,6 +541,7 @@ main (int argc, char *argv[])
     /*=============schedule to get TCP throughput============*/
     Time t = Seconds(0.0);
     Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut, lteHelper);
+    Simulator::Schedule(Seconds(0.6) + NanoSeconds(1.0), &enable_cwnd_trace, ueNodes.Get(0)->GetApplication(0)); ///*Note: enable_cwnd_trace must be scheduled after the OnOffApplication starts (OnOffApplication's socket is created after the application starts) 
 
     /*********Start the simulation*****/
     Simulator::Stop(Seconds(simTime));
@@ -869,6 +848,20 @@ uint32_t
 getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){
 	ImsiLcidPair_t p (imsi, lcid);
 	return (lteHelper->GetPdcpStats()->ulTxPacketsMap[p]);
+}
+
+//
+static void enable_cwnd_trace(Ptr<Application> app)
+{
+   // AsciiTraceHelper asciiTraceHelper;
+   // Ptr<OutputStreamWrapper> stream = asciiTraceHelper.CreateFileStream("bb_tcp_cwnd.txt");
+    
+    Ptr<OnOffApplication> on_off_app = app->GetObject<OnOffApplication>();
+    if (on_off_app != NULL)
+    {
+        Ptr<Socket> socket = on_off_app->GetSocket();
+        socket->TraceConnectWithoutContext("CongestionWindow", MakeCallback(&CwndTracer));//, stream));
+    }
 }
 
 static void

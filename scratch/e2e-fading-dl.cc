@@ -98,7 +98,12 @@ getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 uint32_t
 getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid);
 
-//static void
+static void 
+CwndTracer (uint32_t oldval, uint32_t newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetMilliSeconds() << " cwnd_from " << oldval << " to " << newval);
+}
+static void enable_cwnd_trace(Ptr<Application> app);
 //CwndChange (Ptr<OutputStreamWrapper> stream, uint32_t oldCwnd, uint32_t newCwnd);
 
 
@@ -208,6 +213,7 @@ main (int argc, char *argv[])
     uint16_t isTcp = 1;
     uint16_t isPedestrian = 0;
     uint16_t isVehicular = 0;
+    uint16_t isMobile = 0;
     
     
     // Command line arguments
@@ -233,6 +239,7 @@ main (int argc, char *argv[])
     cmd.AddValue("isTcp", "TCP application if true, Udp if false", isTcp);
     cmd.AddValue("isPedestrian", "Pedestrian fading model enable", isPedestrian);
     cmd.AddValue("isVehicular", "Vehicular fading model enable", isVehicular);
+    cmd.AddValue("isMobile", "Does UEs move", isMobile);
     cmd.AddValue("traceFile", "TraceFile", traceFile);
     cmd.AddValue("tag", "Tag for ouput file", tag);
     cmd.AddValue("traceTime", "TraceFile length in second", traceTime);
@@ -255,13 +262,15 @@ main (int argc, char *argv[])
     //*************************************************/
 
    //*************************************************/
-    if (traceTime==0){
-      std::cout << "Please set traceTime of traceFile\n";
-      return 0;
-    }
-    if (moving_speed==0){
-      std::cout << "Please set moving speed\n";
-      return 0;
+    if (isPedestrian != 0 || isVehicular != 0){
+    	if (traceTime==0){
+      		std::cout << "Please set traceTime of traceFile\n";
+     		return 0;
+    	}
+    	if (moving_speed==0){
+      		std::cout << "Please set moving speed\n";
+      		return 0;
+    	}
     }
 
     std::string str = "/Users/binh/Desktop/ns3_play/tcp-put-dl-send-"+tag+".txt";
@@ -377,7 +386,7 @@ main (int argc, char *argv[])
     ueNodes.Create(numberOfUeNodes);
     
     
-    //=============================Install mobility model for UE nodes and EnodeB nodes=================//
+   //=============================Install mobility model for UE nodes and EnodeB nodes=================//
     MobilityHelper enbMobility;
     enbMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     enbMobility.SetPositionAllocator ("ns3::GridPositionAllocator",
@@ -399,26 +408,25 @@ main (int argc, char *argv[])
                                      "X", DoubleValue (enbPosition.x),
                                      "Y", DoubleValue (enbPosition.y),
                                      "rho", DoubleValue (distance));  //radius of the circle.
-    // ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
 
-    /*
-     *
-     */
-    double speed = double (moving_speed)*1000/3600; //kmph to mps.
-    std::stringstream mss;
-    mss << speed;
-    std::string ms = mss.str();
-    std::cout << "enb " << enbPosition.x << " " << enbPosition.y << " " << moving_bound/2;
-    ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
+    if (isMobile){	//if UE is moving
+	double speed = double (moving_speed)*1000/3600; //kmph to mps.
+    	std::stringstream mss;
+    	mss << speed;
+    	std::string ms = mss.str();
+    	ueMobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
                              "Mode", StringValue ("Time"),  //change distance and speed based on TIME.
-                             "Time", StringValue ("10000s"), //change direction and speed after each 2s.
-                             // "Speed", StringValue ("ns3::ConstantRandomVariable[Constant=1.0]"),  //m/s
+                             "Time", StringValue ("200s"), //change direction and speed after each 2s.
+                             // "Speed", StringValue (ms),  //m/s
                              "Speed", StringValue ("ns3::ConstantRandomVariable[Constant="+ms+"]"),  //m/s
                              "Bounds", RectangleValue (Rectangle (-10000, 10000, -10000, 10000)));  //bound
+    }
+    else ueMobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
     ueMobility.Install (ueNodes);
-    NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes);
+    NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes); 
 
-    
+
+   
     //**********************Assign Ipv4 addresses for UEs. Install the IP stack on the UEs******************//
     internet.Install (ueNodes);	//internet (InternetStackHelper) again be used to install an Internet stack for a node.
 
@@ -515,6 +523,9 @@ main (int argc, char *argv[])
     /*=============schedule to get TCP throughput============*/
     Time t = Seconds(0.0);
     Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut, lteHelper);
+    Simulator::Schedule(Seconds(0.6) + NanoSeconds(1.0), &enable_cwnd_trace, remoteHostContainer.Get(0)->GetApplication(0));///*Note: enable_cwnd_trace must be scheduled after the OnOffApplication starts (OnOffApplication's socket is created after the application starts) 
+
+
 
     /*********Start the simulation*****/
     Simulator::Stop(Seconds(simTime));
@@ -758,6 +769,18 @@ CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){
 	}
 	return (sum/counter);
 }
+
+static void enable_cwnd_trace(Ptr<Application> app)
+{
+    
+    Ptr<OnOffApplication> on_off_app = app->GetObject<OnOffApplication>();
+    if (on_off_app != NULL)
+    {
+        Ptr<Socket> socket = on_off_app->GetSocket();
+        socket->TraceConnectWithoutContext("CongestionWindow", MakeCallback(&CwndTracer));//, stream));
+    }
+}
+
 
 /**Calculate average of an array**/
 // double
