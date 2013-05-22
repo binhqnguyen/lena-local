@@ -74,7 +74,6 @@ static std::map <FlowId, FlowMonitor::FlowStats> stats;
 static Ipv4Address ue_ip;
 static Ipv4Address endhost_ip;
 static Ipv4Address enb_ip;
-
 /**sending flowS stats***/
 double meanTxRate_send;
 double meanRxRate_send;
@@ -82,6 +81,10 @@ double meanTcpDelay_send;
 uint64_t numOfLostPackets_send;
 uint64_t numOfTxPacket_send;
 double last_lost = 0;
+static double tcp_delay = 0;
+static double last_delay_sum = 0;
+static uint32_t last_rx_pkts = 0;
+
 /***acking flowS stats***/
 double meanTxRate_ack;
 double meanRxRate_ack;
@@ -89,6 +92,10 @@ double meanTcpDelay_ack;
 uint64_t numOfLostPackets_ack;
 uint64_t numOfTxPacket_ack;
 double last_lost_ack = 0;
+static double tcp_delay_ack = 0;
+static double last_delay_sum_ack = 0;
+static uint32_t last_rx_pkts_ack = 0;
+
 
 
 static void 
@@ -223,6 +230,7 @@ int main (int argc, char *argv[])
     outputConfig.ConfigureDefaults();
     outputConfig.ConfigureAttributes();
 
+  //Config::Set ("/NodeList/3/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue ("0"));
 
 
   Simulator::Stop (Seconds (sim_time));
@@ -298,7 +306,12 @@ getTcpPut(){
       if (iter->second.rxPackets > 1){
         meanTxRate_send = 8*iter->second.txBytes/(iter->second.timeLastTxPacket.GetDouble()-iter->second.timeFirstTxPacket.GetDouble())*ONEBIL/kilo;
         meanRxRate_send = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/kilo;
-        meanTcpDelay_send = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
+	if (iter->second.rxPackets > last_rx_pkts){
+ 	       	meanTcpDelay_send = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
+		tcp_delay = (iter->second.delaySum.GetDouble() - last_delay_sum) / (iter->second.rxPackets - last_rx_pkts)/(kilo*kilo);
+		last_delay_sum = iter->second.delaySum.GetDouble();
+		last_rx_pkts = iter->second.rxPackets;
+	}
       }
       numOfLostPackets_send = iter->second.lostPackets;
       if (iter->second.lostPackets > last_lost){
@@ -312,8 +325,13 @@ getTcpPut(){
     if (t.destinationPort >= 49153){
       if (iter->second.rxPackets > 1){
         meanTxRate_ack = 8*iter->second.txBytes/(iter->second.timeLastTxPacket.GetDouble()-iter->second.timeFirstTxPacket.GetDouble())*ONEBIL/(1024);
-        meanRxRate_ack = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/(1024);
-        meanTcpDelay_ack = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
+        meanRxRate_ack = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/(1024);	
+	if (iter->second.rxPackets > last_rx_pkts_ack){
+ 	       	meanTcpDelay_ack = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
+		tcp_delay_ack = (iter->second.delaySum.GetDouble() - last_delay_sum_ack) / (iter->second.rxPackets - last_rx_pkts_ack)/(kilo*kilo);
+		last_delay_sum_ack = iter->second.delaySum.GetDouble();
+		last_rx_pkts_ack = iter->second.rxPackets;
+	}
       }
       numOfLostPackets_ack = iter->second.lostPackets; 
       numOfTxPacket_ack = iter->second.txPackets;
@@ -333,7 +351,7 @@ getTcpPut(){
                   << "x" << "\t\t"
                   << "x" << "\t\t"
                   << "x" << "\t"
-		  << meanTxRate_send);
+		  << meanTxRate_send << "\t" << tcp_delay << "\t" << tcp_delay_ack);
     while (timer < sim_time){
         timer += TCP_SAMPLING_INTERVAL;
         Simulator::Schedule(Seconds(timer),&getTcpPut);
