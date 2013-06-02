@@ -23,12 +23,11 @@
 //       n0-----------------n1-----------------n2
 //	(Ue)		  (Enb, SPGW) 	   (end-host)	
 // 	10.1.3.1:3000	10.1.3.2/10.1.2.1    10.1.2.2:49153
-// - Tracing of queues and packet receptions to file 
-//   "tcp-large-transfer.tr"
-// - pcap traces also generated in the following files
-//   "tcp-large-transfer-$n-$i.pcap" where n and i represent node and interface
-// numbers respectively
-//  Usage (e.g.): ./waf --run tcp-large-transfer
+//
+// 	Device topology:
+// 	ue(n0)----------------------------enb(n1)-------------------------------endhost(n2)
+// 	(ue_dev)          (enb_radio_dev)         (enb_core_dev)            (endhost_dev)  
+//  Usage (e.g.): ./waf --run "scratch/emulated --<parameter1>"
 
 
 #include <ctype.h>
@@ -49,11 +48,11 @@
 
 using namespace ns3;
 
-NS_LOG_COMPONENT_DEFINE ("TcpLargeTransfer");
+NS_LOG_COMPONENT_DEFINE ("emulated");
 
 #define kilo 1000
 #define KILO 1024
-#define TCP_SAMPLING_INTERVAL 0.02 //tcp flow sampling interval in second
+#define TCP_SAMPLING_INTERVAL 0.005 //tcp flow sampling interval in second
 #define ONEBIL kilo*kilo*kilo
 
 static double timer = 0;
@@ -61,7 +60,7 @@ static uint32_t sim_time = 100;
 static uint32_t packet_size = 900;
 static std::string sending_rate = "100Mb/s"; //sending rate.
 static std::string core_network_bandwidth = "1000Mb/s"; 	//core_network_bandwidth.
-static uint32_t core_network_delay = 2;	//core_network_delay in millisenconds.
+static uint32_t core_network_delay = 30;	//core_network_delay in millisenconds.
 static uint32_t core_network_mtu = 1500; 	//core_network_mte in Bytes.
 static std::string init_radio_bandwidth = "1Mb/s"; 	//radio_link_bandwidth (init).
 static uint32_t init_radio_delay = 5;	//radio_link_delay (init) in millisenconds.
@@ -73,14 +72,15 @@ static Ptr<ns3::Ipv4FlowClassifier> classifier;
 static std::map <FlowId, FlowMonitor::FlowStats> stats;
 static Ipv4Address ue_ip;
 static Ipv4Address endhost_ip;
-static Ipv4Address enb_ip;
+static Ipv4Address enb_radio_ip;
+static Ipv4Address enb_core_ip;
 /**sending flowS stats***/
 double meanTxRate_send;
 double meanRxRate_send;
 double meanTcpDelay_send;
 uint64_t numOfLostPackets_send;
 uint64_t numOfTxPacket_send;
-double last_lost = 0;
+//double last_lost = 0;
 static double tcp_delay = 0;
 static double last_delay_sum = 0;
 static uint32_t last_rx_pkts = 0;
@@ -91,33 +91,92 @@ double meanRxRate_ack;
 double meanTcpDelay_ack;
 uint64_t numOfLostPackets_ack;
 uint64_t numOfTxPacket_ack;
-double last_lost_ack = 0;
+//double last_lost_ack = 0;
 static double tcp_delay_ack = 0;
 static double last_delay_sum_ack = 0;
 static uint32_t last_rx_pkts_ack = 0;
 
+static Ptr<PointToPointNetDevice> enb_radio_dev; 	//device on the radio side of the enb
+static Ptr<PointToPointNetDevice> enb_core_dev;		//device on the core side of the enb
+static Ptr<PointToPointNetDevice> ue_dev;
+static Ptr<PointToPointNetDevice> endhost_dev;
 
-
+static double last_sampling_time = 0;
+static double last_total_enqueued = 0;
+ 
 static void 
 CwndTracer (uint32_t oldval, uint32_t newval)
 {
-  NS_LOG_UNCOND (Simulator::Now().GetMilliSeconds() << " cwnd_from " << oldval << " to " << newval);
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " cwnd_from " << oldval << " to " << newval);
 }
-static void enable_cwnd_trace(Ptr<Application> app);
+
+static void 
+RTOTracer (ns3::Time oldval, ns3::Time newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " RTO_value " << newval.GetSeconds());
+}
+
+static void 
+AwndTracer (uint32_t oldval, uint32_t newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " awnd_value " << newval);
+}
+
+
+static void 
+LastRttTracer (ns3::Time oldval, ns3::Time newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " last_rtt_sample " << newval.GetSeconds());
+}
+
+
+static void 
+HighestSentSeqTracer (ns3::SequenceNumber32 oldval, ns3::SequenceNumber32 newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " highest_sent_seq " << newval);
+}
+
+
+static void 
+NextTxSeqTracer (ns3::SequenceNumber32 oldval, ns3::SequenceNumber32 newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " next_tx_seq " << newval);
+}
+
+
+static void enable_tcp_socket_traces(Ptr<Application> app);
 static void
 getTcpPut();
+
+static void dev_queue_droptail(Ptr<const Packet> packet){
+	//Ptr<Packet> pkt;
+	NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " queue droptail");
+	//return pkt;
+}
+
+static void dev_rx(Ptr<const Packet> packet){
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " device received a packet");
+  //return pkt;
+}
 
 
 int main (int argc, char *argv[])
 {
+
+     LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
   // Users may find it convenient to turn on explicit debugging
   // for selected modules; the below lines suggest how to do this
   //  LogComponentEnable("TcpL4Protocol", LOG_LEVEL_ALL);
   //  LogComponentEnable("TcpSocketImpl", LOG_LEVEL_ALL);
   //  LogComponentEnable("PacketSink", LOG_LEVEL_ALL);
   //  LogComponentEnable("TcpLargeTransfer", LOG_LEVEL_ALL);
-
-  CommandLine cmd;
+     // LogComponentEnable("TcpNewReno",level);
+     // LogComponentEnable("TcpReno",level);
+  LogComponentEnable("TcpTahoe",level);
+  // LogComponentEnable("RttEstimator",level);
+  LogComponentEnable("Queue",level);
+  
+    CommandLine cmd;
     cmd.AddValue("sim_time", "Total duration of the simulation [s])", sim_time);
     cmd.AddValue("packet_size", "Size of each packet", packet_size);
     cmd.AddValue("sending_rate", "Application sending rate", sending_rate);
@@ -146,7 +205,7 @@ int main (int argc, char *argv[])
 
   Ptr<Node> remote_host = n1n2.Get(1);
   Ptr<Node> ue = n0n1.Get(0);
-  Ptr<Node> enb = n1n2.Get(1); 
+  Ptr<Node> enb = n1n2.Get(0); 
 
   // We create the channels first without any IP addressing information
   // First make and configure the helper, so that it will put the appropriate
@@ -165,6 +224,10 @@ int main (int argc, char *argv[])
   // And then install devices and channels connecting our topology.
   NetDeviceContainer radio_dev = radio_link.Install (n0n1); 	//Radio link devices, n0-Ue, n1-Enb,SPGW
   NetDeviceContainer core_dev = core_network_link.Install (n1n2);		//Core network devices, n2-endhost
+  enb_radio_dev = radio_dev.Get(1)->GetObject<ns3::PointToPointNetDevice>();  //radio side enb device
+  enb_core_dev = core_dev.Get(0)->GetObject<ns3::PointToPointNetDevice>();    //core side enb device
+  endhost_dev = core_dev.Get(1)->GetObject<ns3::PointToPointNetDevice>();
+  ue_dev = radio_dev.Get(0)->GetObject<ns3::PointToPointNetDevice>();
 
   // Now add ip/tcp stack to all nodes.
   InternetStackHelper internet;
@@ -178,7 +241,8 @@ int main (int argc, char *argv[])
   Ipv4InterfaceContainer core_interfs = ipv4.Assign (core_dev);
   ue_ip = radio_interfs.GetAddress(0);
   endhost_ip = core_interfs.GetAddress(1);
-  enb_ip = radio_interfs.GetAddress(1);
+  enb_radio_ip = radio_interfs.GetAddress(1);
+  enb_core_ip = core_interfs.GetAddress(0);
   // and setup ip routing tables to get total ip-level connectivity.
   Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
 
@@ -220,8 +284,8 @@ int main (int argc, char *argv[])
   clientApps.Start (Seconds(0.5));
 
   Simulator::ScheduleWithContext (0 ,Seconds (0.0), &getTcpPut);
-  Simulator::Schedule(Seconds(0.6) + NanoSeconds(1.0), &enable_cwnd_trace, remote_host->GetApplication(0));///*Note: enable_cwnd_trace must be scheduled after the OnOffApplication starts (OnOffApplication's socket is created after the application starts) 
-
+  Simulator::Schedule(Seconds(0.6) + NanoSeconds(1.0), &enable_tcp_socket_traces, remote_host->GetApplication(0));///*Note: enable_tcp_socket_traces must be scheduled after the OnOffApplication starts (OnOffApplication's socket is created after the application starts) 
+  
     /****ConfigStore setting****/
     Config::SetDefault("ns3::ConfigStore::Filename", StringValue("emulated-out.txt"));
     Config::SetDefault("ns3::ConfigStore::FileFormat", StringValue("RawText"));
@@ -232,6 +296,8 @@ int main (int argc, char *argv[])
 
   //Config::Set ("/NodeList/3/$ns3::Ns3NscStack<linux2.6.26>/net.ipv4.tcp_sack", StringValue ("0"));
 
+  //core_network_link.EnablePcap("core");
+  radio_link.EnablePcapAll("emulated");
 
   Simulator::Stop (Seconds (sim_time));
   Simulator::Run ();
@@ -277,18 +343,28 @@ int main (int argc, char *argv[])
         NS_LOG_UNCOND("Mean transmitted bitrate " << 8*iter->second.txBytes/(iter->second.timeLastTxPacket-iter->second.timeFirstTxPacket)*ONEBIL/(1024));
     }
   }
-  std::cout << "ue = " << ue_ip << "end-host = " << endhost_ip << "enb = " << enb_ip << std::endl;
+  NS_LOG_UNCOND ("ue ip = " << ue_ip << "endhost ip = " << endhost_ip << "enb radio/core ip = " << enb_radio_ip << "/" << enb_core_ip  );
   Simulator::Destroy ();
 }
 
-static void enable_cwnd_trace(Ptr<Application> app)
+static void enable_tcp_socket_traces(Ptr<Application> app)
 {
     Ptr<OnOffApplication> on_off_app = app->GetObject<OnOffApplication>();
     if (on_off_app != NULL)
     {
         Ptr<Socket> socket = on_off_app->GetSocket();
         socket->TraceConnectWithoutContext("CongestionWindow", MakeCallback(&CwndTracer));//, stream));
+        socket->TraceConnectWithoutContext("RTO", MakeCallback(&RTOTracer));//, stream));
+        socket->TraceConnectWithoutContext("MaxWindowSize", MakeCallback(&AwndTracer));//, stream));
+        socket->TraceConnectWithoutContext("RTT", MakeCallback(&LastRttTracer));//, stream));
+        socket->TraceConnectWithoutContext("HighestSequence", MakeCallback(&HighestSentSeqTracer));//, stream));
+        socket->TraceConnectWithoutContext("NextTxSequence", MakeCallback(&NextTxSeqTracer));//, stream));
     }
+  enb_radio_dev->TraceConnect("**EnodeB Radio Dev: ","MacTxDrop", MakeCallback(&dev_queue_droptail)); 
+  enb_core_dev->TraceConnect("**EnodeB Core Dev: ", "PhyRxEnd", MakeCallback(&dev_queue_droptail));
+  endhost_dev->TraceConnect("**Endhost: ","MacTxDrop", MakeCallback(&dev_queue_droptail)); 
+  ue_dev->TraceConnectWithoutContext("PhyRxEnd", MakeCallback(&dev_rx)); 
+
 }
 
 static void
@@ -296,8 +372,14 @@ getTcpPut(){
     monitor->CheckForLostPackets();
     classifier = DynamicCast<ns3::Ipv4FlowClassifier> (flowHelper.GetClassifier());
     stats = monitor->GetFlowStats();
-
-    /*==============Get flows information============*/
+    //NS_LOG_UNCOND("enb radio/core = " << enb_radio_dev->GetQueue()->GetNBytes() << "__" << enb_radio_dev->GetQueue()->GetTotalDroppedBytes() << "/" << enb_core_dev->GetQueue()->GetNBytes() << "__" << enb_radio_dev->GetQueue()->GetTotalDroppedBytes() << "Ue = " << ue_dev->GetQueue()->GetNBytes() << "__" << ue_dev->GetQueue()->GetTotalDroppedBytes()  << "Endhost= " << endhost_dev->GetQueue()->GetNBytes() << "__" << ue_dev->GetQueue()->GetTotalDroppedBytes() );	
+   NS_LOG_UNCOND ("QQQQ: " << Simulator::Now().GetSeconds() << " " << ue_dev->GetQueue()->GetNBytes() << " " << enb_radio_dev->GetQueue()->GetNBytes() << " " << enb_core_dev->GetQueue()->GetNBytes() << " " << endhost_dev->GetQueue()->GetNBytes()); 
+   if (Simulator::Now().GetSeconds() > last_sampling_time){
+   	NS_LOG_UNCOND ("ENQUEUED: " << Simulator::Now().GetSeconds() << " " << endhost_dev->GetQueue()->GetTotalReceivedBytes() - last_total_enqueued);
+	last_sampling_time = Simulator::Now().GetSeconds();
+	last_total_enqueued = endhost_dev->GetQueue()->GetTotalReceivedBytes();
+   }
+   /*==============Get flows information============*/
    for (std::map<FlowId, FlowMonitor::FlowStats>::const_iterator iter = stats.begin(); iter != stats.end(); ++iter){
     ns3::Ipv4FlowClassifier::FiveTuple t = classifier->FindFlow(iter->first);
 
@@ -314,10 +396,12 @@ getTcpPut(){
 	}
       }
       numOfLostPackets_send = iter->second.lostPackets;
+      /*
       if (iter->second.lostPackets > last_lost){
 	NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp lost= " << iter->second.lostPackets - last_lost);
 	last_lost = iter->second.lostPackets;
 	}
+	*/
       numOfTxPacket_send = iter->second.txPackets;
     }
 
@@ -335,21 +419,23 @@ getTcpPut(){
       }
       numOfLostPackets_ack = iter->second.lostPackets; 
       numOfTxPacket_ack = iter->second.txPackets;
+      /*
       if (iter->second.lostPackets > last_lost_ack){
 		NS_LOG_UNCOND(Simulator::Now().GetMilliSeconds() << " Tcp_ack lost= " << iter->second.lostPackets - last_lost_ack);
 		last_lost_ack = iter->second.lostPackets;
       }
+      */
     }
    }
-      NS_LOG_UNCOND (Simulator::Now().GetMilliSeconds() << "\t\t"
-                  << ue_ip << "\t\t"
-                  << meanRxRate_send << "\t\t"
-                  << meanTcpDelay_send << "\t\t"
-                  << numOfLostPackets_send << "\t\t"
-                  << numOfTxPacket_send << "\t\t"
-                  << "x" << "\t\t"
-                  << "x" << "\t\t"
-                  << "x" << "\t\t"
+       NS_LOG_UNCOND (Simulator::Now().GetSeconds() << "\t"
+                  << ue_ip << "\t"
+                  << meanRxRate_send << "\t"
+                  << meanTcpDelay_send << "\t"
+                  << numOfLostPackets_send << "\t"
+                  << numOfTxPacket_send << "\t"
+                  << "x" << "\t"
+                  << "x" << "\t"
+                  << "x" << "\t"
                   << "x" << "\t"
 		  << meanTxRate_send << "\t" << tcp_delay << "\t" << tcp_delay_ack);
     while (timer < sim_time){
