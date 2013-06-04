@@ -174,7 +174,6 @@ int main (int argc, char *argv[])
      // LogComponentEnable("TcpReno",level);
   LogComponentEnable("TcpTahoe",level);
   // LogComponentEnable("RttEstimator",level);
-  LogComponentEnable("Queue",level);
   
     CommandLine cmd;
     cmd.AddValue("sim_time", "Total duration of the simulation [s])", sim_time);
@@ -253,6 +252,8 @@ int main (int argc, char *argv[])
     ApplicationContainer serverApps;
 
    if (is_tcp == 1){
+                LogComponentEnable("Queue",level);    //Only enable Queue monitoring for TCP to accelerate experiment speed.
+
         				/*********TCP Application********/
        					PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), ulPort));
        					serverApps.Add(sink.Install(ue));
