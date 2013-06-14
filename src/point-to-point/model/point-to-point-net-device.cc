@@ -507,6 +507,7 @@ PointToPointNetDevice::Send (
       else
         {
           // Enqueue may fail (overflow)
+  	  NS_LOG_UNCOND ("UID is " << packet->GetUid () << "Packet dropped");
           m_macTxDropTrace (packet);
           return false;
         }

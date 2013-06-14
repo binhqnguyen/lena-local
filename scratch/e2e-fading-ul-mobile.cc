@@ -168,7 +168,8 @@ main (int argc, char *argv[])
     	 // LogComponentEnable("UdpServer", LOG_LEVEL_INFO);
 //		LogComponentEnable("OnOffApplication",LOG_LEVEL_INFO);
 //		LogComponentEnable("PacketSink",LOG_LEVEL_INFO);
-//         LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+         LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+	 LogComponentEnable("TcpNewReno",level);
 //     		LogComponentEnable("OnOffApplication",level);
 //     		LogComponentEnable("PacketSink",level);
 //       LogComponentEnable ("LteRlcUm", level);
@@ -193,12 +194,12 @@ main (int argc, char *argv[])
 
     //S1uLink
     std::string s1uLinkDataRate = "1Gb/s";
-    double	s1uLinkDelay = 0.01;
+    double	s1uLinkDelay = 0.001;
     uint16_t s1uLinkMtu	= 5000;
 
     //p2pLink
     std::string p2pLinkDataRate = "1Gb/s";
-    double p2pLinkDelay = 0.01;
+    double p2pLinkDelay = 0.001;
     uint16_t p2pLinkMtu = 5000;
 
     //Simulation

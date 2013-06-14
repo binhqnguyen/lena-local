@@ -165,7 +165,8 @@ main (int argc, char *argv[])
     	 // LogComponentEnable("UdpServer", LOG_LEVEL_INFO);
 //		LogComponentEnable("OnOffApplication",LOG_LEVEL_INFO);
 //		LogComponentEnable("PacketSink",LOG_LEVEL_INFO);
-//         LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+         LogLevel level = (LogLevel) (LOG_LEVEL_ALL | LOG_PREFIX_TIME | LOG_PREFIX_NODE | LOG_PREFIX_FUNC);
+	 LogComponentEnable("TcpNewReno", level);
 //     		LogComponentEnable("OnOffApplication",level);
 //     		LogComponentEnable("PacketSink",level);
 //       LogComponentEnable ("LteRlcUm", level);
@@ -535,7 +536,7 @@ main (int argc, char *argv[])
     /**************Simulation stops here. Start printing out information (if needed)***********/
     
     /******Print out simulation settings, client/server sent/received status*******/
-    std::cout << "*************DL experiment**************"
+    NS_LOG_UNCOND( "*************DL experiment**************"
     << "\nNumberofUeNodes = " << numberOfUeNodes
     << "\nNumberOfEnodeBs = " << numberOfEnodebs
     << "\nDistance = " << distance
@@ -544,12 +545,12 @@ main (int argc, char *argv[])
     << "\nRate = " << dataRate
     << "\nNumber of Packets = " << numberOfPackets
     << "\nS1uLink " << s1uLinkDataRate << " " << s1uLinkDelay
-    << "\np2pLink " << p2pLinkDataRate << " " << p2pLinkDelay << "\n";
+    << "\np2pLink " << p2pLinkDataRate << " " << p2pLinkDelay );
     
     
     /*******Print out simulation results, MULTIPLE CELLs enabled********/
     int SPC = 15;   //width of a column.
-    std::cout << std::left << std::setw(SPC) << "CellId"
+    NS_LOG_UNCOND ( std::left << std::setw(SPC) << "CellId"
     << std::left << std::setw(SPC) << "Imsi"
     << std::left << std::setw(SPC) << "PdcpUL(ms)"
     << std::left << std::setw(SPC) << "PdcpDL(ms)"
@@ -564,8 +565,7 @@ main (int argc, char *argv[])
     << std::left << std::setw(SPC) << "OnOffSent"
     << std::left << std::setw(SPC+5) << "packetSinkReceived"
     << std::left << std::setw(SPC) << "OnOffSentTotal"
-    << std::left << std::setw(SPC) << "packetSinkReceivedTotal"
-    << std::endl;
+    << std::left << std::setw(SPC) << "packetSinkReceivedTotal");
     Ptr<LteEnbNetDevice> lteEnbDev;
 
     for ( uint32_t i = 0 ; i < enbNodes.GetN(); ++i){

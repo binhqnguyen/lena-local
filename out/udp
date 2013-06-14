@@ -1,0 +1,28 @@
+Waf: Entering directory `/Users/binh/Documents/workspace/lena/build'
+[ 682/1407] cxx: scratch/tcp.cc -> build/scratch/tcp.cc.15.o
+../scratch/tcp.cc: In function ‘int main(int, char**)’:
+../scratch/tcp.cc:82: error: ‘cmd’ was not declared in this scope
+../scratch/tcp.cc:84: error: ‘sending_rate’ was not declared in this scope
+../scratch/tcp.cc:85: error: ‘core_network_rate’ was not declared in this scope
+../scratch/tcp.cc:86: error: ‘core_network_delay’ was not declared in this scope
+../scratch/tcp.cc:87: error: ‘core_network_mtu’ was not declared in this scope
+../scratch/tcp.cc:150: error: ‘ueNodes’ was not declared in this scope
+../scratch/tcp.cc:155: error: ‘isTcp’ was not declared in this scope
+../scratch/tcp.cc:159: error: ‘remoteHost’ was not declared in this scope
+../scratch/tcp.cc:161: error: ‘remoteHostAddr’ was not declared in this scope
+../scratch/tcp.cc:162: error: ‘dataRate’ was not declared in this scope
+../scratch/tcp.cc:162: error: ‘packetSize’ was not declared in this scope
+../scratch/tcp.cc:163: error: ‘numberOfPackets’ was not declared in this scope
+../scratch/tcp.cc:171: error: ‘remoteHost’ was not declared in this scope
+../scratch/tcp.cc:173: error: ‘remoteHostAddr’ was not declared in this scope
+../scratch/tcp.cc:174: error: ‘dataRate’ was not declared in this scope
+../scratch/tcp.cc:174: error: ‘packetSize’ was not declared in this scope
+../scratch/tcp.cc:175: error: ‘numberOfPackets’ was not declared in this scope
+../scratch/tcp.cc: In function ‘void WriteUntilBufferFull(ns3::Ptr<ns3::Socket>, uint32_t)’:
+../scratch/tcp.cc:255: error: ‘currentTxBytes’ was not declared in this scope
+../scratch/tcp.cc:255: error: ‘totalTxBytes’ was not declared in this scope
+Waf: Leaving directory `/Users/binh/Documents/workspace/lena/build'
+Build failed
+ -> task in 'tcp' failed (exit status 1): 
+	{task 4421291024: cxx tcp.cc -> tcp.cc.15.o}
+['/usr/bin/g++', '-O0', '-ggdb', '-g3', '-Wall', '-Werror', '-Wno-error=deprecated-declarations', '-fstrict-aliasing', '-Wstrict-aliasing', '-Ibuild', '-I.', '-I.', '-I/Users/binh/Documents/workspace', '-DNS3_ASSERT_ENABLE', '-DNS3_LOG_ENABLE', '-DSQLITE3=1', '../scratch/tcp.cc', '-c', '-o', 'scratch/tcp.cc.15.o']

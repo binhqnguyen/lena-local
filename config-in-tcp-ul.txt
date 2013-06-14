@@ -1,5 +1,4 @@
 default ns3::LteHelper::Scheduler "ns3::PfFfMacScheduler"
-default ns3::LteHelper::PathlossModel "ns3::FriisPropagationLossModel"
 default ns3::LteEnbNetDevice::UlBandwidth "100"
 default ns3::LteEnbNetDevice::DlBandwidth "100"
 default ns3::LteEnbNetDevice::DlEarfcn "100"
@@ -10,4 +9,14 @@ default ns3::LteEnbPhy::TxPower "30"
 default ns3::LteEnbPhy::NoiseFigure "5"
 default ns3::LteEnbRrc::EpsBearerToRlcMapping "RlcUmAlways"
 default ns3::PfFfMacScheduler::HarqEnabled "true"
+
+default ns3::DropTailQueue::Mode "QUEUE_MODE_PACKETS"
+default ns3::DropTailQueue::MaxPackets "100"
+default ns3::DropTailQueue::MaxBytes "999999"
+
+default ns3::TcpL4Protocol::SocketType "ns3::TcpNewReno"
+default ns3::TcpSocket::SndBufSize "10000000"
+default ns3::TcpSocket::RcvBufSize "10000000"
+
+default ns3::UdpSocket::RcvBufSize "131072"
 default ns3::LteSpectrumPhy::DataErrorModelEnabled "true"

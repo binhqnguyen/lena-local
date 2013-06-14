@@ -107,7 +107,7 @@
 		<text>Time (s)</text>
 	</g>
 	<g transform="translate(293.7,31.6)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle">
-		<text>Congestion window TcpTahoe, 100pkts (578000B)</text>
+		<text>Congestion window TcpTahoe, 100pkts (57800B)</text>
 	</g>
 	<path  d='M182.8,207.1 L182.8,63.1 L490.6,63.1 L490.6,207.1 L182.8,207.1 Z  h0.01'/></g>
 	<g id="gnuplot_plot_1" ><title>gnuplot_plot_1</title>

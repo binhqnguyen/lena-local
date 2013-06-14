@@ -103,6 +103,11 @@ static Ptr<PointToPointNetDevice> endhost_dev;
 
 static double last_sampling_time = 0;
 static double last_total_enqueued = 0;
+
+static double last_tx_time = 0;
+static double last_rx_time = 0;
+static double last_tx_bytes = 0;
+static double last_rx_bytes = 0;
  
 static void 
 CwndTracer (uint32_t oldval, uint32_t newval)
@@ -113,34 +118,39 @@ CwndTracer (uint32_t oldval, uint32_t newval)
 static void 
 RTOTracer (ns3::Time oldval, ns3::Time newval)
 {
-  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " RTO_value " << newval.GetSeconds());
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " \t RTO_value \t " << newval.GetSeconds());
 }
 
 static void 
-AwndTracer (uint32_t oldval, uint32_t newval)
+AwndTracer (uint16_t oldval, uint16_t newval)
 {
-  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " awnd_value " << newval);
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " \t awnd_value \t " << (uint32_t) newval);
 }
 
+static void 
+RemotewndTracer(uint32_t oldval, uint32_t newval)
+{
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " \t remote_window_value \t " << newval);
+}
 
 static void 
 LastRttTracer (ns3::Time oldval, ns3::Time newval)
 {
-  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " last_rtt_sample " << newval.GetSeconds());
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " \t last_rtt_sample \t " << newval.GetSeconds());
 }
 
 
 static void 
 HighestSentSeqTracer (ns3::SequenceNumber32 oldval, ns3::SequenceNumber32 newval)
 {
-  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " highest_sent_seq " << newval);
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " \t highest_sent_seq \t " << newval);
 }
 
 
 static void 
 NextTxSeqTracer (ns3::SequenceNumber32 oldval, ns3::SequenceNumber32 newval)
 {
-  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " next_tx_seq " << newval);
+  NS_LOG_UNCOND (Simulator::Now().GetSeconds() << " \t next_tx_seq \t " << newval);
 }
 
 
@@ -173,7 +183,8 @@ int main (int argc, char *argv[])
      // LogComponentEnable("TcpNewReno",level);
      // LogComponentEnable("TcpReno",level);
   LogComponentEnable("TcpTahoe",level);
-  // LogComponentEnable("RttEstimator",level);
+  LogComponentEnable("RttEstimator",level);
+  LogComponentEnable("TcpSocketBase",level);
   
     CommandLine cmd;
     cmd.AddValue("sim_time", "Total duration of the simulation [s])", sim_time);
@@ -357,6 +368,7 @@ static void enable_tcp_socket_traces(Ptr<Application> app)
         socket->TraceConnectWithoutContext("CongestionWindow", MakeCallback(&CwndTracer));//, stream));
         socket->TraceConnectWithoutContext("RTO", MakeCallback(&RTOTracer));//, stream));
         socket->TraceConnectWithoutContext("MaxWindowSize", MakeCallback(&AwndTracer));//, stream));
+        socket->TraceConnectWithoutContext("RWND", MakeCallback(&RemotewndTracer));//, stream));
         socket->TraceConnectWithoutContext("RTT", MakeCallback(&LastRttTracer));//, stream));
         socket->TraceConnectWithoutContext("HighestSequence", MakeCallback(&HighestSentSeqTracer));//, stream));
         socket->TraceConnectWithoutContext("NextTxSequence", MakeCallback(&NextTxSeqTracer));//, stream));
@@ -387,14 +399,23 @@ getTcpPut(){
     /*sending flows, from endhost (1.0.0.2:49153) to Ues (7.0.0.2:200x)*/
     if (t.destinationPort >= 3000 && t.destinationPort <= 4000) {
       if (iter->second.rxPackets > 1){
-        meanTxRate_send = 8*iter->second.txBytes/(iter->second.timeLastTxPacket.GetDouble()-iter->second.timeFirstTxPacket.GetDouble())*ONEBIL/kilo;
-        meanRxRate_send = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/kilo;
-	if (iter->second.rxPackets > last_rx_pkts){
- 	       	meanTcpDelay_send = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
-		tcp_delay = (iter->second.delaySum.GetDouble() - last_delay_sum) / (iter->second.rxPackets - last_rx_pkts)/(kilo*kilo);
-		last_delay_sum = iter->second.delaySum.GetDouble();
-		last_rx_pkts = iter->second.rxPackets;
-	}
+        // meanTxRate_send = 8*iter->second.txBytes/(iter->second.timeLastTxPacket.GetDouble()-iter->second.timeFirstTxPacket.GetDouble())*ONEBIL/kilo;
+        // meanRxRate_send = 8*iter->second.rxBytes/(iter->second.timeLastRxPacket.GetDouble()-iter->second.timeFirstRxPacket.GetDouble())*ONEBIL/kilo;
+        if (last_tx_time < iter->second.timeLastTxPacket.GetDouble()){
+            meanTxRate_send = 8*(iter->second.txBytes-last_tx_bytes)/(iter->second.timeLastTxPacket.GetDouble()-last_tx_time)*ONEBIL/kilo;
+            meanRxRate_send = 8*(iter->second.rxBytes-last_rx_bytes)/(iter->second.timeLastRxPacket.GetDouble()-last_rx_time)*ONEBIL/kilo;
+            last_tx_time = iter->second.timeLastTxPacket.GetDouble();
+            last_tx_bytes = iter->second.txBytes;
+            last_rx_time = iter->second.timeLastRxPacket.GetDouble();
+            last_rx_bytes = iter->second.rxBytes;
+        }
+        // NS_LOG_UNCOND ("aaaaaaaaaaaa " << last_tx_time/1000000000 << "\t" << last_tx_bytes << "\t" << meanTxRate_send);
+    	  if (iter->second.rxPackets > last_rx_pkts){
+     	      meanTcpDelay_send = iter->second.delaySum.GetDouble()/iter->second.rxPackets/1000000;
+    		    tcp_delay = (iter->second.delaySum.GetDouble() - last_delay_sum) / (iter->second.rxPackets - last_rx_pkts)/(kilo*kilo);
+    		    last_delay_sum = iter->second.delaySum.GetDouble();
+    		    last_rx_pkts = iter->second.rxPackets;
+    	 }
       }
       numOfLostPackets_send = iter->second.lostPackets;
       /*

@@ -28,7 +28,7 @@
 
 NS_LOG_COMPONENT_DEFINE ("LteRlcUm");
 
-#define MAX_TX_BUFFER 2 //TX buffer in MB
+#define MAX_TX_BUFFER 2//0.0095367431//2//0.04768 //TX buffer in MB
 
 namespace ns3 {
 

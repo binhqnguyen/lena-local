@@ -4,276 +4,326 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-CalculateAverageDelay	./e2e-fading-dl.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-fading-ul-mobile.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-fading-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-merge.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-tcp-dl.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-tcp-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-udp-dl.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-udp-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CalculateAverageDelay	./e2e.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
-CwndTracer	./e2e-fading-dl.cc	/^CwndTracer (uint32_t oldval, uint32_t newval)$/;"	f	file:
-CwndTracer	./e2e-fading-ul-mobile.cc	/^CwndTracer (uint32_t oldval, uint32_t newval)$/;"	f	file:
-CwndTracer	./tcp.cc	/^CwndTracer (uint32_t oldval, uint32_t newval)$/;"	f	file:
-Imsi_timecap	./e2e-fading-dl.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
-Imsi_timecap	./e2e-fading-ul-mobile.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
-Imsi_timecap	./e2e-fading-ul.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
-Imsi_timecap	./e2e-merge.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
-Imsi_timecap	./e2e.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
-ONEBIL	./e2e-fading-dl.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
-ONEBIL	./e2e-fading-ul-mobile.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
-ONEBIL	./e2e-fading-ul.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
-ONEBIL	./e2e-merge.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
-ONEBIL	./e2e.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
-StartFlow	./tcp.cc	/^void StartFlow (Ptr<Socket> localSocket,$/;"	f
-WriteUntilBufferFull	./tcp.cc	/^void WriteUntilBufferFull (Ptr<Socket> localSocket, uint32_t txSpace)$/;"	f
-classifier	./e2e-fading-dl.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
-classifier	./e2e-fading-ul-mobile.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
-classifier	./e2e-fading-ul.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
-classifier	./e2e-merge.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
-classifier	./e2e.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
-currentTxBytes	./tcp.cc	/^static uint32_t currentTxBytes = 0;$/;"	v	file:
-data	./tcp.cc	/^uint8_t data[writeSize];$/;"	v
-enable_cwnd_trace	./e2e-fading-dl.cc	/^static void enable_cwnd_trace(Ptr<Application> app)$/;"	f	file:
-enable_cwnd_trace	./e2e-fading-ul-mobile.cc	/^static void enable_cwnd_trace(Ptr<Application> app)$/;"	f	file:
-errorDlRx	./e2e-fading-dl.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
-errorDlRx	./e2e-fading-ul-mobile.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
-errorDlRx	./e2e-fading-ul.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
-errorDlRx	./e2e-merge.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
-errorDlRx	./e2e.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
-errorUlRx	./e2e-fading-dl.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
-errorUlRx	./e2e-fading-ul-mobile.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
-errorUlRx	./e2e-fading-ul.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
-errorUlRx	./e2e-merge.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
-errorUlRx	./e2e.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
-flowHelper	./e2e-fading-dl.cc	/^FlowMonitorHelper flowHelper;$/;"	v
-flowHelper	./e2e-fading-ul-mobile.cc	/^FlowMonitorHelper flowHelper;$/;"	v
-flowHelper	./e2e-fading-ul.cc	/^FlowMonitorHelper flowHelper;$/;"	v
-flowHelper	./e2e-merge.cc	/^FlowMonitorHelper flowHelper;$/;"	v
-flowHelper	./e2e.cc	/^FlowMonitorHelper flowHelper;$/;"	v
-getAverage	./e2e-tcp-dl.cc	/^getAverage(std::list<double> array){$/;"	f
-getAverage	./e2e-tcp-ul.cc	/^getAverage(std::list<double> array){$/;"	f
-getAverage	./e2e-udp-dl.cc	/^getAverage(std::list<double> array){$/;"	f
-getAverage	./e2e-udp-ul.cc	/^getAverage(std::list<double> array){$/;"	f
-getAverage	./e2e-ul.cc	/^getAverage(std::list<double> array){$/;"	f
-getDlPdcpDelay	./e2e-fading-dl.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpDelay	./e2e-fading-ul-mobile.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpDelay	./e2e-fading-ul.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpDelay	./e2e-merge.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpDelay	./e2e-tcp-dl.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpDelay	./e2e-tcp-ul.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpDelay	./e2e-udp-ul.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpDelay	./e2e.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpTxs	./e2e-fading-dl.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpTxs	./e2e-fading-ul-mobile.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpTxs	./e2e-fading-ul.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpTxs	./e2e-merge.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpTxs	./e2e-tcp-dl.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpTxs	./e2e-tcp-ul.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlPdcpTxs	./e2e.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e-fading-dl.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e-fading-ul-mobile.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e-fading-ul.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e-merge.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e-tcp-dl.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e-tcp-ul.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e-udp-ul.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcDelay	./e2e.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcRxs	./e2e-fading-dl.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcRxs	./e2e-fading-ul-mobile.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcRxs	./e2e-fading-ul.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcRxs	./e2e-merge.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcRxs	./e2e-tcp-dl.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcRxs	./e2e-tcp-ul.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcRxs	./e2e.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcTxs	./e2e-fading-dl.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcTxs	./e2e-fading-ul-mobile.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcTxs	./e2e-fading-ul.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcTxs	./e2e-merge.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcTxs	./e2e-tcp-dl.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcTxs	./e2e-tcp-ul.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getDlRlcTxs	./e2e.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getTcpPut	./e2e-fading-dl.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
-getTcpPut	./e2e-fading-ul-mobile.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
-getTcpPut	./e2e-fading-ul.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
-getTcpPut	./e2e-merge.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
-getTcpPut	./e2e.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
-getUlPdcpDelay	./e2e-fading-dl.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpDelay	./e2e-fading-ul-mobile.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpDelay	./e2e-fading-ul.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpDelay	./e2e-merge.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpDelay	./e2e-tcp-dl.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpDelay	./e2e-tcp-ul.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpDelay	./e2e-udp-ul.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpDelay	./e2e.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpTxs	./e2e-fading-dl.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpTxs	./e2e-fading-ul-mobile.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpTxs	./e2e-fading-ul.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpTxs	./e2e-merge.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpTxs	./e2e-tcp-dl.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpTxs	./e2e-tcp-ul.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlPdcpTxs	./e2e.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e-fading-dl.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e-fading-ul-mobile.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e-fading-ul.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e-merge.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e-tcp-dl.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e-tcp-ul.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e-udp-ul.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcDelay	./e2e.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcRxs	./e2e-fading-dl.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcRxs	./e2e-fading-ul-mobile.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcRxs	./e2e-fading-ul.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcRxs	./e2e-merge.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcRxs	./e2e-tcp-dl.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcRxs	./e2e-tcp-ul.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcRxs	./e2e.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcTxs	./e2e-fading-dl.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcTxs	./e2e-fading-ul-mobile.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcTxs	./e2e-fading-ul.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcTxs	./e2e-merge.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcTxs	./e2e-tcp-dl.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcTxs	./e2e-tcp-ul.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-getUlRlcTxs	./e2e.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
-harqDl	./e2e-fading-dl.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
-harqDl	./e2e-fading-ul-mobile.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
-harqDl	./e2e-fading-ul.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
-harqDl	./e2e-merge.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
-harqDl	./e2e.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
-harqUl	./e2e-fading-dl.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
-harqUl	./e2e-fading-ul-mobile.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
-harqUl	./e2e-fading-ul.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
-harqUl	./e2e-merge.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
-harqUl	./e2e.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
-intervalMeanTcpDelay_send	./e2e-merge.cc	/^std::map<Ipv4Address, double> intervalMeanTcpDelay_send; 	\/\/mean of delays of a sampling period.								$/;"	v
-intervalMeanTcpDelay_send	./e2e.cc	/^std::map<Ipv4Address, double> intervalMeanTcpDelay_send; 	\/\/mean of delays of a sampling period.								$/;"	v
-lastIntervalMeanTcpDelay_send	./e2e-merge.cc	/^std::map<Ipv4Address, double> lastIntervalMeanTcpDelay_send;$/;"	v
-lastIntervalMeanTcpDelay_send	./e2e.cc	/^std::map<Ipv4Address, double> lastIntervalMeanTcpDelay_send;$/;"	v
-lastRxPkts_send	./e2e-merge.cc	/^std::map<Ipv4Address, double> lastRxPkts_send;	\/\/number of pkts received during the last sampling period.  $/;"	v
-lastRxPkts_send	./e2e.cc	/^std::map<Ipv4Address, double> lastRxPkts_send;	\/\/number of pkts received during the last sampling period.  $/;"	v
-lastSumTcpDelay_send	./e2e-merge.cc	/^std::map<Ipv4Address, double> lastSumTcpDelay_send;	\/\/sum of delays of all of pkts of the last sampling period.$/;"	v
-lastSumTcpDelay_send	./e2e.cc	/^std::map<Ipv4Address, double> lastSumTcpDelay_send;	\/\/sum of delays of all of pkts of the last sampling period.$/;"	v
-last_lost	./e2e-fading-dl.cc	/^double last_lost = 0;$/;"	v
-last_lost	./e2e-fading-ul-mobile.cc	/^double last_lost = 0;$/;"	v
-last_lost_ack	./e2e-fading-dl.cc	/^double last_lost_ack = 0;$/;"	v
-last_lost_ack	./e2e-fading-ul-mobile.cc	/^double last_lost_ack = 0;$/;"	v
-link_cap_dl	./e2e-fading-dl.cc	/^std::ofstream link_cap_dl;$/;"	v
-link_cap_dl	./e2e-fading-ul-mobile.cc	/^std::ofstream link_cap_dl;$/;"	v
-link_cap_dl	./e2e-fading-ul.cc	/^std::ofstream link_cap_dl;$/;"	v
-link_cap_dl	./e2e-merge.cc	/^std::ofstream link_cap_dl;$/;"	v
-link_cap_ul	./e2e-fading-dl.cc	/^std::ofstream link_cap_ul;$/;"	v
-link_cap_ul	./e2e-fading-ul-mobile.cc	/^std::ofstream link_cap_ul;$/;"	v
-link_cap_ul	./e2e-fading-ul.cc	/^std::ofstream link_cap_ul;$/;"	v
-link_cap_ul	./e2e-merge.cc	/^std::ofstream link_cap_ul;$/;"	v
-main	./e2e-fading-dl.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-fading-ul-mobile.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-fading-ul.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-flow.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-merge.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-tcp-dl.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-tcp-ul.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-udp-dl.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-udp-ul.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e-ul.cc	/^main (int argc, char *argv[])$/;"	f
-main	./e2e.cc	/^main (int argc, char *argv[])$/;"	f
-main	./lena-simple-epc.cc	/^main (int argc, char *argv[])$/;"	f
-main	./scratch-simulator.cc	/^main (int argc, char *argv[])$/;"	f
-main	./subdir/scratch-simulator-subdir.cc	/^main (int argc, char *argv[])$/;"	f
-main	./tcp.cc	/^int main (int argc, char *argv[])$/;"	f
-meanRxRate_ack	./e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
-meanRxRate_ack	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
-meanRxRate_ack	./e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
-meanRxRate_ack	./e2e-merge.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
-meanRxRate_ack	./e2e.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
-meanRxRate_send	./e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
-meanRxRate_send	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
-meanRxRate_send	./e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
-meanRxRate_send	./e2e-merge.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
-meanRxRate_send	./e2e.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
-meanTcpDelay_ack	./e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
-meanTcpDelay_ack	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
-meanTcpDelay_ack	./e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
-meanTcpDelay_ack	./e2e-merge.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
-meanTcpDelay_ack	./e2e.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
-meanTcpDelay_send	./e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
-meanTcpDelay_send	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
-meanTcpDelay_send	./e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
-meanTcpDelay_send	./e2e-merge.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
-meanTcpDelay_send	./e2e.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
-meanTxRate_ack	./e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
-meanTxRate_ack	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
-meanTxRate_ack	./e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
-meanTxRate_ack	./e2e-merge.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
-meanTxRate_ack	./e2e.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
-meanTxRate_send	./e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
-meanTxRate_send	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
-meanTxRate_send	./e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
-meanTxRate_send	./e2e-merge.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
-meanTxRate_send	./e2e.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
-monitor	./e2e-fading-dl.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
-monitor	./e2e-fading-ul-mobile.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
-monitor	./e2e-fading-ul.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
-monitor	./e2e-merge.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
-monitor	./e2e.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
-numOfLostPackets_ack	./e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
-numOfLostPackets_ack	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
-numOfLostPackets_ack	./e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
-numOfLostPackets_ack	./e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
-numOfLostPackets_ack	./e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
-numOfLostPackets_send	./e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
-numOfLostPackets_send	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
-numOfLostPackets_send	./e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
-numOfLostPackets_send	./e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
-numOfLostPackets_send	./e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
-numOfTxPacket_ack	./e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
-numOfTxPacket_ack	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
-numOfTxPacket_ack	./e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
-numOfTxPacket_ack	./e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
-numOfTxPacket_ack	./e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
-numOfTxPacket_send	./e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
-numOfTxPacket_send	./e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
-numOfTxPacket_send	./e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
-numOfTxPacket_send	./e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
-numOfTxPacket_send	./e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
-samplingInterval	./e2e-fading-dl.cc	/^double samplingInterval = 0.010;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
-samplingInterval	./e2e-fading-ul-mobile.cc	/^double samplingInterval = 0.010;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
-samplingInterval	./e2e-fading-ul.cc	/^double samplingInterval = 0.050;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
-samplingInterval	./e2e-merge.cc	/^double samplingInterval = 0.050;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
-samplingInterval	./e2e.cc	/^double samplingInterval = 0.1;    \/*sample TCP thoughput for each 100ms*\/$/;"	v
-simTime	./e2e-fading-dl.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
-simTime	./e2e-fading-ul-mobile.cc	/^double simTime = 100;	\/\/simulation time for EACH application$/;"	v
-simTime	./e2e-fading-ul.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
-simTime	./e2e-merge.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
-simTime	./e2e.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
-stats	./e2e-fading-dl.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
-stats	./e2e-fading-ul-mobile.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
-stats	./e2e-fading-ul.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
-stats	./e2e-merge.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
-stats	./e2e.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
-t	./e2e-fading-dl.cc	/^double t = 0.0;$/;"	v
-t	./e2e-fading-ul-mobile.cc	/^double t = 0.0;$/;"	v
-t	./e2e-fading-ul.cc	/^double t = 0.0;$/;"	v
-t	./e2e-merge.cc	/^double t = 0.0;$/;"	v
-t	./e2e.cc	/^double t = 0.0;$/;"	v
-tcpThroughput	./e2e-fading-dl.cc	/^std::ofstream tcpThroughput;$/;"	v
-tcpThroughput	./e2e-fading-ul-mobile.cc	/^std::ofstream tcpThroughput;$/;"	v
-tcpThroughput	./e2e-fading-ul.cc	/^std::ofstream tcpThroughput;$/;"	v
-tcpThroughput	./e2e-merge.cc	/^std::ofstream tcpThroughput;$/;"	v
-tcpThroughput	./e2e.cc	/^std::ofstream tcpThroughput;$/;"	v
-tcpThroughput_ack	./e2e-fading-dl.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
-tcpThroughput_ack	./e2e-fading-ul-mobile.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
-tcpThroughput_ack	./e2e-fading-ul.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
-tcpThroughput_ack	./e2e-merge.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
-tcpThroughput_ack	./e2e.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
-time_dlcap	./e2e-fading-dl.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
-time_dlcap	./e2e-fading-ul-mobile.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
-time_dlcap	./e2e-fading-ul.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
-time_dlcap	./e2e-merge.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
-time_ulcap	./e2e-fading-dl.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
-time_ulcap	./e2e-fading-ul-mobile.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
-time_ulcap	./e2e-fading-ul.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
-time_ulcap	./e2e-merge.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
-totalTxBytes	./tcp.cc	/^static const uint32_t totalTxBytes = 200000000;$/;"	v	file:
-writeSize	./tcp.cc	/^static const uint32_t writeSize = 1040;$/;"	v	file:
+CalculateAverageDelay	e2e-fading-dl.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-fading-ul-mobile.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-fading-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-merge.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-tcp-dl.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-tcp-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-udp-dl.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-udp-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e-ul.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CalculateAverageDelay	e2e.cc	/^CalculateAverageDelay(std::map <uint64_t, uint32_t> delayArray){$/;"	f
+CwndTracer	e2e-fading-dl.cc	/^CwndTracer (uint32_t oldval, uint32_t newval)$/;"	f	file:
+CwndTracer	e2e-fading-ul-mobile.cc	/^CwndTracer (uint32_t oldval, uint32_t newval)$/;"	f	file:
+CwndTracer	emulated.cc	/^CwndTracer (uint32_t oldval, uint32_t newval)$/;"	f	file:
+CwndTracer	tcp.cc	/^CwndTracer (uint32_t oldval, uint32_t newval)$/;"	f	file:
+Imsi_timecap	e2e-fading-dl.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
+Imsi_timecap	e2e-fading-ul-mobile.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
+Imsi_timecap	e2e-fading-ul.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
+Imsi_timecap	e2e-merge.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
+Imsi_timecap	e2e.cc	/^typedef std::map<uint32_t, Time_cap> Imsi_timecap;  \/*<imsi, Time_cap> map*\/$/;"	t	file:
+KILO	emulated.cc	54;"	d	file:
+ONEBIL	e2e-fading-dl.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
+ONEBIL	e2e-fading-ul-mobile.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
+ONEBIL	e2e-fading-ul.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
+ONEBIL	e2e-merge.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
+ONEBIL	e2e.cc	/^const uint32_t ONEBIL = 1000000000;$/;"	v
+ONEBIL	emulated.cc	56;"	d	file:
+StartFlow	tcp.cc	/^void StartFlow (Ptr<Socket> localSocket,$/;"	f
+TCP_SAMPLING_INTERVAL	emulated.cc	55;"	d	file:
+WriteUntilBufferFull	tcp.cc	/^void WriteUntilBufferFull (Ptr<Socket> localSocket, uint32_t txSpace)$/;"	f
+classifier	e2e-fading-dl.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
+classifier	e2e-fading-ul-mobile.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
+classifier	e2e-fading-ul.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
+classifier	e2e-merge.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
+classifier	e2e.cc	/^Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v
+classifier	emulated.cc	/^static Ptr<ns3::Ipv4FlowClassifier> classifier;$/;"	v	file:
+core_network_bandwidth	emulated.cc	/^static std::string core_network_bandwidth = "1000Mb\/s"; 	\/\/core_network_bandwidth.$/;"	v	file:
+core_network_delay	emulated.cc	/^static uint32_t core_network_delay = 30;	\/\/core_network_delay in millisenconds.$/;"	v	file:
+core_network_mtu	emulated.cc	/^static uint32_t core_network_mtu = 1500; 	\/\/core_network_mte in Bytes.$/;"	v	file:
+currentTxBytes	tcp.cc	/^static uint32_t currentTxBytes = 0;$/;"	v	file:
+data	tcp.cc	/^uint8_t data[writeSize];$/;"	v
+dev_queue_droptail	emulated.cc	/^static void dev_queue_droptail(Ptr<const Packet> packet){$/;"	f	file:
+enable_cwnd_trace	e2e-fading-dl.cc	/^static void enable_cwnd_trace(Ptr<Application> app)$/;"	f	file:
+enable_cwnd_trace	e2e-fading-ul-mobile.cc	/^static void enable_cwnd_trace(Ptr<Application> app)$/;"	f	file:
+enable_cwnd_trace	emulated.cc	/^static void enable_cwnd_trace(Ptr<Application> app)$/;"	f	file:
+enb_core_dev	emulated.cc	/^static Ptr<PointToPointNetDevice> enb_core_dev;		\/\/device on the core side of the enb$/;"	v	file:
+enb_core_ip	emulated.cc	/^static Ipv4Address enb_core_ip;$/;"	v	file:
+enb_radio_dev	emulated.cc	/^static Ptr<PointToPointNetDevice> enb_radio_dev; 	\/\/device on the radio side of the enb$/;"	v	file:
+enb_radio_ip	emulated.cc	/^static Ipv4Address enb_radio_ip;$/;"	v	file:
+endhost_dev	emulated.cc	/^static Ptr<PointToPointNetDevice> endhost_dev;$/;"	v	file:
+endhost_ip	emulated.cc	/^static Ipv4Address endhost_ip;$/;"	v	file:
+errorDlRx	e2e-fading-dl.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
+errorDlRx	e2e-fading-ul-mobile.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
+errorDlRx	e2e-fading-ul.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
+errorDlRx	e2e-merge.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
+errorDlRx	e2e.cc	/^uint64_t errorDlRx = 0; \/\/Error detected on the Dl Received side (UE).$/;"	v
+errorUlRx	e2e-fading-dl.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
+errorUlRx	e2e-fading-ul-mobile.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
+errorUlRx	e2e-fading-ul.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
+errorUlRx	e2e-merge.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
+errorUlRx	e2e.cc	/^uint64_t errorUlRx = 0;  \/\/Error detected on the Ul Received side (eNB).$/;"	v
+flowHelper	e2e-fading-dl.cc	/^FlowMonitorHelper flowHelper;$/;"	v
+flowHelper	e2e-fading-ul-mobile.cc	/^FlowMonitorHelper flowHelper;$/;"	v
+flowHelper	e2e-fading-ul.cc	/^FlowMonitorHelper flowHelper;$/;"	v
+flowHelper	e2e-merge.cc	/^FlowMonitorHelper flowHelper;$/;"	v
+flowHelper	e2e.cc	/^FlowMonitorHelper flowHelper;$/;"	v
+flowHelper	emulated.cc	/^static FlowMonitorHelper flowHelper;$/;"	v	file:
+getAverage	e2e-tcp-dl.cc	/^getAverage(std::list<double> array){$/;"	f
+getAverage	e2e-tcp-ul.cc	/^getAverage(std::list<double> array){$/;"	f
+getAverage	e2e-udp-dl.cc	/^getAverage(std::list<double> array){$/;"	f
+getAverage	e2e-udp-ul.cc	/^getAverage(std::list<double> array){$/;"	f
+getAverage	e2e-ul.cc	/^getAverage(std::list<double> array){$/;"	f
+getDlPdcpDelay	e2e-fading-dl.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpDelay	e2e-fading-ul-mobile.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpDelay	e2e-fading-ul.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpDelay	e2e-merge.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpDelay	e2e-tcp-dl.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpDelay	e2e-tcp-ul.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpDelay	e2e-udp-ul.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpDelay	e2e.cc	/^getDlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpTxs	e2e-fading-dl.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpTxs	e2e-fading-ul-mobile.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpTxs	e2e-fading-ul.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpTxs	e2e-merge.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpTxs	e2e-tcp-dl.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpTxs	e2e-tcp-ul.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlPdcpTxs	e2e.cc	/^getDlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e-fading-dl.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e-fading-ul-mobile.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e-fading-ul.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e-merge.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e-tcp-dl.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e-tcp-ul.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e-udp-ul.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcDelay	e2e.cc	/^getDlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcRxs	e2e-fading-dl.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcRxs	e2e-fading-ul-mobile.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcRxs	e2e-fading-ul.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcRxs	e2e-merge.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcRxs	e2e-tcp-dl.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcRxs	e2e-tcp-ul.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcRxs	e2e.cc	/^getDlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcTxs	e2e-fading-dl.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcTxs	e2e-fading-ul-mobile.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcTxs	e2e-fading-ul.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcTxs	e2e-merge.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcTxs	e2e-tcp-dl.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcTxs	e2e-tcp-ul.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getDlRlcTxs	e2e.cc	/^getDlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getTcpPut	e2e-fading-dl.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
+getTcpPut	e2e-fading-ul-mobile.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
+getTcpPut	e2e-fading-ul.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
+getTcpPut	e2e-merge.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
+getTcpPut	e2e.cc	/^getTcpPut(Ptr<LteHelper> lteHelper){$/;"	f	file:
+getTcpPut	emulated.cc	/^getTcpPut(){$/;"	f	file:
+getUlPdcpDelay	e2e-fading-dl.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpDelay	e2e-fading-ul-mobile.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpDelay	e2e-fading-ul.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpDelay	e2e-merge.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpDelay	e2e-tcp-dl.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpDelay	e2e-tcp-ul.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpDelay	e2e-udp-ul.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpDelay	e2e.cc	/^getUlPdcpDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpTxs	e2e-fading-dl.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpTxs	e2e-fading-ul-mobile.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpTxs	e2e-fading-ul.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpTxs	e2e-merge.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpTxs	e2e-tcp-dl.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpTxs	e2e-tcp-ul.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlPdcpTxs	e2e.cc	/^getUlPdcpTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e-fading-dl.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e-fading-ul-mobile.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e-fading-ul.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e-merge.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e-tcp-dl.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e-tcp-ul.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e-udp-ul.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcDelay	e2e.cc	/^getUlRlcDelay(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcRxs	e2e-fading-dl.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcRxs	e2e-fading-ul-mobile.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcRxs	e2e-fading-ul.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcRxs	e2e-merge.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcRxs	e2e-tcp-dl.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcRxs	e2e-tcp-ul.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcRxs	e2e.cc	/^getUlRlcRxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcTxs	e2e-fading-dl.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcTxs	e2e-fading-ul-mobile.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcTxs	e2e-fading-ul.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcTxs	e2e-merge.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcTxs	e2e-tcp-dl.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcTxs	e2e-tcp-ul.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+getUlRlcTxs	e2e.cc	/^getUlRlcTxs(Ptr<ns3::LteHelper> lteHelper, uint32_t imsi, uint8_t lcid){$/;"	f
+harqDl	e2e-fading-dl.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
+harqDl	e2e-fading-ul-mobile.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
+harqDl	e2e-fading-ul.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
+harqDl	e2e-merge.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
+harqDl	e2e.cc	/^uint64_t harqDl = 0;  \/\/HAEQ transmitted from Ue.$/;"	v
+harqUl	e2e-fading-dl.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
+harqUl	e2e-fading-ul-mobile.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
+harqUl	e2e-fading-ul.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
+harqUl	e2e-merge.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
+harqUl	e2e.cc	/^uint64_t harqUl = 0;   \/\/HARQ transmitted from eNB.$/;"	v
+init_radio_bandwidth	emulated.cc	/^static std::string init_radio_bandwidth = "1Mb\/s"; 	\/\/radio_link_bandwidth (init).$/;"	v	file:
+init_radio_delay	emulated.cc	/^static uint32_t init_radio_delay = 5;	\/\/radio_link_delay (init) in millisenconds.$/;"	v	file:
+init_radio_mtu	emulated.cc	/^static uint32_t init_radio_mtu = 1500; 	\/\/radio_link_mtu (init) in Bytes.$/;"	v	file:
+intervalMeanTcpDelay_send	e2e-merge.cc	/^std::map<Ipv4Address, double> intervalMeanTcpDelay_send; 	\/\/mean of delays of a sampling period.								$/;"	v
+intervalMeanTcpDelay_send	e2e.cc	/^std::map<Ipv4Address, double> intervalMeanTcpDelay_send; 	\/\/mean of delays of a sampling period.								$/;"	v
+is_tcp	emulated.cc	/^static uint16_t is_tcp = 1;$/;"	v	file:
+kilo	emulated.cc	53;"	d	file:
+lastIntervalMeanTcpDelay_send	e2e-merge.cc	/^std::map<Ipv4Address, double> lastIntervalMeanTcpDelay_send;$/;"	v
+lastIntervalMeanTcpDelay_send	e2e.cc	/^std::map<Ipv4Address, double> lastIntervalMeanTcpDelay_send;$/;"	v
+lastRxPkts_send	e2e-merge.cc	/^std::map<Ipv4Address, double> lastRxPkts_send;	\/\/number of pkts received during the last sampling period.  $/;"	v
+lastRxPkts_send	e2e.cc	/^std::map<Ipv4Address, double> lastRxPkts_send;	\/\/number of pkts received during the last sampling period.  $/;"	v
+lastSumTcpDelay_send	e2e-merge.cc	/^std::map<Ipv4Address, double> lastSumTcpDelay_send;	\/\/sum of delays of all of pkts of the last sampling period.$/;"	v
+lastSumTcpDelay_send	e2e.cc	/^std::map<Ipv4Address, double> lastSumTcpDelay_send;	\/\/sum of delays of all of pkts of the last sampling period.$/;"	v
+last_delay_sum	emulated.cc	/^static double last_delay_sum = 0;$/;"	v	file:
+last_delay_sum_ack	emulated.cc	/^static double last_delay_sum_ack = 0;$/;"	v	file:
+last_lost	e2e-fading-dl.cc	/^double last_lost = 0;$/;"	v
+last_lost	e2e-fading-ul-mobile.cc	/^double last_lost = 0;$/;"	v
+last_lost_ack	e2e-fading-dl.cc	/^double last_lost_ack = 0;$/;"	v
+last_lost_ack	e2e-fading-ul-mobile.cc	/^double last_lost_ack = 0;$/;"	v
+last_rx_pkts	emulated.cc	/^static uint32_t last_rx_pkts = 0;$/;"	v	file:
+last_rx_pkts_ack	emulated.cc	/^static uint32_t last_rx_pkts_ack = 0;$/;"	v	file:
+last_sampling_time	emulated.cc	/^static double last_sampling_time = 0;$/;"	v	file:
+last_total_enqueued	emulated.cc	/^static double last_total_enqueued = 0;$/;"	v	file:
+link_cap_dl	e2e-fading-dl.cc	/^std::ofstream link_cap_dl;$/;"	v
+link_cap_dl	e2e-fading-ul-mobile.cc	/^std::ofstream link_cap_dl;$/;"	v
+link_cap_dl	e2e-fading-ul.cc	/^std::ofstream link_cap_dl;$/;"	v
+link_cap_dl	e2e-merge.cc	/^std::ofstream link_cap_dl;$/;"	v
+link_cap_ul	e2e-fading-dl.cc	/^std::ofstream link_cap_ul;$/;"	v
+link_cap_ul	e2e-fading-ul-mobile.cc	/^std::ofstream link_cap_ul;$/;"	v
+link_cap_ul	e2e-fading-ul.cc	/^std::ofstream link_cap_ul;$/;"	v
+link_cap_ul	e2e-merge.cc	/^std::ofstream link_cap_ul;$/;"	v
+main	e2e-fading-dl.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-fading-ul-mobile.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-fading-ul.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-flow.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-merge.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-tcp-dl.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-tcp-ul.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-udp-dl.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-udp-ul.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e-ul.cc	/^main (int argc, char *argv[])$/;"	f
+main	e2e.cc	/^main (int argc, char *argv[])$/;"	f
+main	emulated.cc	/^int main (int argc, char *argv[])$/;"	f
+main	lena-simple-epc.cc	/^main (int argc, char *argv[])$/;"	f
+main	scratch-simulator.cc	/^main (int argc, char *argv[])$/;"	f
+main	subdir/scratch-simulator-subdir.cc	/^main (int argc, char *argv[])$/;"	f
+main	tcp.cc	/^int main (int argc, char *argv[])$/;"	f
+meanRxRate_ack	e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
+meanRxRate_ack	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
+meanRxRate_ack	e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
+meanRxRate_ack	e2e-merge.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
+meanRxRate_ack	e2e.cc	/^std::map<Ipv4Address, double> meanRxRate_ack;$/;"	v
+meanRxRate_ack	emulated.cc	/^double meanRxRate_ack;$/;"	v
+meanRxRate_send	e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
+meanRxRate_send	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
+meanRxRate_send	e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
+meanRxRate_send	e2e-merge.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
+meanRxRate_send	e2e.cc	/^std::map<Ipv4Address, double> meanRxRate_send;$/;"	v
+meanRxRate_send	emulated.cc	/^double meanRxRate_send;$/;"	v
+meanTcpDelay_ack	e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
+meanTcpDelay_ack	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
+meanTcpDelay_ack	e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
+meanTcpDelay_ack	e2e-merge.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
+meanTcpDelay_ack	e2e.cc	/^std::map<Ipv4Address, double> meanTcpDelay_ack;$/;"	v
+meanTcpDelay_ack	emulated.cc	/^double meanTcpDelay_ack;$/;"	v
+meanTcpDelay_send	e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
+meanTcpDelay_send	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
+meanTcpDelay_send	e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
+meanTcpDelay_send	e2e-merge.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
+meanTcpDelay_send	e2e.cc	/^std::map<Ipv4Address, double> meanTcpDelay_send;$/;"	v
+meanTcpDelay_send	emulated.cc	/^double meanTcpDelay_send;$/;"	v
+meanTxRate_ack	e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
+meanTxRate_ack	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
+meanTxRate_ack	e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
+meanTxRate_ack	e2e-merge.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
+meanTxRate_ack	e2e.cc	/^std::map<Ipv4Address, double> meanTxRate_ack;$/;"	v
+meanTxRate_ack	emulated.cc	/^double meanTxRate_ack;$/;"	v
+meanTxRate_send	e2e-fading-dl.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
+meanTxRate_send	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
+meanTxRate_send	e2e-fading-ul.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
+meanTxRate_send	e2e-merge.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
+meanTxRate_send	e2e.cc	/^std::map<Ipv4Address, double> meanTxRate_send;$/;"	v
+meanTxRate_send	emulated.cc	/^double meanTxRate_send;$/;"	v
+monitor	e2e-fading-dl.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
+monitor	e2e-fading-ul-mobile.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
+monitor	e2e-fading-ul.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
+monitor	e2e-merge.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
+monitor	e2e.cc	/^Ptr<ns3::FlowMonitor> monitor;$/;"	v
+monitor	emulated.cc	/^static Ptr<ns3::FlowMonitor> monitor;$/;"	v	file:
+numOfLostPackets_ack	e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
+numOfLostPackets_ack	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
+numOfLostPackets_ack	e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
+numOfLostPackets_ack	e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
+numOfLostPackets_ack	e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_ack;$/;"	v
+numOfLostPackets_ack	emulated.cc	/^uint64_t numOfLostPackets_ack;$/;"	v
+numOfLostPackets_send	e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
+numOfLostPackets_send	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
+numOfLostPackets_send	e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
+numOfLostPackets_send	e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
+numOfLostPackets_send	e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfLostPackets_send;$/;"	v
+numOfLostPackets_send	emulated.cc	/^uint64_t numOfLostPackets_send;$/;"	v
+numOfTxPacket_ack	e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
+numOfTxPacket_ack	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
+numOfTxPacket_ack	e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
+numOfTxPacket_ack	e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
+numOfTxPacket_ack	e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_ack;$/;"	v
+numOfTxPacket_ack	emulated.cc	/^uint64_t numOfTxPacket_ack;$/;"	v
+numOfTxPacket_send	e2e-fading-dl.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
+numOfTxPacket_send	e2e-fading-ul-mobile.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
+numOfTxPacket_send	e2e-fading-ul.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
+numOfTxPacket_send	e2e-merge.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
+numOfTxPacket_send	e2e.cc	/^std::map<Ipv4Address, uint64_t> numOfTxPacket_send;$/;"	v
+numOfTxPacket_send	emulated.cc	/^uint64_t numOfTxPacket_send;$/;"	v
+packet_size	emulated.cc	/^static uint32_t packet_size = 900;$/;"	v	file:
+samplingInterval	e2e-fading-dl.cc	/^double samplingInterval = 0.010;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
+samplingInterval	e2e-fading-ul-mobile.cc	/^double samplingInterval = 0.010;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
+samplingInterval	e2e-fading-ul.cc	/^double samplingInterval = 0.050;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
+samplingInterval	e2e-merge.cc	/^double samplingInterval = 0.050;    \/*sample TCP thoughput for each 50ms*\/$/;"	v
+samplingInterval	e2e.cc	/^double samplingInterval = 0.1;    \/*sample TCP thoughput for each 100ms*\/$/;"	v
+sending_rate	emulated.cc	/^static std::string sending_rate = "100Mb\/s"; \/\/sending rate.$/;"	v	file:
+simTime	e2e-fading-dl.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
+simTime	e2e-fading-ul-mobile.cc	/^double simTime = 100;	\/\/simulation time for EACH application$/;"	v
+simTime	e2e-fading-ul.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
+simTime	e2e-merge.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
+simTime	e2e.cc	/^double simTime = 20;	\/\/simulation time for EACH application$/;"	v
+sim_time	emulated.cc	/^static uint32_t sim_time = 100;$/;"	v	file:
+stats	e2e-fading-dl.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
+stats	e2e-fading-ul-mobile.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
+stats	e2e-fading-ul.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
+stats	e2e-merge.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
+stats	e2e.cc	/^std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v
+stats	emulated.cc	/^static std::map <FlowId, FlowMonitor::FlowStats> stats;$/;"	v	file:
+t	e2e-fading-dl.cc	/^double t = 0.0;$/;"	v
+t	e2e-fading-ul-mobile.cc	/^double t = 0.0;$/;"	v
+t	e2e-fading-ul.cc	/^double t = 0.0;$/;"	v
+t	e2e-merge.cc	/^double t = 0.0;$/;"	v
+t	e2e.cc	/^double t = 0.0;$/;"	v
+tcpThroughput	e2e-fading-dl.cc	/^std::ofstream tcpThroughput;$/;"	v
+tcpThroughput	e2e-fading-ul-mobile.cc	/^std::ofstream tcpThroughput;$/;"	v
+tcpThroughput	e2e-fading-ul.cc	/^std::ofstream tcpThroughput;$/;"	v
+tcpThroughput	e2e-merge.cc	/^std::ofstream tcpThroughput;$/;"	v
+tcpThroughput	e2e.cc	/^std::ofstream tcpThroughput;$/;"	v
+tcpThroughput_ack	e2e-fading-dl.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
+tcpThroughput_ack	e2e-fading-ul-mobile.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
+tcpThroughput_ack	e2e-fading-ul.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
+tcpThroughput_ack	e2e-merge.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
+tcpThroughput_ack	e2e.cc	/^std::ofstream tcpThroughput_ack;$/;"	v
+tcp_delay	emulated.cc	/^static double tcp_delay = 0;$/;"	v	file:
+tcp_delay_ack	emulated.cc	/^static double tcp_delay_ack = 0;$/;"	v	file:
+time_dlcap	e2e-fading-dl.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
+time_dlcap	e2e-fading-ul-mobile.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
+time_dlcap	e2e-fading-ul.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
+time_dlcap	e2e-merge.cc	/^Imsi_timecap time_dlcap; \/*downlink link capacity histogram*\/$/;"	v
+time_ulcap	e2e-fading-dl.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
+time_ulcap	e2e-fading-ul-mobile.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
+time_ulcap	e2e-fading-ul.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
+time_ulcap	e2e-merge.cc	/^Imsi_timecap time_ulcap; \/*uplink link capacity histogram*\/$/;"	v
+timer	emulated.cc	/^static double timer = 0;$/;"	v	file:
+totalTxBytes	tcp.cc	/^static const uint32_t totalTxBytes = 200000000;$/;"	v	file:
+ue_dev	emulated.cc	/^static Ptr<PointToPointNetDevice> ue_dev;$/;"	v	file:
+ue_ip	emulated.cc	/^static Ipv4Address ue_ip;$/;"	v	file:
+writeSize	tcp.cc	/^static const uint32_t writeSize = 1040;$/;"	v	file:

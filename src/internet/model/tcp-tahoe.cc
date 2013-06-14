@@ -134,7 +134,7 @@ TcpTahoe::DupAck (const TcpHeader& t, uint32_t count)
   NS_LOG_FUNCTION (this << "t " << count);
   if (count == m_retxThresh)
     { // triple duplicate ack triggers fast retransmit (RFC2001, sec.3)
-      NS_LOG_INFO ("Triple Dup Ack: old ssthresh " << m_ssThresh << " cwnd " << m_cWnd);
+      NS_LOG_INFO ("Triple Dup Ack: old ssthresh " << m_ssThresh << " cwnd " << m_cWnd );
       // fast retransmit in Tahoe means triggering RTO earlier. Tx is restarted
       // from the highest ack and run slow start again.
       // (Fall & Floyd 1996, sec.1)
@@ -142,7 +142,7 @@ TcpTahoe::DupAck (const TcpHeader& t, uint32_t count)
       m_cWnd = m_segmentSize; // Run slow start again
       m_nextTxSequence = m_txBuffer.HeadSequence (); // Restart from highest Ack
       NS_LOG_INFO ("Triple Dup Ack: new ssthresh " << m_ssThresh << " cwnd " << m_cWnd);
-      NS_LOG_LOGIC ("Triple Dup Ack: retransmit missing segment at " << Simulator::Now ().GetSeconds ());
+      NS_LOG_LOGIC ("Triple Dup Ack: retransmit missing segment at " << Simulator::Now ().GetSeconds () << " 3_acks_for_pkt_seq " << t.GetAckNumber() );
       DoRetransmit ();
     }
 }
@@ -162,7 +162,7 @@ void TcpTahoe::Retransmit (void)
   m_nextTxSequence = m_txBuffer.HeadSequence (); // Restart from highest Ack
   m_rtt->IncreaseMultiplier ();             // Double the next RTO
   DoRetransmit ();                          // Retransmit the packet
-}
+} 
 
 void
 TcpTahoe::SetSegSize (uint32_t size)
